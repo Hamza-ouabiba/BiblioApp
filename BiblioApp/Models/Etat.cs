@@ -5,17 +5,15 @@ using System.Collections.Generic;
 
 namespace BiblioApp.Models
 {
-    public partial class Auteur
+    public partial class Etat
     {
-        public Auteur()
+        public Etat()
         {
             Livres = new HashSet<Livre>();
         }
 
-        public int IdAuteur { get; set; }
-        public string NomAuteur { get; set; }
-        public string Email { get; set; }
-        public string Genre { get; set; }
+        public int IdEtat { get; set; }
+        public string Nom { get; set; }
 
         public virtual ICollection<Livre> Livres { get; set; }
     }

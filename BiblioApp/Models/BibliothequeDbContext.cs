@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -22,13 +21,17 @@ namespace BiblioApp.Models
         public virtual DbSet<Auteur> Auteurs { get; set; }
         public virtual DbSet<Categorie> Categories { get; set; }
         public virtual DbSet<Employe> Employes { get; set; }
+        public virtual DbSet<Etat> Etats { get; set; }
         public virtual DbSet<Livre> Livres { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["bibliothequeDb"].ConnectionString);
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=.\\;Database=BibliothequeDb;Trusted_Connection=True;");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -68,24 +71,19 @@ namespace BiblioApp.Models
 
                 entity.Property(e => e.IdAuteur).HasColumnName("idAuteur");
 
-                entity.Property(e => e.DateNaissance)
-                    .HasColumnType("date")
-                    .HasColumnName("dateNaissance");
-
-                entity.Property(e => e.Nationalite)
-                    .HasMaxLength(100)
+                entity.Property(e => e.Email)
+                    .HasMaxLength(255)
                     .IsUnicode(false)
-                    .HasColumnName("nationalite");
+                    .HasColumnName("email");
+
+                entity.Property(e => e.Genre)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.NomAuteur)
                     .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("nomAuteur");
-
-                entity.Property(e => e.PrenomAuteur)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("prenomAuteur");
             });
 
             modelBuilder.Entity<Categorie>(entity =>
@@ -111,6 +109,21 @@ namespace BiblioApp.Models
                 entity.ToTable("Employe");
 
                 entity.Property(e => e.IdEmploye).HasColumnName("idEmploye");
+
+                entity.Property(e => e.Nom)
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasColumnName("nom");
+            });
+
+            modelBuilder.Entity<Etat>(entity =>
+            {
+                entity.HasKey(e => e.IdEtat);
+
+                entity.Property(e => e.Nom)
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasColumnName("nom");
             });
 
             modelBuilder.Entity<Livre>(entity =>
@@ -119,6 +132,12 @@ namespace BiblioApp.Models
                     .HasName("PK__Livre__63C546D9EE21A7A4");
 
                 entity.ToTable("Livre");
+
+                entity.HasIndex(e => e.IdEtat, "IX_Livre_IdEtatNavigationIdEtat");
+
+                entity.HasIndex(e => e.IdAuteur, "IX_Livre_idAuteur");
+
+                entity.HasIndex(e => e.IdCategorie, "IX_Livre_idCategorie");
 
                 entity.Property(e => e.IdLivre).HasColumnName("idLivre");
 
@@ -135,6 +154,11 @@ namespace BiblioApp.Models
                     .WithMany(p => p.Livres)
                     .HasForeignKey(d => d.IdCategorie)
                     .HasConstraintName("FK_LIVRE_ASSOCIATI_CATEGORI");
+
+                entity.HasOne(d => d.IdEtatNavigation)
+                    .WithMany(p => p.Livres)
+                    .HasForeignKey(d => d.IdEtat)
+                    .HasConstraintName("FK_Livre_Etats_IdEtatNavigationIdEtat");
             });
 
             modelBuilder.Entity<Reservation>(entity =>
@@ -143,6 +167,8 @@ namespace BiblioApp.Models
                     .HasName("PK__Reservat__44382DB50ED7A50C");
 
                 entity.ToTable("Reservation");
+
+                entity.HasIndex(e => e.IdAdherent, "IX_Reservation_idAdherent");
 
                 entity.Property(e => e.IdLivre).HasColumnName("idLivre");
 
