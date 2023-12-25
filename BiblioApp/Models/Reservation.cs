@@ -11,7 +11,7 @@ namespace BiblioApp.Models
         public int IdAdherent { get; set; }
         public DateTime? Periode { get; set; }
 
-        public virtual Adherent IdAdherentNavigation { get; set; }
-        public virtual Livre IdLivreNavigation { get; set; }
+        public virtual Adherent Adherent { get; set; }
+        public virtual Livre Livre { get; set; }
     }
 }

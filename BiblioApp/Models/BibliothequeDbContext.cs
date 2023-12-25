@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -29,7 +30,6 @@ namespace BiblioApp.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=.\\;Database=BibliothequeDb;Trusted_Connection=True;");
             }
         }
@@ -145,17 +145,17 @@ namespace BiblioApp.Models
 
                 entity.Property(e => e.IdCategorie).HasColumnName("idCategorie");
 
-                entity.HasOne(d => d.IdAuteurNavigation)
+                entity.HasOne(d => d.Auteur)
                     .WithMany(p => p.Livres)
                     .HasForeignKey(d => d.IdAuteur)
                     .HasConstraintName("FK_LIVRE_ASSOCIATI_AUTEUR");
 
-                entity.HasOne(d => d.IdCategorieNavigation)
+                entity.HasOne(d => d.Categorie)
                     .WithMany(p => p.Livres)
                     .HasForeignKey(d => d.IdCategorie)
                     .HasConstraintName("FK_LIVRE_ASSOCIATI_CATEGORI");
 
-                entity.HasOne(d => d.IdEtatNavigation)
+                entity.HasOne(d => d.Etat)
                     .WithMany(p => p.Livres)
                     .HasForeignKey(d => d.IdEtat)
                     .HasConstraintName("FK_Livre_Etats_IdEtatNavigationIdEtat");
@@ -178,12 +178,12 @@ namespace BiblioApp.Models
                     .HasColumnType("date")
                     .HasColumnName("periode");
 
-                entity.HasOne(d => d.IdAdherentNavigation)
+                entity.HasOne(d => d.Adherent)
                     .WithMany(p => p.Reservations)
                     .HasForeignKey(d => d.IdAdherent)
                     .HasConstraintName("FK_RESERVAT_ASSOCIATI_ADHERENT");
 
-                entity.HasOne(d => d.IdLivreNavigation)
+                entity.HasOne(d => d.Livre)
                     .WithMany(p => p.Reservations)
                     .HasForeignKey(d => d.IdLivre)
                     .HasConstraintName("FK_RESERVAT_ASSOCIATI_LIVRE");

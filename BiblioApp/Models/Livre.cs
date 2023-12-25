@@ -23,9 +23,9 @@ namespace BiblioApp.Models
         public DateTime DatePublication { get; set; }
         public int? IdEtat { get; set; }
 
-        public virtual Auteur IdAuteurNavigation { get; set; }
-        public virtual Categorie IdCategorieNavigation { get; set; }
-        public virtual Etat IdEtatNavigation { get; set; }
+        public virtual Auteur Auteur { get; set; }
+        public virtual Categorie Categorie { get; set; }
+        public virtual Etat Etat { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }
