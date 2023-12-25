@@ -8,7 +8,7 @@ namespace BiblioApp.Forms
 {
     public partial class AuthorsForm : UserControl
     {
-        private Guid idAuthorUp;
+        private int idAuthorUp;
         public AuthorsForm()
         {
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace BiblioApp.Forms
                 int res = uow.Complete();
                 if (res > 0)
                 {
-                    //MessageBox.Show("Author created successfully ID : " + author.IdAuthor, "Info Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Author created successfully ID : " + auteur.IdAuteur, "Info Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //LoadData(uow);
                     txtName.Text = "";
                     txtEmail.Text = "";
@@ -161,16 +161,16 @@ namespace BiblioApp.Forms
 
         private void btnUpdateAuthor_Click(object sender, EventArgs e)
         {
-            /*using (UnitOfWork uow = new UnitOfWork(new bcBookStoreContext()))
+/*            using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
             {
-                Author auth = uow.Authors.Get(idAuthorUp);
+                Auteur auth = uow.Auteur.Get(idAuthorUp);
                 auth.Name=txtName.Text ;
                 auth.Email = txtEmail.Text;
                 auth.Gender = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text;
                 uow.Complete();
                 LoadData(uow);
                 btnUpdateAuthor.Visible = false;
-            }
-*/        }
+            }*/
+        }
     }
 }
