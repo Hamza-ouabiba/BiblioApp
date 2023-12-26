@@ -20,7 +20,7 @@ namespace BiblioApp.Forms
             {
                 p.IdAuteur,
                 p.NomAuteur,
-                p.Email,d
+                p.Email,
                 p.Genre,
                 nbBooks = p.Livres.Count()
             }).ToList();
@@ -40,7 +40,7 @@ namespace BiblioApp.Forms
                 if (res > 0)
                 {
                     MessageBox.Show("Author created successfully ID : " + auteur.IdAuteur, "Info Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //LoadData(uow);
+                    LoadData(uow);
                     txtName.Text = "";
                     txtEmail.Text = "";
                     txtName.Focus();
