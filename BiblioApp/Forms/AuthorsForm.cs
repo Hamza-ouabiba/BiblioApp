@@ -24,27 +24,31 @@ namespace BiblioApp.Forms
         }
         private void btnSaveAuthor_Click(object sender, EventArgs e)
         {
-            using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+            if (txtName.Text != "" && txtEmail.Text != "" && (txtGenderF.Checked || txtGenderM.Checked))
             {
-                Auteur auteur = new Auteur()
+                using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
                 {
-                    NomAuteur = txtName.Text,
-                    Email = txtEmail.Text,
-                    Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text
-                };
-                uow.Auteur.Add(auteur);
-                int res = uow.Complete();
-                if (res > 0)
-                {
-                    MessageBox.Show("Author created successfully ID : " + auteur.IdAuteur, "Info Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData(uow);
-                    txtName.Text = "";
-                    txtEmail.Text = "";
-                    txtName.Focus();
-                    txtGenderM.Select();
-                    txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
+                    Auteur auteur = new Auteur()
+                    {
+                        NomAuteur = txtName.Text,
+                        Email = txtEmail.Text,
+                        Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text
+                    };
+                    uow.Auteur.Add(auteur);
+                    int res = uow.Complete();
+                    if (res > 0)
+                    {
+                        MessageBox.Show("Author created successfully ID : " + auteur.IdAuteur, "Info Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadData(uow);
+                        txtName.Text = "";
+                        txtEmail.Text = "";
+                        txtName.Focus();
+                        txtGenderM.Select();
+                        txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
+                    }
                 }
             }
+            else MessageBox.Show("Remplir les fields");
         }
         private void AuthorsForm_Load(object sender, EventArgs e)
         {
@@ -60,6 +64,8 @@ namespace BiblioApp.Forms
                 dgvAuthors.Columns["Genre"].Width = 100;
                 dgvAuthors.Columns["nbBooks"].Width = 100;
                 dgvAuthors.RowHeadersVisible = false;
+                SharedData.AddColumnIcon(dgvAuthors, "print", "print");
+                SharedData.AddColumnIcon(dgvAuthors, "delete", "delete");
                 txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
                 btnUpdateAuthor.Visible = false;
             }
@@ -84,57 +90,32 @@ namespace BiblioApp.Forms
 
         private void dgvAuthors_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*if (e.ColumnIndex != -1)
+            if (e.ColumnIndex != -1)
             {
                 string colName = dgvAuthors.Columns[e.ColumnIndex].Name;
-                Guid idAuthor = Guid.Parse(dgvAuthors.Rows[e.RowIndex].Cells["IdAuthor"].Value.ToString());
+                int idAuteur = int.Parse(dgvAuthors.Rows[e.RowIndex].Cells["IdAuteur"].Value.ToString());
                 if (colName == "delete")
                 {
-                    bool confirm = ConfirmDelete("Voulez vous vraiment supprimer cet auteur  ?");
+                    bool confirm = SharedData.ConfirmDelete("Voulez vous vraiment supprimer cet auteur  ?");
                     if (confirm)
                     {
-                        using (UnitOfWork uow = new UnitOfWork(new bcBookStoreContext()))
+                        using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
                         {
-                            Author author = uow.Authors.Get(idAuthor);
-                            uow.Authors.Remove(author);
+                            Auteur auteur = uow.Auteur.Get(idAuteur);
+                            uow.Auteur.Remove(auteur);
                             uow.Complete();
                             LoadData(uow);
                             txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
+                            MessageBox.Show($"Auteur {auteur.NomAuteur} supprimée !");
                         }
                     }
 
                 }
                 if (colName == "print")
                 {
-                    using (UnitOfWork uow = new UnitOfWork(new bcBookStoreContext()))
-                    {
-                        Author author = uow.Authors.Find(a=>a.IdAuthor==idAuthor, "Books").FirstOrDefault();
-                        AuthorViewModel av = new AuthorViewModel()
-                        {
-                            IdAuthor = author.IdAuthor,
-                            Name = author.Name,
-                            Email = author.Email,
-                            Gender = author.Gender,
-                            nbBooks = author.Books.Count
-                        };
-                        DataTable dt = new DataTable();
-                        var props = typeof(AuthorViewModel).GetProperties();
-                        dt.Columns.AddRange(
-                           props.Select(p => new DataColumn(p.Name, p.PropertyType)).ToArray()
-                            );
-                        dt.Rows.Add(props.Select(p => p.GetValue(av, null)).ToArray());
-
-                        string RptPath = @"Reports\ListAuthors.rdlc";
-                        string NameSrcRpt = "ds_listAuthors";
-                        
-                        string fileName = "ListAuthors";
-                        PrintToPDF(RptPath, NameSrcRpt, dt, fileName,true);
-
-
-
-                    }
+                    
                 }
-            }*/
+            }
         }
 
         private void dgvAuthors_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
