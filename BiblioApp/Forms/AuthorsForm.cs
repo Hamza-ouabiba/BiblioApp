@@ -20,7 +20,7 @@ namespace BiblioApp.Forms
             {
                 p.IdAuteur,
                 p.NomAuteur,
-                p.Email,
+                p.Email,d
                 p.Genre,
                 nbBooks = p.Livres.Count()
             }).ToList();
