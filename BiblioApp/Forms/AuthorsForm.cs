@@ -1,9 +1,6 @@
 ﻿using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
-using System;
 using System.Data;
-using System.Linq;
-using System.Windows.Forms;
 namespace BiblioApp.Forms
 {
     public partial class AuthorsForm : UserControl
