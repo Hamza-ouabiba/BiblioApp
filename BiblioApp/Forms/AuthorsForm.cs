@@ -14,17 +14,17 @@ namespace BiblioApp.Forms
             InitializeComponent();
         }
 
-        /*private void LoadData(UnitOfWork uow)
+        private void LoadData(UnitOfWork uow)
         {
-            dgvAuthors.DataSource = uow.Authors.Find(null, "Books").Select(p => new
+            dgvAuthors.DataSource = uow.Auteur.Find(null, "Livres").Select(p => new
             {
-                p.IdAuthor,
-                p.Name,
+                p.IdAuteur,
+                p.NomAuteur,
                 p.Email,
-                p.Gender,
-                nbBooks = p.Books.Count()
+                p.Genre,
+                nbBooks = p.Livres.Count()
             }).ToList();
-        }*/
+        }
         private void btnSaveAuthor_Click(object sender, EventArgs e)
         {
             using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
@@ -51,23 +51,21 @@ namespace BiblioApp.Forms
         }
         private void AuthorsForm_Load(object sender, EventArgs e)
         {
-           /* txtName.Focus();
+           txtName.Focus();
             txtGenderM.Select();
-            using (UnitOfWork uow = new UnitOfWork(new bcBookStoreContext()))
+            using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
             {
                 LoadData(uow);
 
-                dgvAuthors.Columns["IdAuthor"].Visible = false;
-                dgvAuthors.Columns["Name"].Width = 300;
+                dgvAuthors.Columns["IdAuteur"].Visible = false;
+                dgvAuthors.Columns["NomAuteur"].Width = 300;
                 dgvAuthors.Columns["Email"].Width = 300;
-                dgvAuthors.Columns["Gender"].Width = 100;
+                dgvAuthors.Columns["Genre"].Width = 100;
                 dgvAuthors.Columns["nbBooks"].Width = 100;
                 dgvAuthors.RowHeadersVisible = false;
-                AddColumnIcon(dgvAuthors, "print", "print");
-                AddColumnIcon(dgvAuthors, "delete", "delete");
                 txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
                 btnUpdateAuthor.Visible = false;
-            }*/
+            }
         }
 
         private void dgvAuthors_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
