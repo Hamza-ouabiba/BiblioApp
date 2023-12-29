@@ -53,19 +53,19 @@ namespace BiblioApp
             PanelTop.Controls.Add(pictureBox1);
             PanelTop.Controls.Add(label1);
             PanelTop.Controls.Add(btnExit);
-            PanelTop.Location = new Point(211, 0);
+            PanelTop.Location = new Point(169, 0);
             PanelTop.Margin = new Padding(2);
             PanelTop.Name = "PanelTop";
-            PanelTop.Size = new Size(871, 92);
+            PanelTop.Size = new Size(697, 74);
             PanelTop.TabIndex = 0;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(30, 6);
+            pictureBox1.Location = new Point(24, 5);
             pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(70, 61);
+            pictureBox1.Size = new Size(56, 49);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -75,10 +75,10 @@ namespace BiblioApp
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 22F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(95, 0);
+            label1.Location = new Point(76, 0);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(286, 52);
+            label1.Size = new Size(247, 42);
             label1.TabIndex = 1;
             label1.Text = "Bibliotheque ";
             // 
@@ -89,10 +89,10 @@ namespace BiblioApp
             btnExit.FlatAppearance.BorderSize = 0;
             btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnExit.ForeColor = Color.Red;
-            btnExit.Location = new Point(791, 12);
+            btnExit.Location = new Point(633, 10);
             btnExit.Margin = new Padding(2);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(60, 46);
+            btnExit.Size = new Size(48, 37);
             btnExit.TabIndex = 0;
             btnExit.Text = "X";
             btnExit.UseVisualStyleBackColor = true;
@@ -109,7 +109,7 @@ namespace BiblioApp
             panelLeft.Location = new Point(0, 0);
             panelLeft.Margin = new Padding(2);
             panelLeft.Name = "panelLeft";
-            panelLeft.Size = new Size(221, 720);
+            panelLeft.Size = new Size(177, 576);
             panelLeft.TabIndex = 1;
             // 
             // btnEmploye
@@ -121,10 +121,10 @@ namespace BiblioApp
             btnEmploye.Font = new Font("Agency FB", 14F, FontStyle.Bold, GraphicsUnit.Point);
             btnEmploye.Image = (Image)resources.GetObject("btnEmploye.Image");
             btnEmploye.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmploye.Location = new Point(-1, 376);
+            btnEmploye.Location = new Point(5, 304);
             btnEmploye.Margin = new Padding(2);
             btnEmploye.Name = "btnEmploye";
-            btnEmploye.Size = new Size(211, 64);
+            btnEmploye.Size = new Size(169, 51);
             btnEmploye.TabIndex = 4;
             btnEmploye.Text = "Employées";
             btnEmploye.UseVisualStyleBackColor = false;
@@ -139,10 +139,10 @@ namespace BiblioApp
             btnBooks.Font = new Font("Agency FB", 14F, FontStyle.Bold, GraphicsUnit.Point);
             btnBooks.Image = (Image)resources.GetObject("btnBooks.Image");
             btnBooks.ImageAlign = ContentAlignment.MiddleLeft;
-            btnBooks.Location = new Point(2, 288);
+            btnBooks.Location = new Point(2, 230);
             btnBooks.Margin = new Padding(2);
             btnBooks.Name = "btnBooks";
-            btnBooks.Size = new Size(208, 64);
+            btnBooks.Size = new Size(166, 51);
             btnBooks.TabIndex = 2;
             btnBooks.Text = "Livres";
             btnBooks.UseVisualStyleBackColor = false;
@@ -157,10 +157,10 @@ namespace BiblioApp
             btnAuthors.Font = new Font("Agency FB", 14F, FontStyle.Bold, GraphicsUnit.Point);
             btnAuthors.Image = (Image)resources.GetObject("btnAuthors.Image");
             btnAuthors.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAuthors.Location = new Point(0, 199);
+            btnAuthors.Location = new Point(0, 159);
             btnAuthors.Margin = new Padding(2);
             btnAuthors.Name = "btnAuthors";
-            btnAuthors.Size = new Size(211, 64);
+            btnAuthors.Size = new Size(169, 51);
             btnAuthors.TabIndex = 1;
             btnAuthors.Text = "Auteurs";
             btnAuthors.UseVisualStyleBackColor = false;
@@ -172,7 +172,7 @@ namespace BiblioApp
             pictureBox2.Location = new Point(2, 2);
             pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(215, 158);
+            pictureBox2.Size = new Size(172, 126);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;
@@ -181,17 +181,17 @@ namespace BiblioApp
             // 
             panelContent.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelContent.BackColor = SystemColors.Control;
-            panelContent.Location = new Point(220, 70);
+            panelContent.Location = new Point(176, 56);
             panelContent.Margin = new Padding(2);
             panelContent.Name = "panelContent";
-            panelContent.Size = new Size(862, 650);
+            panelContent.Size = new Size(690, 520);
             panelContent.TabIndex = 2;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1082, 720);
+            ClientSize = new Size(866, 576);
             Controls.Add(panelContent);
             Controls.Add(panelLeft);
             Controls.Add(PanelTop);

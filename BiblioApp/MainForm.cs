@@ -23,8 +23,8 @@ namespace BiblioApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             this.WindowState = FormWindowState.Maximized;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             btnAuthors_Click(sender, e);
         }
 
