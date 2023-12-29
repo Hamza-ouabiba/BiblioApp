@@ -52,7 +52,7 @@ namespace BiblioApp.Forms
         }
         private void AuthorsForm_Load(object sender, EventArgs e)
         {
-           txtName.Focus();
+            txtName.Focus();
             txtGenderM.Select();
             using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
             {
@@ -113,40 +113,40 @@ namespace BiblioApp.Forms
                 }
                 if (colName == "print")
                 {
-                    
+
                 }
             }
         }
 
         private void dgvAuthors_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-           /* if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
-                idAuthorUp = Guid.Parse(dgvAuthors.Rows[e.RowIndex].Cells["IdAuthor"].Value.ToString());
-                using (UnitOfWork uow = new UnitOfWork(new bcBookStoreContext()))
+                idAuthorUp = int.Parse(dgvAuthors.Rows[e.RowIndex].Cells["IdAuteur"].Value.ToString());
+                using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
                 {
-                    Author auth = uow.Authors.Get(idAuthorUp);
-                    txtName.Text = auth.Name;
-                    txtEmail.Text = auth.Email;
-                    txtGenderM.Checked = (auth.Gender == "M") ? true : false;
-                    txtGenderF.Checked = (auth.Gender == "F") ? true : false;
+                    Auteur aut = uow.Auteur.Get(idAuthorUp);
+                    txtName.Text = aut.NomAuteur;
+                    txtEmail.Text = aut.Email;
+                    txtGenderM.Checked = (aut.Genre  == "M") ? true : false;
+                    txtGenderF.Checked = (aut.Genre == "F") ? true : false;
                     btnUpdateAuthor.Visible = true;
                 }
-            }*/
+            }
         }
 
         private void btnUpdateAuthor_Click(object sender, EventArgs e)
         {
-/*            using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+            using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
             {
                 Auteur auth = uow.Auteur.Get(idAuthorUp);
-                auth.Name=txtName.Text ;
+                auth.NomAuteur = txtName.Text;
                 auth.Email = txtEmail.Text;
-                auth.Gender = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text;
+                auth.Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text;
                 uow.Complete();
                 LoadData(uow);
                 btnUpdateAuthor.Visible = false;
-            }*/
+            }
         }
     }
 }

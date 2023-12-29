@@ -25,7 +25,7 @@ namespace BiblioApp
         {
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             this.WindowState = FormWindowState.Maximized;
-           btnAuthors_Click(sender, e);
+            btnAuthors_Click(sender, e);
         }
 
         private void btnAuthors_Click(object sender, EventArgs e)
@@ -44,6 +44,11 @@ namespace BiblioApp
         private void btnStatistic_Click(object sender, EventArgs e)
         {
             panelContent.Controls.Clear();
+        }
+
+        private void btnEmploye_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
