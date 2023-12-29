@@ -30,7 +30,7 @@ namespace BiblioApp.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=.\\;Database=BibliothequeDb;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["database"].ConnectionString);
             }
         }
 
