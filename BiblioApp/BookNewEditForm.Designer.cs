@@ -195,6 +195,7 @@ namespace BiblioApp
             txtNbPages.Name = "txtNbPages";
             txtNbPages.Size = new Size(83, 32);
             txtNbPages.TabIndex = 12;
+            txtNbPages.Validating += txtNbPages_Validating;
             // 
             // txtPrice
             // 
@@ -205,6 +206,7 @@ namespace BiblioApp
             txtPrice.Name = "txtPrice";
             txtPrice.Size = new Size(70, 32);
             txtPrice.TabIndex = 11;
+            txtPrice.Validating += txtPrice_Validating;
             // 
             // labeltxtnbPage
             // 
@@ -266,6 +268,7 @@ namespace BiblioApp
             txtDescrip.Name = "txtDescrip";
             txtDescrip.Size = new Size(337, 106);
             txtDescrip.TabIndex = 3;
+            txtDescrip.Validating += txtDescrip_Validating;
             // 
             // label3
             // 
@@ -288,6 +291,7 @@ namespace BiblioApp
             txtTitle.Name = "txtTitle";
             txtTitle.Size = new Size(337, 32);
             txtTitle.TabIndex = 1;
+            txtTitle.Validating += txtTitle_Validating;
             // 
             // label2
             // 

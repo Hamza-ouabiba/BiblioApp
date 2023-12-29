@@ -17,6 +17,7 @@ namespace BiblioApp
     {
         private readonly BooksForms booksForms;
         private readonly int idLivre;
+        bool vtitle, vnPage, vdesc, vPrice = false;
         public BookNewEditForm()
         {
             InitializeComponent();
@@ -45,7 +46,7 @@ namespace BiblioApp
                 comboCategory.DataSource = uow.Category.GetAll();
                 comboCategory.ValueMember = "IdCategorie";
                 comboCategory.DisplayMember = "NomCategorie";
-                if(idLivre != -1)
+                if (idLivre != -1)
                 {
                     btnSaveBook.Text = "Update book";
                     Livre livre = uow.Livre.Get(idLivre);
@@ -55,14 +56,14 @@ namespace BiblioApp
                     comboAuteur.SelectedItem = livre.Auteur;
                     txtPublishedDate.Value = livre.DatePublication;
                     txtNbPages.Text = livre.NbPages.ToString();
-                    txtPrice.Text = livre.Prix.ToString(); 
+                    txtPrice.Text = livre.Prix.ToString();
                     if (livre.Couverture != null)
                     {
                         MemoryStream memoryStream = new MemoryStream(livre.Couverture);
                         txtImageCover.Image = Image.FromStream(memoryStream);
                     }
                 }
-            } 
+            }
         }
 
         private void btnUploadCover_Click(object sender, EventArgs e)
@@ -79,41 +80,70 @@ namespace BiblioApp
 
         private void btnSaveBook_Click(object sender, EventArgs e)
         {
-            using (UnitOfWork uow = new(new BibliothequeDbContext()))
+            txtTitle_Validating(sender, e as CancelEventArgs);
+            txtDescrip_Validating(sender, e as CancelEventArgs);
+            txtNbPages_Validating(sender, e as CancelEventArgs);
+            txtPrice_Validating(sender, e as CancelEventArgs);
+            if (vtitle && vPrice && vdesc && vdesc)
             {
-                if (idLivre == -1)
+                btnSaveBook.Enabled = true;
+                using (UnitOfWork uow = new(new BibliothequeDbContext()))
                 {
-                    Livre livre = new Livre()
+                    if (idLivre == -1)
                     {
-                        Title = txtTitle.Text,
-                        IdAuteur = Convert.ToInt32(comboAuteur.SelectedValue),
-                        IdCategorie = Convert.ToInt32(comboCategory.SelectedValue),
-                        Description = txtDescrip.Text,
-                        DatePublication = txtPublishedDate.Value.Date,
-                        Prix = (float)Convert.ToDouble(txtPrice.Text),
-                        NbPages = Convert.ToInt32(txtNbPages.Text),
-                        Couverture = (String.IsNullOrEmpty(txtImageCoverPath.Text) ? null : SharedData.ConvertToBinaryFromFile(txtImageCoverPath.Text)),
-                    };
-                    uow.Livre.Add(livre);
-                } else
-                {
-                    Livre livre = uow.Livre.Get(idLivre);
-                    livre.Title = txtTitle.Text;
-                    livre.IdAuteur = Convert.ToInt32(comboAuteur.SelectedValue);
-                    livre.IdCategorie = Convert.ToInt32(comboCategory.SelectedValue);
-                    livre.Description = txtDescrip.Text;
-                    livre.DatePublication = txtPublishedDate.Value.Date;
-                    livre.Prix = (float)Convert.ToDouble(txtPrice.Text);
-                    livre.NbPages = Convert.ToInt32(txtNbPages.Text);
-                    livre.Couverture = (String.IsNullOrEmpty(txtImageCoverPath.Text) ? null : SharedData.ConvertToBinaryFromFile(txtImageCoverPath.Text));
-                }
+                        Livre livre = new Livre()
+                        {
+                            Title = txtTitle.Text,
+                            IdAuteur = Convert.ToInt32(comboAuteur.SelectedValue),
+                            IdCategorie = Convert.ToInt32(comboCategory.SelectedValue),
+                            Description = txtDescrip.Text,
+                            DatePublication = txtPublishedDate.Value.Date,
+                            Prix = (float)Convert.ToDouble(txtPrice.Text),
+                            NbPages = Convert.ToInt32(txtNbPages.Text),
+                            Couverture = (String.IsNullOrEmpty(txtImageCoverPath.Text) ? null : SharedData.ConvertToBinaryFromFile(txtImageCoverPath.Text)),
+                        };
+                        uow.Livre.Add(livre);
+                    }
+                    else
+                    {
+                        Livre livre = uow.Livre.Get(idLivre);
+                        livre.Title = txtTitle.Text;
+                        livre.IdAuteur = Convert.ToInt32(comboAuteur.SelectedValue);
+                        livre.IdCategorie = Convert.ToInt32(comboCategory.SelectedValue);
+                        livre.Description = txtDescrip.Text;
+                        livre.DatePublication = txtPublishedDate.Value.Date;
+                        livre.Prix = (float)Convert.ToDouble(txtPrice.Text);
+                        livre.NbPages = Convert.ToInt32(txtNbPages.Text);
+                        livre.Couverture = (String.IsNullOrEmpty(txtImageCoverPath.Text) ? null : SharedData.ConvertToBinaryFromFile(txtImageCoverPath.Text));
+                    }
 
-                if (uow.Complete() > 0)
-                {
-                    this.booksForms.LoadData();
-                    this.Close();
+                    if (uow.Complete() > 0)
+                    {
+                        this.booksForms.LoadData();
+                        this.Close();
+                    }
                 }
             }
+        }
+
+        private void txtTitle_Validating(object sender, CancelEventArgs e)
+        {
+            vtitle = SharedData.ValidateData(ErrProvider, txtTitle, "Valeur non correcte", btnSaveBook, false);
+        }
+
+        private void txtDescrip_Validating(object sender, CancelEventArgs e)
+        {
+            vdesc = SharedData.ValidateData(ErrProvider, txtDescrip, "Valeur non correcte", btnSaveBook, false);
+        }
+
+        private void txtPrice_Validating(object sender, CancelEventArgs e)
+        {
+            vPrice = SharedData.ValidateData(ErrProvider, txtPrice, "Valeur non correcte ", btnSaveBook, true);
+        }
+
+        private void txtNbPages_Validating(object sender, CancelEventArgs e)
+        {
+            vnPage = SharedData.ValidateData(ErrProvider, txtNbPages, "Valeur non correcte", btnSaveBook, true);
         }
     }
 }
