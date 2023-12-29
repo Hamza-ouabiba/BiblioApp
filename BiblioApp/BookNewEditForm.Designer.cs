@@ -36,6 +36,8 @@ namespace BiblioApp
             pictureBox1 = new PictureBox();
             txtTitleForm = new Label();
             groupBox1 = new GroupBox();
+            label1 = new Label();
+            comboCategory = new ComboBox();
             label5 = new Label();
             comboAuteur = new ComboBox();
             txtNbPages = new TextBox();
@@ -53,8 +55,6 @@ namespace BiblioApp
             btnUploadCover = new Button();
             txtImageCoverPath = new Label();
             ErrProvider = new ErrorProvider(components);
-            label1 = new Label();
-            comboCategory = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
@@ -64,7 +64,7 @@ namespace BiblioApp
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Maroon;
+            panel1.BackColor = Color.DimGray;
             panel1.Controls.Add(btnExit);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(txtTitleForm);
@@ -112,9 +112,9 @@ namespace BiblioApp
             txtTitleForm.Location = new Point(51, 7);
             txtTitleForm.Margin = new Padding(2, 0, 2, 0);
             txtTitleForm.Name = "txtTitleForm";
-            txtTitleForm.Size = new Size(128, 23);
+            txtTitleForm.Size = new Size(107, 23);
             txtTitleForm.TabIndex = 2;
-            txtTitleForm.Text = "New Book : ";
+            txtTitleForm.Text = "Ajout livre";
             // 
             // groupBox1
             // 
@@ -140,6 +140,29 @@ namespace BiblioApp
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.Brown;
+            label1.Location = new Point(18, 412);
+            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(94, 25);
+            label1.TabIndex = 16;
+            label1.Text = "Categorie";
+            // 
+            // comboCategory
+            // 
+            comboCategory.BackColor = Color.White;
+            comboCategory.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            comboCategory.FormattingEnabled = true;
+            comboCategory.Location = new Point(18, 446);
+            comboCategory.Margin = new Padding(2);
+            comboCategory.Name = "comboCategory";
+            comboCategory.Size = new Size(337, 31);
+            comboCategory.TabIndex = 15;
+            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -154,7 +177,7 @@ namespace BiblioApp
             // 
             // comboAuteur
             // 
-            comboAuteur.BackColor = Color.LightBlue;
+            comboAuteur.BackColor = Color.White;
             comboAuteur.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboAuteur.FormattingEnabled = true;
             comboAuteur.Location = new Point(18, 371);
@@ -165,7 +188,7 @@ namespace BiblioApp
             // 
             // txtNbPages
             // 
-            txtNbPages.BackColor = Color.LightBlue;
+            txtNbPages.BackColor = Color.White;
             txtNbPages.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtNbPages.Location = new Point(269, 294);
             txtNbPages.Margin = new Padding(2);
@@ -175,7 +198,7 @@ namespace BiblioApp
             // 
             // txtPrice
             // 
-            txtPrice.BackColor = Color.LightBlue;
+            txtPrice.BackColor = Color.White;
             txtPrice.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtPrice.Location = new Point(174, 293);
             txtPrice.Margin = new Padding(2);
@@ -235,7 +258,7 @@ namespace BiblioApp
             // 
             // txtDescrip
             // 
-            txtDescrip.BackColor = Color.LightBlue;
+            txtDescrip.BackColor = Color.White;
             txtDescrip.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtDescrip.Location = new Point(18, 136);
             txtDescrip.Margin = new Padding(2);
@@ -258,7 +281,7 @@ namespace BiblioApp
             // 
             // txtTitle
             // 
-            txtTitle.BackColor = Color.LightBlue;
+            txtTitle.BackColor = Color.White;
             txtTitle.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtTitle.Location = new Point(18, 67);
             txtTitle.Margin = new Padding(2);
@@ -345,34 +368,11 @@ namespace BiblioApp
             ErrProvider.ContainerControl = this;
             ErrProvider.Icon = (Icon)resources.GetObject("ErrProvider.Icon");
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.Brown;
-            label1.Location = new Point(18, 412);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(94, 25);
-            label1.TabIndex = 16;
-            label1.Text = "Categorie";
-            // 
-            // comboCategory
-            // 
-            comboCategory.BackColor = Color.LightBlue;
-            comboCategory.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            comboCategory.FormattingEnabled = true;
-            comboCategory.Location = new Point(18, 446);
-            comboCategory.Margin = new Padding(2);
-            comboCategory.Name = "comboCategory";
-            comboCategory.Size = new Size(337, 31);
-            comboCategory.TabIndex = 15;
-            // 
             // BookNewEditForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightSkyBlue;
+            BackColor = Color.White;
             ClientSize = new Size(878, 633);
             Controls.Add(txtImageCoverPath);
             Controls.Add(btnUploadCover);

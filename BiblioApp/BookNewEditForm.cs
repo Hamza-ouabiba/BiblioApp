@@ -25,10 +25,7 @@ namespace BiblioApp
         {
             InitializeComponent();
             this.booksForms = booksForms;
-            if(idLivre != -1)
-            {
-                this.idLivre = idLivre;
-            }
+            this.idLivre = idLivre;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
