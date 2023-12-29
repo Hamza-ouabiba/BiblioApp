@@ -38,7 +38,10 @@ namespace BiblioApp
 
         private void btnBooks_Click(object sender, EventArgs e)
         {
+            BooksForms frmBook = new BooksForms();
+            frmBook.Dock = DockStyle.Fill;
             panelContent.Controls.Clear();
+            panelContent.Controls.Add(frmBook);
         }
 
         private void btnStatistic_Click(object sender, EventArgs e)
@@ -48,7 +51,10 @@ namespace BiblioApp
 
         private void btnEmploye_Click(object sender, EventArgs e)
         {
-            
+            EmployeForm frmEmp = new EmployeForm();
+            frmEmp.Dock = DockStyle.Fill;
+            panelContent.Controls.Clear();
+            panelContent.Controls.Add(frmEmp);
         }
     }
 }

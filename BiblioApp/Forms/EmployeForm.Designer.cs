@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeForm));
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
-            btnUpdateAuthor = new Button();
-            btnSaveAuthor = new Button();
+            btnUpdateEmploye = new Button();
+            btnSaveEmploye = new Button();
             txtGenderF = new RadioButton();
             txtGenderM = new RadioButton();
             label4 = new Label();
@@ -46,15 +46,19 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             dgvEmployes = new DataGridView();
+            txtNbEmploye = new Label();
+            pictureBox2 = new PictureBox();
+            label5 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvEmployes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btnUpdateAuthor);
-            groupBox1.Controls.Add(btnSaveAuthor);
+            groupBox1.Controls.Add(btnUpdateEmploye);
+            groupBox1.Controls.Add(btnSaveEmploye);
             groupBox1.Controls.Add(txtGenderF);
             groupBox1.Controls.Add(txtGenderM);
             groupBox1.Controls.Add(label4);
@@ -68,43 +72,44 @@
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             // 
-            // btnUpdateAuthor
+            // btnUpdateEmploye
             // 
-            btnUpdateAuthor.BackColor = Color.LightCyan;
-            btnUpdateAuthor.Cursor = Cursors.Hand;
-            btnUpdateAuthor.FlatAppearance.BorderSize = 0;
-            btnUpdateAuthor.FlatStyle = FlatStyle.Flat;
-            btnUpdateAuthor.Font = new Font("Agency FB", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnUpdateAuthor.Image = (Image)resources.GetObject("btnUpdateAuthor.Image");
-            btnUpdateAuthor.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUpdateAuthor.Location = new Point(130, 360);
-            btnUpdateAuthor.Name = "btnUpdateAuthor";
-            btnUpdateAuthor.Size = new Size(128, 40);
-            btnUpdateAuthor.TabIndex = 8;
-            btnUpdateAuthor.Text = "Update";
-            btnUpdateAuthor.UseVisualStyleBackColor = false;
+            btnUpdateEmploye.BackColor = Color.LightCyan;
+            btnUpdateEmploye.Cursor = Cursors.Hand;
+            btnUpdateEmploye.FlatAppearance.BorderSize = 0;
+            btnUpdateEmploye.FlatStyle = FlatStyle.Flat;
+            btnUpdateEmploye.Font = new Font("Agency FB", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateEmploye.Image = (Image)resources.GetObject("btnUpdateEmploye.Image");
+            btnUpdateEmploye.ImageAlign = ContentAlignment.MiddleLeft;
+            btnUpdateEmploye.Location = new Point(130, 360);
+            btnUpdateEmploye.Name = "btnUpdateEmploye";
+            btnUpdateEmploye.Size = new Size(128, 40);
+            btnUpdateEmploye.TabIndex = 8;
+            btnUpdateEmploye.Text = "Update";
+            btnUpdateEmploye.UseVisualStyleBackColor = false;
             // 
-            // btnSaveAuthor
+            // btnSaveEmploye
             // 
-            btnSaveAuthor.BackColor = Color.LightGray;
-            btnSaveAuthor.Cursor = Cursors.Hand;
-            btnSaveAuthor.FlatAppearance.BorderSize = 0;
-            btnSaveAuthor.FlatStyle = FlatStyle.Flat;
-            btnSaveAuthor.Font = new Font("Agency FB", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSaveAuthor.Image = (Image)resources.GetObject("btnSaveAuthor.Image");
-            btnSaveAuthor.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSaveAuthor.Location = new Point(270, 360);
-            btnSaveAuthor.Name = "btnSaveAuthor";
-            btnSaveAuthor.Size = new Size(128, 40);
-            btnSaveAuthor.TabIndex = 7;
-            btnSaveAuthor.Text = "Save";
-            btnSaveAuthor.UseVisualStyleBackColor = false;
+            btnSaveEmploye.BackColor = Color.LightGray;
+            btnSaveEmploye.Cursor = Cursors.Hand;
+            btnSaveEmploye.FlatAppearance.BorderSize = 0;
+            btnSaveEmploye.FlatStyle = FlatStyle.Flat;
+            btnSaveEmploye.Font = new Font("Agency FB", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSaveEmploye.Image = (Image)resources.GetObject("btnSaveEmploye.Image");
+            btnSaveEmploye.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSaveEmploye.Location = new Point(270, 360);
+            btnSaveEmploye.Name = "btnSaveEmploye";
+            btnSaveEmploye.Size = new Size(128, 40);
+            btnSaveEmploye.TabIndex = 7;
+            btnSaveEmploye.Text = "Save";
+            btnSaveEmploye.UseVisualStyleBackColor = false;
+            btnSaveEmploye.Click += btnSaveEmploye_Click;
             // 
             // txtGenderF
             // 
             txtGenderF.AutoSize = true;
             txtGenderF.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtGenderF.Location = new Point(206, 278);
+            txtGenderF.Location = new Point(212, 278);
             txtGenderF.Name = "txtGenderF";
             txtGenderF.Size = new Size(46, 29);
             txtGenderF.TabIndex = 6;
@@ -116,7 +121,7 @@
             // 
             txtGenderM.AutoSize = true;
             txtGenderM.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtGenderM.Location = new Point(130, 277);
+            txtGenderM.Location = new Point(136, 277);
             txtGenderM.Name = "txtGenderM";
             txtGenderM.Size = new Size(54, 29);
             txtGenderM.TabIndex = 5;
@@ -129,7 +134,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Brown;
-            label4.Location = new Point(22, 275);
+            label4.Location = new Point(28, 275);
             label4.Name = "label4";
             label4.Size = new Size(102, 30);
             label4.TabIndex = 4;
@@ -197,62 +202,100 @@
             // 
             // dgvEmployes
             // 
-            dataGridViewCellStyle5.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(0, 0, 192);
-            dgvEmployes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(0, 0, 192);
+            dgvEmployes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvEmployes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvEmployes.BackgroundColor = SystemColors.ButtonFace;
             dgvEmployes.BorderStyle = BorderStyle.None;
             dgvEmployes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvEmployes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = Color.Maroon;
-            dataGridViewCellStyle6.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgvEmployes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.Maroon;
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvEmployes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvEmployes.ColumnHeadersHeight = 33;
             dgvEmployes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Window;
-            dataGridViewCellStyle7.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dgvEmployes.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvEmployes.DefaultCellStyle = dataGridViewCellStyle3;
             dgvEmployes.EnableHeadersVisualStyles = false;
             dgvEmployes.Location = new Point(600, 86);
             dgvEmployes.Name = "dgvEmployes";
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.Maroon;
-            dataGridViewCellStyle8.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dgvEmployes.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.Maroon;
+            dataGridViewCellStyle4.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvEmployes.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvEmployes.RowHeadersWidth = 62;
             dgvEmployes.RowTemplate.Height = 40;
             dgvEmployes.Size = new Size(838, 400);
             dgvEmployes.TabIndex = 6;
+            dgvEmployes.CellContentClick += dgvEmployes_CellContentClick;
+            dgvEmployes.CellMouseEnter += dgvEmployes_CellMouseEnter;
+            // 
+            // txtNbEmploye
+            // 
+            txtNbEmploye.AutoSize = true;
+            txtNbEmploye.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            txtNbEmploye.ForeColor = Color.Maroon;
+            txtNbEmploye.Location = new Point(893, 29);
+            txtNbEmploye.Name = "txtNbEmploye";
+            txtNbEmploye.Size = new Size(24, 28);
+            txtNbEmploye.TabIndex = 9;
+            txtNbEmploye.Text = "_";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(592, 25);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(45, 32);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 8;
+            pictureBox2.TabStop = false;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(643, 29);
+            label5.Name = "label5";
+            label5.Size = new Size(259, 28);
+            label5.TabIndex = 7;
+            label5.Text = "Liste des Employées: ";
             // 
             // EmployeForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(txtNbEmploye);
+            Controls.Add(pictureBox2);
+            Controls.Add(label5);
             Controls.Add(dgvEmployes);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(groupBox1);
             Name = "EmployeForm";
             Size = new Size(1487, 639);
+            Load += EmployeForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvEmployes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -260,8 +303,8 @@
         #endregion
 
         private GroupBox groupBox1;
-        private Button btnUpdateAuthor;
-        private Button btnSaveAuthor;
+        private Button btnUpdateEmploye;
+        private Button btnSaveEmploye;
         private RadioButton txtGenderF;
         private RadioButton txtGenderM;
         private Label label4;
@@ -272,5 +315,8 @@
         private PictureBox pictureBox1;
         private Label label1;
         private DataGridView dgvEmployes;
+        private Label txtNbEmploye;
+        private PictureBox pictureBox2;
+        private Label label5;
     }
 }

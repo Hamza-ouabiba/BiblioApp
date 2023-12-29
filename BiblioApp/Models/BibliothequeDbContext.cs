@@ -30,7 +30,7 @@ namespace BiblioApp.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["database"].ConnectionString);
+                optionsBuilder.UseSqlServer("Server=.\\;Database=BibliothequeDb;Trusted_Connection=True;");
             }
         }
 
@@ -119,14 +119,6 @@ namespace BiblioApp.Models
                 entity.Property(e => e.IsAdmin)
                     .HasColumnName("isAdmin");
 
-                entity.Property(e => e.Email)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("email");
-                entity.Property(e => e.Genre)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("genre");
             });
 
             modelBuilder.Entity<Etat>(entity =>
