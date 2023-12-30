@@ -1,11 +1,4 @@
 ﻿using BiblioApp.Forms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 
 namespace BiblioApp
 {
@@ -15,7 +8,6 @@ namespace BiblioApp
         {
             InitializeComponent();
         }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -27,7 +19,6 @@ namespace BiblioApp
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             btnAuthors_Click(sender, e);
         }
-
         private void btnAuthors_Click(object sender, EventArgs e)
         {
             AuthorsForm frmAuth = new AuthorsForm();
@@ -43,18 +34,23 @@ namespace BiblioApp
             panelContent.Controls.Clear();
             panelContent.Controls.Add(frmBook);
         }
-
         private void btnStatistic_Click(object sender, EventArgs e)
         {
             panelContent.Controls.Clear();
         }
-
         private void btnEmploye_Click(object sender, EventArgs e)
         {
             EmployeForm frmEmp = new EmployeForm();
             frmEmp.Dock = DockStyle.Fill;
             panelContent.Controls.Clear();
             panelContent.Controls.Add(frmEmp);
+        }
+        private void btnAdherent_Click(object sender, EventArgs e)
+        {
+            AdherentForm adherentForm = new AdherentForm();
+            adherentForm.Dock = DockStyle.Fill;
+            panelContent.Controls.Clear();
+            panelContent.Controls.Add(adherentForm);
         }
     }
 }

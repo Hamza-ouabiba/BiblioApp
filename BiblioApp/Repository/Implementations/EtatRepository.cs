@@ -17,7 +17,7 @@ namespace BiblioApp.Repository.Implementations
         public IEnumerable GetCreationEtat()
         {
             return bibliothequeDbContext.Etats
-                .Where(e => e.IdEtat != 2)
+                .Where(e => e.Nom != "Emprunté")
                 .Select(e => e)
                 .ToList();
         }
