@@ -25,7 +25,7 @@ namespace BiblioApp.Forms
         {
             using (UnitOfWork uow = new(new BibliothequeDbContext()))
             {
-                dgvBooks.DataSource = uow.Livre.Find(null, "Auteur,Categorie").Select(l => new
+                dgvBooks.DataSource = uow.Livre.Find(null, "Auteur,Categorie,Etat").Select(l => new
                 {
                     IdLivre = l.IdLivre,
                     Titre = l.Title,
@@ -33,8 +33,9 @@ namespace BiblioApp.Forms
                     Prix = l.Prix,
                     DatePublication = l.DatePublication,
                     Categorie = l.Categorie.NomCategorie,
+                    Etat = l.Etat.Nom,
                     Auteur = l.Auteur.NomAuteur,
-                    nbPage = l.NbPages
+                    nbPage = l.NbPages,
                 }).ToList();
                 txtNbBooks.Text = dgvBooks.RowCount.ToString();
             }

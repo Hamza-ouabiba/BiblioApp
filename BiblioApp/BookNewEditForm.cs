@@ -46,9 +46,15 @@ namespace BiblioApp
                 comboCategory.DataSource = uow.Category.GetAll();
                 comboCategory.ValueMember = "IdCategorie";
                 comboCategory.DisplayMember = "NomCategorie";
+
+                comboEtat.DataSource = uow.Etat.GetCreationEtat();
+                comboEtat.ValueMember = "IdEtat";
+                comboEtat.DisplayMember = "Nom";
+
                 if (idLivre != -1)
                 {
-                    btnSaveBook.Text = "Update book";
+                    btnSaveBook.Text = "Modifier livre";
+                    txtTitleForm.Text = "Modifier livre";
                     Livre livre = uow.Livre.Get(idLivre);
                     txtTitle.Text = livre.Title;
                     txtDescrip.Text = livre.Description;
@@ -84,7 +90,7 @@ namespace BiblioApp
             txtDescrip_Validating(sender, e as CancelEventArgs);
             txtNbPages_Validating(sender, e as CancelEventArgs);
             txtPrice_Validating(sender, e as CancelEventArgs);
-            if (vtitle && vPrice && vdesc && vdesc)
+            if (vtitle && vPrice && vdesc && vnPage)
             {
                 btnSaveBook.Enabled = true;
                 using (UnitOfWork uow = new(new BibliothequeDbContext()))
@@ -99,7 +105,8 @@ namespace BiblioApp
                             Description = txtDescrip.Text,
                             DatePublication = txtPublishedDate.Value.Date,
                             Prix = (float)Convert.ToDouble(txtPrice.Text),
-                            NbPages = Convert.ToInt32(txtNbPages.Text),
+                            IdEtat = Convert.ToInt32(comboEtat.SelectedValue),
+                            NbPages = Convert.ToInt32(txtNbPages.Text), 
                             Couverture = (String.IsNullOrEmpty(txtImageCoverPath.Text) ? null : SharedData.ConvertToBinaryFromFile(txtImageCoverPath.Text)),
                         };
                         uow.Livre.Add(livre);
@@ -110,11 +117,12 @@ namespace BiblioApp
                         livre.Title = txtTitle.Text;
                         livre.IdAuteur = Convert.ToInt32(comboAuteur.SelectedValue);
                         livre.IdCategorie = Convert.ToInt32(comboCategory.SelectedValue);
+                        livre.IdEtat = Convert.ToInt32(comboEtat.SelectedValue);
                         livre.Description = txtDescrip.Text;
                         livre.DatePublication = txtPublishedDate.Value.Date;
                         livre.Prix = (float)Convert.ToDouble(txtPrice.Text);
                         livre.NbPages = Convert.ToInt32(txtNbPages.Text);
-                        livre.Couverture = (String.IsNullOrEmpty(txtImageCoverPath.Text) ? null : SharedData.ConvertToBinaryFromFile(txtImageCoverPath.Text));
+                        livre.Couverture = (String.IsNullOrEmpty(txtImageCoverPath.Text) ? livre.Couverture : SharedData.ConvertToBinaryFromFile(txtImageCoverPath.Text));
                     }
 
                     if (uow.Complete() > 0)

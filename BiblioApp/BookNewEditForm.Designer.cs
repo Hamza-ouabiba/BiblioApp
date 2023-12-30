@@ -55,6 +55,8 @@ namespace BiblioApp
             btnUploadCover = new Button();
             txtImageCoverPath = new Label();
             ErrProvider = new ErrorProvider(components);
+            label6 = new Label();
+            comboEtat = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
@@ -118,6 +120,8 @@ namespace BiblioApp
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(comboEtat);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(comboCategory);
             groupBox1.Controls.Add(label5);
@@ -136,7 +140,7 @@ namespace BiblioApp
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(398, 490);
+            groupBox1.Size = new Size(398, 563);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             // 
@@ -314,10 +318,10 @@ namespace BiblioApp
             btnSaveBook.Font = new Font("Agency FB", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnSaveBook.Image = (Image)resources.GetObject("btnSaveBook.Image");
             btnSaveBook.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSaveBook.Location = new Point(696, 577);
+            btnSaveBook.Location = new Point(696, 578);
             btnSaveBook.Margin = new Padding(2);
             btnSaveBook.Name = "btnSaveBook";
-            btnSaveBook.Size = new Size(145, 32);
+            btnSaveBook.Size = new Size(145, 31);
             btnSaveBook.TabIndex = 7;
             btnSaveBook.Text = "Create New Book";
             btnSaveBook.TextAlign = ContentAlignment.MiddleRight;
@@ -371,6 +375,29 @@ namespace BiblioApp
             // 
             ErrProvider.ContainerControl = this;
             ErrProvider.Icon = (Icon)resources.GetObject("ErrProvider.Icon");
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.ForeColor = Color.Brown;
+            label6.Location = new Point(18, 489);
+            label6.Margin = new Padding(2, 0, 2, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(94, 25);
+            label6.TabIndex = 18;
+            label6.Text = "Etat livre :";
+            // 
+            // comboEtat
+            // 
+            comboEtat.BackColor = Color.White;
+            comboEtat.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            comboEtat.FormattingEnabled = true;
+            comboEtat.Location = new Point(18, 520);
+            comboEtat.Margin = new Padding(2);
+            comboEtat.Name = "comboEtat";
+            comboEtat.Size = new Size(337, 31);
+            comboEtat.TabIndex = 17;
             // 
             // BookNewEditForm
             // 
@@ -427,5 +454,7 @@ namespace BiblioApp
         private ErrorProvider ErrProvider;
         private Label label1;
         private ComboBox comboCategory;
+        private Label label6;
+        private ComboBox comboEtat;
     }
 }

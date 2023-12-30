@@ -12,6 +12,7 @@ namespace BiblioApp.Repository.Implementations
         public IAuteurRepository Auteur { get; private set; }
         public ILivreRepository Livre { get; private set; }
         public ICategoryRepository Category { get; private set; }
+        public IEtatRepository Etat { get; private set; }
         public UnitOfWork(BibliothequeDbContext context)
         {
             _context = context;
@@ -19,6 +20,7 @@ namespace BiblioApp.Repository.Implementations
             Employe = new EmployeRepository(context);
             Category = new CategoryRepository(context);
             Livre  = new LivreRespository(context);
+            Etat = new EtatRepository(context);
         }
 
         public int Complete()
