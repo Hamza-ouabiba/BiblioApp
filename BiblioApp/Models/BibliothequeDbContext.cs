@@ -180,10 +180,12 @@ namespace BiblioApp.Models
 
                 entity.Property(e => e.IdAdherent).HasColumnName("idAdherent");
 
-                entity.Property(e => e.Periode)
+                entity.Property(e => e.DateDebut)
                     .HasColumnType("date")
-                    .HasColumnName("periode");
-
+                    .HasColumnName("dateDebut");
+                entity.Property(e => e.DateFin)
+                    .HasColumnType("date")
+                    .HasColumnName("dateFin");
                 entity.HasOne(d => d.Adherent)
                     .WithMany(p => p.Reservations)
                     .HasForeignKey(d => d.IdAdherent)

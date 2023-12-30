@@ -9,8 +9,8 @@ namespace BiblioApp.Models
     {
         public int IdLivre { get; set; }
         public int IdAdherent { get; set; }
-        public DateTime? Periode { get; set; }
-
+        public DateTime? DateDebut { get; set; }
+        public DateTime? DateFin { get; set; }
         public virtual Adherent Adherent { get; set; }
         public virtual Livre Livre { get; set; }
     }

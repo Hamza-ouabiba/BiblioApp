@@ -4,14 +4,16 @@ using BiblioApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BiblioApp.Migrations
 {
     [DbContext(typeof(BibliothequeDbContext))]
-    partial class BibliothequeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231230200711_migration5")]
+    partial class migration5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,13 +213,9 @@ namespace BiblioApp.Migrations
                         .HasColumnType("int")
                         .HasColumnName("idAdherent");
 
-                    b.Property<DateTime?>("DateDebut")
+                    b.Property<DateTime?>("Periode")
                         .HasColumnType("date")
-                        .HasColumnName("dateDebut");
-
-                    b.Property<DateTime?>("DateFin")
-                        .HasColumnType("date")
-                        .HasColumnName("dateFin");
+                        .HasColumnName("periode");
 
                     b.HasKey("IdLivre", "IdAdherent")
                         .HasName("PK__Reservat__44382DB50ED7A50C");
