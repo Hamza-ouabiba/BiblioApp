@@ -66,6 +66,7 @@ namespace BiblioApp.Forms
                 dgvAuthors.RowHeadersVisible = false;
                 SharedData.AddColumnIcon(dgvAuthors, "print", "print");
                 SharedData.AddColumnIcon(dgvAuthors, "delete", "delete");
+                SharedData.AddColumnIcon(dgvAuthors, "edit", "edit");
                 txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
                 btnUpdateAuthor.Visible = false;
             }
@@ -111,29 +112,22 @@ namespace BiblioApp.Forms
                     }
 
                 }
-                if (colName == "print")
+                if (colName == "edit")
                 {
-
+                    idAuthorUp = int.Parse(dgvAuthors.Rows[e.RowIndex].Cells["IdAuteur"].Value.ToString());
+                    using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+                    {
+                        Auteur aut = uow.Auteur.Get(idAuthorUp);
+                        txtName.Text = aut.NomAuteur;
+                        txtEmail.Text = aut.Email;
+                        txtGenderM.Checked = (aut.Genre == "M") ? true : false;
+                        txtGenderF.Checked = (aut.Genre == "F") ? true : false;
+                        btnUpdateAuthor.Visible = true;
+                    }
                 }
             }
         }
 
-        private void dgvAuthors_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                idAuthorUp = int.Parse(dgvAuthors.Rows[e.RowIndex].Cells["IdAuteur"].Value.ToString());
-                using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
-                {
-                    Auteur aut = uow.Auteur.Get(idAuthorUp);
-                    txtName.Text = aut.NomAuteur;
-                    txtEmail.Text = aut.Email;
-                    txtGenderM.Checked = (aut.Genre  == "M") ? true : false;
-                    txtGenderF.Checked = (aut.Genre == "F") ? true : false;
-                    btnUpdateAuthor.Visible = true;
-                }
-            }
-        }
 
         private void btnUpdateAuthor_Click(object sender, EventArgs e)
         {

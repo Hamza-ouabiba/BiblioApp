@@ -125,7 +125,6 @@ namespace BiblioApp.Forms
             dgvBooks.Size = new Size(1161, 343);
             dgvBooks.TabIndex = 5;
             dgvBooks.CellContentClick += dgvBooks_CellContentClick;
-            dgvBooks.CellDoubleClick += dgvBooks_CellDoubleClick;
             // 
             // txtNbBooks
             // 
@@ -250,6 +249,7 @@ namespace BiblioApp.Forms
             btnSearch.TabIndex = 16;
             btnSearch.TextAlign = ContentAlignment.MiddleRight;
             btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
             // btnFirst
             // 

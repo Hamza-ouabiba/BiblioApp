@@ -266,7 +266,6 @@ namespace BiblioApp.Forms
             dgvAuthors.Size = new Size(971, 400);
             dgvAuthors.TabIndex = 5;
             dgvAuthors.CellContentClick += dgvAuthors_CellContentClick;
-            dgvAuthors.CellDoubleClick += dgvAuthors_CellDoubleClick;
             dgvAuthors.CellMouseEnter += dgvAuthors_CellMouseEnter;
             // 
             // txtNbAuthors

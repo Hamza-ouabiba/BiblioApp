@@ -1,7 +1,9 @@
 ﻿using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
 using BiblioApp.Utils;
+using LinqKit;
 using System.Data;
+using System.Linq.Expressions;
 namespace BiblioApp.Forms
 {
     public partial class BooksForms : UserControl
@@ -13,7 +15,7 @@ namespace BiblioApp.Forms
             InitializeComponent();
             pagination = new Pagination()
             {
-                PageSize = 5,
+                PageSize = 3,
                 PageIndex = 1
             };
         }
@@ -29,11 +31,36 @@ namespace BiblioApp.Forms
             BookNewEditForm bookNewEditForm = new BookNewEditForm(this, -1);
             bookNewEditForm.ShowDialog();
         }
+        private void PageLastModifier()
+        {
+            if (dgvBooks.Rows.Count == 1 && pagination.PageIndex > 1)
+            {
+                pagination.PageIndex--;
+            }
+        }
         public void LoadData()
         {
+            //initializing a predicate delegate : 
+            var predicate = PredicateBuilder.New<Livre>(true);
+
+            Auteur auteur = (Auteur)txtAuthorCriteria.SelectedItem;
+
+            if (!string.IsNullOrEmpty(txtTitleCriteria.Text))
+                predicate = predicate.And(l => l.Title.ToLower().Contains(txtTitleCriteria.Text.ToLower()));
+
+            if (!string.IsNullOrEmpty(txtCategoryCriteria.Text))
+                predicate = predicate.And(l => l.Categorie.NomCategorie.ToLower().Contains(txtCategoryCriteria.Text.ToLower()));
+
+            if (!string.IsNullOrEmpty(txtAuthorCriteria.Text))
+                predicate = predicate.And(l => l.IdAuteur == auteur.IdAuteur);
+
+
+            TotalPages = CalculatePages();
+            txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
+
             using (UnitOfWork uow = new(new BibliothequeDbContext()))
             {
-                dgvBooks.DataSource = uow.Livre.Find(null, "Auteur,Categorie,Etat",pagination).Select(l => new
+                dgvBooks.DataSource = uow.Livre.Find(predicate, "Auteur,Categorie,Etat", pagination).Select(l => new
                 {
                     IdLivre = l.IdLivre,
                     Titre = l.Title,
@@ -51,8 +78,21 @@ namespace BiblioApp.Forms
         private void BooksForms_Load(object sender, EventArgs e)
         {
             LoadData();
-            TotalPages = CalculatePages();
-            txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
+            txtAuthorCriteria.Items.Add(new Auteur()
+            {
+                IdAuteur = -1,
+                NomAuteur = "----Tous les auteurs----"
+            });
+            using (UnitOfWork uow = new(new BibliothequeDbContext()))
+            {
+                foreach (Auteur auteur in uow.Auteur.GetAll())
+                {
+                    txtAuthorCriteria.Items.Add(auteur);
+                }
+                txtAuthorCriteria.ValueMember = "IdAuteur";
+                txtAuthorCriteria.DisplayMember = "NomAuteur";
+                txtAuthorCriteria.SelectedIndex = 0;
+            }
             dgvBooks.Columns["IdLivre"].Visible = false;
             dgvBooks.Columns["Titre"].Width = 300;
             dgvBooks.Columns["Description"].Width = 300;
@@ -64,6 +104,7 @@ namespace BiblioApp.Forms
             dgvBooks.RowHeadersVisible = false;
             SharedData.AddColumnIcon(dgvBooks, "print", "print");
             SharedData.AddColumnIcon(dgvBooks, "delete", "delete");
+            SharedData.AddColumnIcon(dgvBooks, "edit", "edit");
         }
 
         private void dgvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -82,6 +123,8 @@ namespace BiblioApp.Forms
                             Livre livre = uow.Livre.Get(idLivre);
                             uow.Livre.Remove(livre);
                             uow.Complete();
+                            //btnFirst_Click(sender, e); // worst case scenario : 
+                            PageLastModifier();
                             LoadData();
                             txtNbBooks.Text = dgvBooks.RowCount.ToString();
                             MessageBox.Show($"Livre {livre.Title} supprimée !");
@@ -89,25 +132,19 @@ namespace BiblioApp.Forms
                     }
 
                 }
-                if (colName == "print")
+                if (colName == "edit")
                 {
-
+                    using (UnitOfWork uow = new(new BibliothequeDbContext()))
+                    {
+                        Livre livre = uow.Livre.Get(Convert.ToInt32(dgvBooks.Rows[e.RowIndex].Cells["IdLivre"].Value));
+                        BookNewEditForm bookNewEditForm = new BookNewEditForm(this, livre.IdLivre);
+                        bookNewEditForm.ShowDialog();
+                    }
                 }
             }
         }
 
-        private void dgvBooks_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex != -1)
-            {
-                using (UnitOfWork uow = new(new BibliothequeDbContext()))
-                {
-                    Livre livre = uow.Livre.Get(Convert.ToInt32(dgvBooks.Rows[e.RowIndex].Cells["IdLivre"].Value));
-                    BookNewEditForm bookNewEditForm = new BookNewEditForm(this, livre.IdLivre);
-                    bookNewEditForm.ShowDialog();
-                }
-            }
-        }
+
 
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -136,6 +173,11 @@ namespace BiblioApp.Forms
         private void btnFirst_Click(object sender, EventArgs e)
         {
             pagination.PageIndex = 1;
+            LoadData();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
             LoadData();
         }
     }

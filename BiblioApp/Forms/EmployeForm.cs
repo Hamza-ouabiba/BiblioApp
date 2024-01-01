@@ -65,6 +65,7 @@ namespace BiblioApp.Forms
                 dgvEmployes.RowHeadersVisible = false;
                 SharedData.AddColumnIcon(dgvEmployes, "print", "print");
                 SharedData.AddColumnIcon(dgvEmployes, "delete", "delete");
+                SharedData.AddColumnIcon(dgvEmployes, "edit", "edit");
                 txtNbEmploye.Text = dgvEmployes.RowCount.ToString();
                 btnUpdateEmploye.Visible = false;
             }
@@ -93,7 +94,7 @@ namespace BiblioApp.Forms
                     }
 
                 }
-                if (colName == "print")
+                if (colName == "edit")
                 {
 
                 }
