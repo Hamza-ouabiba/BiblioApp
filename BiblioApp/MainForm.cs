@@ -52,5 +52,13 @@ namespace BiblioApp
             panelContent.Controls.Clear();
             panelContent.Controls.Add(adherentForm);
         }
+
+        private void reservationBtn_Click(object sender, EventArgs e)
+        {
+            ReservationForm reservationForm = new ReservationForm();
+            reservationForm.Dock = DockStyle.Fill;
+            panelContent.Controls.Clear();
+            panelContent.Controls.Add(reservationForm);
+        }
     }
 }

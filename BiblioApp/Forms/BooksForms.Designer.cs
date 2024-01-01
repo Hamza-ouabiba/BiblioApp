@@ -41,7 +41,6 @@ namespace BiblioApp.Forms
             btnNewBook = new Button();
             label1 = new Label();
             txtTitleCriteria = new TextBox();
-            txtCategoryCriteria = new TextBox();
             label2 = new Label();
             label3 = new Label();
             txtAuthorCriteria = new ComboBox();
@@ -53,6 +52,7 @@ namespace BiblioApp.Forms
             btnLast = new Button();
             txtCurrentPage = new Label();
             btnPrint = new Button();
+            txtCategoryCriteria = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvBooks).BeginInit();
             groupBox1.SuspendLayout();
@@ -173,21 +173,11 @@ namespace BiblioApp.Forms
             // 
             txtTitleCriteria.BackColor = Color.PaleTurquoise;
             txtTitleCriteria.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtTitleCriteria.Location = new Point(252, 30);
+            txtTitleCriteria.Location = new Point(12, 27);
             txtTitleCriteria.Margin = new Padding(2);
             txtTitleCriteria.Name = "txtTitleCriteria";
             txtTitleCriteria.Size = new Size(128, 28);
             txtTitleCriteria.TabIndex = 10;
-            // 
-            // txtCategoryCriteria
-            // 
-            txtCategoryCriteria.BackColor = Color.PaleTurquoise;
-            txtCategoryCriteria.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCategoryCriteria.Location = new Point(390, 30);
-            txtCategoryCriteria.Margin = new Padding(2);
-            txtCategoryCriteria.Name = "txtCategoryCriteria";
-            txtCategoryCriteria.Size = new Size(128, 28);
-            txtCategoryCriteria.TabIndex = 12;
             // 
             // label2
             // 
@@ -216,7 +206,7 @@ namespace BiblioApp.Forms
             txtAuthorCriteria.BackColor = Color.PaleTurquoise;
             txtAuthorCriteria.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             txtAuthorCriteria.FormattingEnabled = true;
-            txtAuthorCriteria.Location = new Point(531, 29);
+            txtAuthorCriteria.Location = new Point(337, 23);
             txtAuthorCriteria.Margin = new Padding(2);
             txtAuthorCriteria.Name = "txtAuthorCriteria";
             txtAuthorCriteria.Size = new Size(195, 29);
@@ -224,12 +214,15 @@ namespace BiblioApp.Forms
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(txtCategoryCriteria);
             groupBox1.Controls.Add(btnSearch);
+            groupBox1.Controls.Add(txtAuthorCriteria);
+            groupBox1.Controls.Add(txtTitleCriteria);
             groupBox1.Location = new Point(236, 2);
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(559, 59);
+            groupBox1.Size = new Size(616, 59);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             // 
@@ -242,7 +235,7 @@ namespace BiblioApp.Forms
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnSearch.Image = (Image)resources.GetObject("btnSearch.Image");
-            btnSearch.Location = new Point(494, 24);
+            btnSearch.Location = new Point(551, 24);
             btnSearch.Margin = new Padding(2);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(38, 28);
@@ -349,6 +342,14 @@ namespace BiblioApp.Forms
             btnPrint.TextAlign = ContentAlignment.MiddleRight;
             btnPrint.UseVisualStyleBackColor = false;
             // 
+            // txtCategoryCriteria
+            // 
+            txtCategoryCriteria.FormattingEnabled = true;
+            txtCategoryCriteria.Location = new Point(162, 26);
+            txtCategoryCriteria.Name = "txtCategoryCriteria";
+            txtCategoryCriteria.Size = new Size(151, 28);
+            txtCategoryCriteria.TabIndex = 17;
+            // 
             // BooksForms
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -359,11 +360,8 @@ namespace BiblioApp.Forms
             Controls.Add(btnNext);
             Controls.Add(btnPrevious);
             Controls.Add(btnFirst);
-            Controls.Add(txtAuthorCriteria);
             Controls.Add(label3);
-            Controls.Add(txtCategoryCriteria);
             Controls.Add(label2);
-            Controls.Add(txtTitleCriteria);
             Controls.Add(label1);
             Controls.Add(btnNewBook);
             Controls.Add(txtNbBooks);
@@ -378,6 +376,7 @@ namespace BiblioApp.Forms
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvBooks).EndInit();
             groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -390,7 +389,6 @@ namespace BiblioApp.Forms
         private System.Windows.Forms.Button btnNewBook;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtTitleCriteria;
-        private System.Windows.Forms.TextBox txtCategoryCriteria;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox txtAuthorCriteria;
@@ -402,5 +400,6 @@ namespace BiblioApp.Forms
         private System.Windows.Forms.Button btnLast;
         private System.Windows.Forms.Label txtCurrentPage;
         private System.Windows.Forms.Button btnPrint;
+        private ComboBox txtCategoryCriteria;
     }
 }

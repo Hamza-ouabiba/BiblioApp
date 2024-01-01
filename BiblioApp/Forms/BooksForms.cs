@@ -44,16 +44,26 @@ namespace BiblioApp.Forms
             var predicate = PredicateBuilder.New<Livre>(true);
 
             Auteur auteur = (Auteur)txtAuthorCriteria.SelectedItem;
+            Categorie categorie = (Categorie)txtCategoryCriteria.SelectedItem;
 
             if (!string.IsNullOrEmpty(txtTitleCriteria.Text))
                 predicate = predicate.And(l => l.Title.ToLower().Contains(txtTitleCriteria.Text.ToLower()));
 
             if (!string.IsNullOrEmpty(txtCategoryCriteria.Text))
-                predicate = predicate.And(l => l.Categorie.NomCategorie.ToLower().Contains(txtCategoryCriteria.Text.ToLower()));
+            {
+                if(txtCategoryCriteria.SelectedIndex != 0)
+                {
+                    predicate = predicate.And(l => l.Categorie.NomCategorie.ToLower().Contains(txtCategoryCriteria.Text.ToLower()));
+                }
+            }
 
             if (!string.IsNullOrEmpty(txtAuthorCriteria.Text))
-                predicate = predicate.And(l => l.IdAuteur == auteur.IdAuteur);
-
+            {
+                if(txtAuthorCriteria.SelectedIndex != 0)
+                {
+                    predicate = predicate.And(l => l.IdAuteur == auteur.IdAuteur);
+                }
+            }
 
             TotalPages = CalculatePages();
             txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
@@ -78,6 +88,11 @@ namespace BiblioApp.Forms
         private void BooksForms_Load(object sender, EventArgs e)
         {
             LoadData();
+            txtCategoryCriteria.Items.Add(new Categorie()
+            {
+                IdCategorie = -1,
+                NomCategorie = "----Tous les categories----"
+            });
             txtAuthorCriteria.Items.Add(new Auteur()
             {
                 IdAuteur = -1,
@@ -89,9 +104,17 @@ namespace BiblioApp.Forms
                 {
                     txtAuthorCriteria.Items.Add(auteur);
                 }
+                foreach (Categorie categorie in uow.Category.GetAll())
+                {
+                    txtCategoryCriteria.Items.Add(categorie);
+                }
                 txtAuthorCriteria.ValueMember = "IdAuteur";
                 txtAuthorCriteria.DisplayMember = "NomAuteur";
                 txtAuthorCriteria.SelectedIndex = 0;
+
+                txtCategoryCriteria.ValueMember = "IdCategorie";
+                txtCategoryCriteria.DisplayMember = "NomCategorie";
+                txtCategoryCriteria.SelectedIndex = 0;
             }
             dgvBooks.Columns["IdLivre"].Visible = false;
             dgvBooks.Columns["Titre"].Width = 300;
@@ -130,7 +153,6 @@ namespace BiblioApp.Forms
                             MessageBox.Show($"Livre {livre.Title} supprimée !");
                         }
                     }
-
                 }
                 if (colName == "edit")
                 {
@@ -143,9 +165,6 @@ namespace BiblioApp.Forms
                 }
             }
         }
-
-
-
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (pagination.PageIndex < TotalPages)
@@ -154,7 +173,6 @@ namespace BiblioApp.Forms
                 LoadData();
             }
         }
-
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             if (pagination.PageIndex > 1)

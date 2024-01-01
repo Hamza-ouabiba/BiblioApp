@@ -66,9 +66,11 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(txtName);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(75, 86);
+            groupBox1.Location = new Point(60, 69);
+            groupBox1.Margin = new Padding(2, 2, 2, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(404, 418);
+            groupBox1.Padding = new Padding(2, 2, 2, 2);
+            groupBox1.Size = new Size(323, 334);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             // 
@@ -81,9 +83,10 @@
             btnUpdateEmploye.Font = new Font("Agency FB", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnUpdateEmploye.Image = (Image)resources.GetObject("btnUpdateEmploye.Image");
             btnUpdateEmploye.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUpdateEmploye.Location = new Point(130, 360);
+            btnUpdateEmploye.Location = new Point(104, 288);
+            btnUpdateEmploye.Margin = new Padding(2, 2, 2, 2);
             btnUpdateEmploye.Name = "btnUpdateEmploye";
-            btnUpdateEmploye.Size = new Size(128, 40);
+            btnUpdateEmploye.Size = new Size(102, 32);
             btnUpdateEmploye.TabIndex = 8;
             btnUpdateEmploye.Text = "Update";
             btnUpdateEmploye.UseVisualStyleBackColor = false;
@@ -97,9 +100,10 @@
             btnSaveEmploye.Font = new Font("Agency FB", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnSaveEmploye.Image = (Image)resources.GetObject("btnSaveEmploye.Image");
             btnSaveEmploye.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSaveEmploye.Location = new Point(270, 360);
+            btnSaveEmploye.Location = new Point(216, 288);
+            btnSaveEmploye.Margin = new Padding(2, 2, 2, 2);
             btnSaveEmploye.Name = "btnSaveEmploye";
-            btnSaveEmploye.Size = new Size(128, 40);
+            btnSaveEmploye.Size = new Size(102, 32);
             btnSaveEmploye.TabIndex = 7;
             btnSaveEmploye.Text = "Save";
             btnSaveEmploye.UseVisualStyleBackColor = false;
@@ -109,9 +113,10 @@
             // 
             txtGenderF.AutoSize = true;
             txtGenderF.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtGenderF.Location = new Point(212, 278);
+            txtGenderF.Location = new Point(170, 222);
+            txtGenderF.Margin = new Padding(2, 2, 2, 2);
             txtGenderF.Name = "txtGenderF";
-            txtGenderF.Size = new Size(46, 29);
+            txtGenderF.Size = new Size(38, 24);
             txtGenderF.TabIndex = 6;
             txtGenderF.TabStop = true;
             txtGenderF.Text = "F";
@@ -121,9 +126,10 @@
             // 
             txtGenderM.AutoSize = true;
             txtGenderM.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtGenderM.Location = new Point(136, 277);
+            txtGenderM.Location = new Point(109, 222);
+            txtGenderM.Margin = new Padding(2, 2, 2, 2);
             txtGenderM.Name = "txtGenderM";
-            txtGenderM.Size = new Size(54, 29);
+            txtGenderM.Size = new Size(44, 24);
             txtGenderM.TabIndex = 5;
             txtGenderM.TabStop = true;
             txtGenderM.Text = "M";
@@ -134,9 +140,10 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Brown;
-            label4.Location = new Point(28, 275);
+            label4.Location = new Point(22, 220);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(102, 30);
+            label4.Size = new Size(88, 25);
             label4.TabIndex = 4;
             label4.Text = "Gender : ";
             // 
@@ -144,9 +151,10 @@
             // 
             txtEmail.BackColor = Color.LightBlue;
             txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            txtEmail.Location = new Point(22, 192);
+            txtEmail.Location = new Point(18, 154);
+            txtEmail.Margin = new Padding(2, 2, 2, 2);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(357, 39);
+            txtEmail.Size = new Size(286, 34);
             txtEmail.TabIndex = 3;
             // 
             // label3
@@ -154,9 +162,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Brown;
-            label3.Location = new Point(22, 146);
+            label3.Location = new Point(18, 117);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(81, 30);
+            label3.Size = new Size(72, 25);
             label3.TabIndex = 2;
             label3.Text = "Email : ";
             // 
@@ -164,9 +173,10 @@
             // 
             txtName.BackColor = Color.LightBlue;
             txtName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            txtName.Location = new Point(22, 84);
+            txtName.Location = new Point(18, 67);
+            txtName.Margin = new Padding(2, 2, 2, 2);
             txtName.Name = "txtName";
-            txtName.Size = new Size(357, 39);
+            txtName.Size = new Size(286, 34);
             txtName.TabIndex = 1;
             // 
             // label2
@@ -174,18 +184,20 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.Brown;
-            label2.Location = new Point(22, 38);
+            label2.Location = new Point(18, 30);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(88, 30);
+            label2.Size = new Size(76, 25);
             label2.TabIndex = 0;
             label2.Text = "Name : ";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(63, 25);
+            pictureBox1.Location = new Point(50, 20);
+            pictureBox1.Margin = new Padding(2, 2, 2, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(45, 32);
+            pictureBox1.Size = new Size(36, 26);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
@@ -194,9 +206,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(114, 29);
+            label1.Location = new Point(91, 23);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(203, 28);
+            label1.Size = new Size(171, 23);
             label1.TabIndex = 4;
             label1.Text = "Ajouter Employe";
             // 
@@ -229,7 +242,8 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvEmployes.DefaultCellStyle = dataGridViewCellStyle3;
             dgvEmployes.EnableHeadersVisualStyles = false;
-            dgvEmployes.Location = new Point(600, 86);
+            dgvEmployes.Location = new Point(480, 69);
+            dgvEmployes.Margin = new Padding(2, 2, 2, 2);
             dgvEmployes.Name = "dgvEmployes";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.Maroon;
@@ -241,7 +255,7 @@
             dgvEmployes.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvEmployes.RowHeadersWidth = 62;
             dgvEmployes.RowTemplate.Height = 40;
-            dgvEmployes.Size = new Size(838, 400);
+            dgvEmployes.Size = new Size(670, 320);
             dgvEmployes.TabIndex = 6;
             dgvEmployes.CellContentClick += dgvEmployes_CellContentClick;
             dgvEmployes.CellMouseEnter += dgvEmployes_CellMouseEnter;
@@ -251,18 +265,20 @@
             txtNbEmploye.AutoSize = true;
             txtNbEmploye.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             txtNbEmploye.ForeColor = Color.Maroon;
-            txtNbEmploye.Location = new Point(893, 29);
+            txtNbEmploye.Location = new Point(722, 23);
+            txtNbEmploye.Margin = new Padding(2, 0, 2, 0);
             txtNbEmploye.Name = "txtNbEmploye";
-            txtNbEmploye.Size = new Size(24, 28);
+            txtNbEmploye.Size = new Size(20, 23);
             txtNbEmploye.TabIndex = 9;
             txtNbEmploye.Text = "_";
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(592, 25);
+            pictureBox2.Location = new Point(474, 20);
+            pictureBox2.Margin = new Padding(2, 2, 2, 2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(45, 32);
+            pictureBox2.Size = new Size(36, 26);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 8;
             pictureBox2.TabStop = false;
@@ -271,15 +287,16 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(643, 29);
+            label5.Location = new Point(514, 23);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(259, 28);
+            label5.Size = new Size(218, 23);
             label5.TabIndex = 7;
             label5.Text = "Liste des Employées: ";
             // 
             // EmployeForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(txtNbEmploye);
             Controls.Add(pictureBox2);
@@ -288,8 +305,9 @@
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(groupBox1);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "EmployeForm";
-            Size = new Size(1487, 639);
+            Size = new Size(1190, 511);
             Load += EmployeForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
