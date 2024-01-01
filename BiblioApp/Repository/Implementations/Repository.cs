@@ -42,7 +42,7 @@ namespace BiblioApp.Repository.Implementations
 
             if(page != null)
             {
-                query = query.Skip(page.PageIndex);
+                query = query.Skip((page.PageIndex - 1) * page.PageSize).Take(page.PageSize);
             }
 
             return query.ToList();

@@ -1,26 +1,39 @@
 ﻿using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
+using BiblioApp.Utils;
 using System.Data;
 namespace BiblioApp.Forms
 {
     public partial class BooksForms : UserControl
     {
-
+        private int TotalPages;
+        private Pagination pagination;
         public BooksForms()
         {
             InitializeComponent();
+            pagination = new Pagination()
+            {
+                PageSize = 5,
+                PageIndex = 1
+            };
         }
-
+        private int CalculatePages()
+        {
+            using (UnitOfWork uow = new(new BibliothequeDbContext()))
+            {
+                return (int)Math.Ceiling((double)uow.Livre.GetAll().Count() / pagination.PageSize);
+            }
+        }
         private void btnNewBook_Click(object sender, EventArgs e)
         {
-            BookNewEditForm bookNewEditForm = new BookNewEditForm(this,-1);
+            BookNewEditForm bookNewEditForm = new BookNewEditForm(this, -1);
             bookNewEditForm.ShowDialog();
         }
         public void LoadData()
         {
             using (UnitOfWork uow = new(new BibliothequeDbContext()))
             {
-                dgvBooks.DataSource = uow.Livre.Find(null, "Auteur,Categorie,Etat").Select(l => new
+                dgvBooks.DataSource = uow.Livre.Find(null, "Auteur,Categorie,Etat",pagination).Select(l => new
                 {
                     IdLivre = l.IdLivre,
                     Titre = l.Title,
@@ -38,6 +51,8 @@ namespace BiblioApp.Forms
         private void BooksForms_Load(object sender, EventArgs e)
         {
             LoadData();
+            TotalPages = CalculatePages();
+            txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
             dgvBooks.Columns["IdLivre"].Visible = false;
             dgvBooks.Columns["Titre"].Width = 300;
             dgvBooks.Columns["Description"].Width = 300;
@@ -83,15 +98,45 @@ namespace BiblioApp.Forms
 
         private void dgvBooks_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex != -1)
+            if (e.ColumnIndex != -1)
             {
-                using(UnitOfWork uow = new(new BibliothequeDbContext()))
+                using (UnitOfWork uow = new(new BibliothequeDbContext()))
                 {
                     Livre livre = uow.Livre.Get(Convert.ToInt32(dgvBooks.Rows[e.RowIndex].Cells["IdLivre"].Value));
-                    BookNewEditForm bookNewEditForm = new BookNewEditForm(this,livre.IdLivre);
+                    BookNewEditForm bookNewEditForm = new BookNewEditForm(this, livre.IdLivre);
                     bookNewEditForm.ShowDialog();
                 }
             }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (pagination.PageIndex < TotalPages)
+            {
+                pagination.PageIndex++;
+                LoadData();
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (pagination.PageIndex > 1)
+            {
+                pagination.PageIndex--;
+                LoadData();
+            }
+        }
+
+        private void btnLast_Click(object sender, EventArgs e)
+        {
+            pagination.PageIndex = TotalPages;
+            LoadData();
+        }
+
+        private void btnFirst_Click(object sender, EventArgs e)
+        {
+            pagination.PageIndex = 1;
+            LoadData();
         }
     }
 }

@@ -130,6 +130,7 @@ namespace BiblioApp
                         this.booksForms.LoadData();
                         this.Close();
                     }
+                    
                 }
             }
         }

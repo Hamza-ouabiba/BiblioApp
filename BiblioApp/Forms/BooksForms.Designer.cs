@@ -109,7 +109,7 @@ namespace BiblioApp.Forms
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvBooks.DefaultCellStyle = dataGridViewCellStyle3;
             dgvBooks.EnableHeadersVisualStyles = false;
-            dgvBooks.Location = new Point(18, 76);
+            dgvBooks.Location = new Point(16, 84);
             dgvBooks.Margin = new Padding(2);
             dgvBooks.Name = "dgvBooks";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -266,6 +266,7 @@ namespace BiblioApp.Forms
             btnFirst.TabIndex = 17;
             btnFirst.TextAlign = ContentAlignment.MiddleRight;
             btnFirst.UseVisualStyleBackColor = false;
+            btnFirst.Click += btnFirst_Click;
             // 
             // btnPrevious
             // 
@@ -282,6 +283,7 @@ namespace BiblioApp.Forms
             btnPrevious.TabIndex = 18;
             btnPrevious.TextAlign = ContentAlignment.MiddleRight;
             btnPrevious.UseVisualStyleBackColor = false;
+            btnPrevious.Click += btnPrevious_Click;
             // 
             // btnNext
             // 
@@ -298,6 +300,7 @@ namespace BiblioApp.Forms
             btnNext.TabIndex = 19;
             btnNext.TextAlign = ContentAlignment.MiddleRight;
             btnNext.UseVisualStyleBackColor = false;
+            btnNext.Click += btnNext_Click;
             // 
             // btnLast
             // 
@@ -314,6 +317,7 @@ namespace BiblioApp.Forms
             btnLast.TabIndex = 20;
             btnLast.TextAlign = ContentAlignment.MiddleRight;
             btnLast.UseVisualStyleBackColor = false;
+            btnLast.Click += btnLast_Click;
             // 
             // txtCurrentPage
             // 
