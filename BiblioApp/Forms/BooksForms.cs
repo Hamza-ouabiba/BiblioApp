@@ -124,7 +124,6 @@ namespace BiblioApp.Forms
             dgvBooks.Columns["Categorie"].Width = 300;
             dgvBooks.Columns["Prix"].Width = 100;
             dgvBooks.Columns["nbPage"].Width = 100;
-            dgvBooks.RowHeadersVisible = false;
             SharedData.AddColumnIcon(dgvBooks, "print", "print");
             SharedData.AddColumnIcon(dgvBooks, "delete", "delete");
             SharedData.AddColumnIcon(dgvBooks, "edit", "edit");

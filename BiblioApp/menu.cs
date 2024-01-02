@@ -44,5 +44,13 @@ namespace BiblioApp.Forms
             panelContent.Controls.Clear();
             panelContent.Controls.Add(frmEmp);
         }
+
+        private void btnReservation_Click(object sender, EventArgs e)
+        {
+            ReservationForm frmRes = new ReservationForm();
+            frmRes.Dock = DockStyle.Fill;
+            panelContent.Controls.Clear();
+            panelContent.Controls.Add(frmRes);
+        }
     }
 }

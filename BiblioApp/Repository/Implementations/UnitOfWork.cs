@@ -1,6 +1,7 @@
 ﻿
 using BiblioApp.Models;
 using BiblioApp.Repository.Interfaces;
+using System.Security.Policy;
 
 namespace BiblioApp.Repository.Implementations
 {
@@ -13,6 +14,8 @@ namespace BiblioApp.Repository.Implementations
         public ICategoryRepository Category { get; private set; }
         public IEtatRepository Etat { get; private set; }
         public IAdherentRepository Adherent { get; private set; }
+        public IReservationRepository Reservation { get; private set; }
+
         public UnitOfWork(BibliothequeDbContext context)
         {
             _context = context;
@@ -22,6 +25,7 @@ namespace BiblioApp.Repository.Implementations
             Livre  = new LivreRespository(context);
             Etat = new EtatRepository(context);
             Adherent = new AdherentRepository(context);
+            Reservation = new ReservationRepository(context);
         }
 
         public int Complete()

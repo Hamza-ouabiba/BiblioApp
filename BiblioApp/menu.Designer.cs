@@ -118,7 +118,7 @@
             btnBook.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnBook.IconSize = 30;
             btnBook.ImageAlign = ContentAlignment.MiddleLeft;
-            btnBook.Location = new Point(-8, 472);
+            btnBook.Location = new Point(-4, 471);
             btnBook.Margin = new Padding(6, 3, 3, 3);
             btnBook.Name = "btnBook";
             btnBook.Padding = new Padding(9, 5, 5, 5);
@@ -138,7 +138,7 @@
             GestionEmp.IconFont = FontAwesome.Sharp.IconFont.Auto;
             GestionEmp.IconSize = 30;
             GestionEmp.ImageAlign = ContentAlignment.MiddleLeft;
-            GestionEmp.Location = new Point(-7, 382);
+            GestionEmp.Location = new Point(-3, 381);
             GestionEmp.Margin = new Padding(6, 3, 3, 3);
             GestionEmp.Name = "GestionEmp";
             GestionEmp.Padding = new Padding(6, 0, 0, 0);
@@ -158,13 +158,14 @@
             btnReservation.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnReservation.IconSize = 30;
             btnReservation.ImageAlign = ContentAlignment.MiddleLeft;
-            btnReservation.Location = new Point(-8, 291);
+            btnReservation.Location = new Point(-5, 290);
             btnReservation.Name = "btnReservation";
             btnReservation.Padding = new Padding(7, 0, 0, 0);
             btnReservation.Size = new Size(229, 95);
             btnReservation.TabIndex = 4;
             btnReservation.Text = "Reservations";
             btnReservation.UseVisualStyleBackColor = true;
+            btnReservation.Click += btnReservation_Click;
             // 
             // btnAuteur
             // 
@@ -176,7 +177,7 @@
             btnAuteur.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAuteur.IconSize = 30;
             btnAuteur.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAuteur.Location = new Point(-8, 196);
+            btnAuteur.Location = new Point(-5, 196);
             btnAuteur.Name = "btnAuteur";
             btnAuteur.Padding = new Padding(7, 0, 0, 0);
             btnAuteur.Size = new Size(230, 95);
