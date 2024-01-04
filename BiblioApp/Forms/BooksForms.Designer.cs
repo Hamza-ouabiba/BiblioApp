@@ -30,10 +30,10 @@ namespace BiblioApp.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BooksForms));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
             pictureBox2 = new PictureBox();
             label5 = new Label();
             dgvBooks = new DataGridView();
@@ -61,10 +61,10 @@ namespace BiblioApp.Forms
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(22, 8);
+            pictureBox2.Location = new Point(18, 6);
             pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(45, 32);
+            pictureBox2.Size = new Size(36, 26);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 4;
             pictureBox2.TabStop = false;
@@ -73,56 +73,56 @@ namespace BiblioApp.Forms
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(72, 12);
+            label5.Location = new Point(58, 10);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(144, 28);
+            label5.Size = new Size(122, 23);
             label5.TabIndex = 3;
             label5.Text = "List Books : ";
             // 
             // dgvBooks
             // 
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(0, 0, 192);
-            dgvBooks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle13.ForeColor = Color.FromArgb(0, 0, 192);
+            dgvBooks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             dgvBooks.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvBooks.BackgroundColor = SystemColors.ButtonFace;
             dgvBooks.BorderStyle = BorderStyle.None;
             dgvBooks.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvBooks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.Maroon;
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = Color.Maroon;
+            dataGridViewCellStyle14.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle14.ForeColor = Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
+            dgvBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             dgvBooks.ColumnHeadersHeight = 33;
             dgvBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvBooks.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = SystemColors.Window;
+            dataGridViewCellStyle15.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle15.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.False;
+            dgvBooks.DefaultCellStyle = dataGridViewCellStyle15;
             dgvBooks.EnableHeadersVisualStyles = false;
-            dgvBooks.Location = new Point(20, 105);
+            dgvBooks.Location = new Point(16, 84);
             dgvBooks.Margin = new Padding(2);
             dgvBooks.Name = "dgvBooks";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.Maroon;
-            dataGridViewCellStyle4.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvBooks.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = Color.Maroon;
+            dataGridViewCellStyle16.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle16.ForeColor = Color.White;
+            dataGridViewCellStyle16.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.True;
+            dgvBooks.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             dgvBooks.RowHeadersWidth = 62;
             dgvBooks.RowTemplate.Height = 40;
-            dgvBooks.Size = new Size(1451, 429);
+            dgvBooks.Size = new Size(1287, 343);
             dgvBooks.TabIndex = 5;
             dgvBooks.CellContentClick += dgvBooks_CellContentClick;
             dgvBooks.CellMouseEnter += dgvBooks_CellMouseEnter;
@@ -132,10 +132,10 @@ namespace BiblioApp.Forms
             txtNbBooks.AutoSize = true;
             txtNbBooks.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             txtNbBooks.ForeColor = Color.Maroon;
-            txtNbBooks.Location = new Point(241, 12);
+            txtNbBooks.Location = new Point(193, 10);
             txtNbBooks.Margin = new Padding(2, 0, 2, 0);
             txtNbBooks.Name = "txtNbBooks";
-            txtNbBooks.Size = new Size(24, 28);
+            txtNbBooks.Size = new Size(20, 23);
             txtNbBooks.TabIndex = 6;
             txtNbBooks.Text = "_";
             // 
@@ -149,10 +149,10 @@ namespace BiblioApp.Forms
             btnNewBook.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnNewBook.Image = (Image)resources.GetObject("btnNewBook.Image");
             btnNewBook.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNewBook.Location = new Point(1124, 31);
+            btnNewBook.Location = new Point(1025, 25);
             btnNewBook.Margin = new Padding(2);
             btnNewBook.Name = "btnNewBook";
-            btnNewBook.Size = new Size(208, 36);
+            btnNewBook.Size = new Size(166, 29);
             btnNewBook.TabIndex = 8;
             btnNewBook.Text = "Nouveau livre";
             btnNewBook.TextAlign = ContentAlignment.MiddleRight;
@@ -163,10 +163,10 @@ namespace BiblioApp.Forms
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.Maroon;
-            label1.Location = new Point(310, 6);
+            label1.Location = new Point(248, 5);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(53, 25);
+            label1.Size = new Size(45, 20);
             label1.TabIndex = 9;
             label1.Text = "Title :";
             // 
@@ -174,20 +174,21 @@ namespace BiblioApp.Forms
             // 
             txtTitleCriteria.BackColor = Color.White;
             txtTitleCriteria.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtTitleCriteria.Location = new Point(15, 32);
+            txtTitleCriteria.Location = new Point(12, 28);
             txtTitleCriteria.Margin = new Padding(2);
             txtTitleCriteria.Name = "txtTitleCriteria";
-            txtTitleCriteria.Size = new Size(159, 32);
+            txtTitleCriteria.PlaceholderText = "Chercher un titre";
+            txtTitleCriteria.Size = new Size(210, 28);
             txtTitleCriteria.TabIndex = 10;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.Maroon;
-            label2.Location = new Point(482, 6);
+            label2.Location = new Point(227, 6);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(98, 25);
+            label2.Size = new Size(80, 20);
             label2.TabIndex = 11;
             label2.Text = "Category : ";
             // 
@@ -195,10 +196,10 @@ namespace BiblioApp.Forms
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.Maroon;
-            label3.Location = new Point(421, 5);
+            label3.Location = new Point(452, 6);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(81, 25);
+            label3.Size = new Size(65, 20);
             label3.TabIndex = 13;
             label3.Text = "Author : ";
             // 
@@ -207,10 +208,10 @@ namespace BiblioApp.Forms
             txtAuthorCriteria.BackColor = Color.White;
             txtAuthorCriteria.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             txtAuthorCriteria.FormattingEnabled = true;
-            txtAuthorCriteria.Location = new Point(421, 34);
+            txtAuthorCriteria.Location = new Point(452, 28);
             txtAuthorCriteria.Margin = new Padding(2);
             txtAuthorCriteria.Name = "txtAuthorCriteria";
-            txtAuthorCriteria.Size = new Size(243, 31);
+            txtAuthorCriteria.Size = new Size(244, 29);
             txtAuthorCriteria.TabIndex = 14;
             // 
             // groupBox1
@@ -220,21 +221,21 @@ namespace BiblioApp.Forms
             groupBox1.Controls.Add(txtAuthorCriteria);
             groupBox1.Controls.Add(txtTitleCriteria);
             groupBox1.Controls.Add(label3);
-            groupBox1.Location = new Point(295, 2);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Location = new Point(236, 2);
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(770, 74);
+            groupBox1.Size = new Size(766, 69);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             // 
             // txtCategoryCriteria
             // 
             txtCategoryCriteria.FormattingEnabled = true;
-            txtCategoryCriteria.Location = new Point(202, 32);
-            txtCategoryCriteria.Margin = new Padding(4);
+            txtCategoryCriteria.Location = new Point(227, 29);
             txtCategoryCriteria.Name = "txtCategoryCriteria";
-            txtCategoryCriteria.Size = new Size(188, 33);
+            txtCategoryCriteria.Size = new Size(211, 28);
             txtCategoryCriteria.TabIndex = 17;
             // 
             // btnSearch
@@ -246,10 +247,10 @@ namespace BiblioApp.Forms
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnSearch.Image = (Image)resources.GetObject("btnSearch.Image");
-            btnSearch.Location = new Point(689, 25);
+            btnSearch.Location = new Point(700, 27);
             btnSearch.Margin = new Padding(2);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(48, 35);
+            btnSearch.Size = new Size(38, 28);
             btnSearch.TabIndex = 16;
             btnSearch.TextAlign = ContentAlignment.MiddleRight;
             btnSearch.UseVisualStyleBackColor = false;
@@ -263,10 +264,10 @@ namespace BiblioApp.Forms
             btnFirst.FlatStyle = FlatStyle.Flat;
             btnFirst.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
-            btnFirst.Location = new Point(20, 54);
+            btnFirst.Location = new Point(16, 43);
             btnFirst.Margin = new Padding(2);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(48, 35);
+            btnFirst.Size = new Size(38, 28);
             btnFirst.TabIndex = 17;
             btnFirst.TextAlign = ContentAlignment.MiddleRight;
             btnFirst.UseVisualStyleBackColor = false;
@@ -280,10 +281,10 @@ namespace BiblioApp.Forms
             btnPrevious.FlatStyle = FlatStyle.Flat;
             btnPrevious.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
-            btnPrevious.Location = new Point(72, 58);
+            btnPrevious.Location = new Point(58, 46);
             btnPrevious.Margin = new Padding(2);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(32, 28);
+            btnPrevious.Size = new Size(26, 22);
             btnPrevious.TabIndex = 18;
             btnPrevious.TextAlign = ContentAlignment.MiddleRight;
             btnPrevious.UseVisualStyleBackColor = false;
@@ -297,10 +298,10 @@ namespace BiblioApp.Forms
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnNext.Image = (Image)resources.GetObject("btnNext.Image");
-            btnNext.Location = new Point(102, 54);
+            btnNext.Location = new Point(82, 43);
             btnNext.Margin = new Padding(2);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(52, 35);
+            btnNext.Size = new Size(42, 28);
             btnNext.TabIndex = 19;
             btnNext.TextAlign = ContentAlignment.MiddleRight;
             btnNext.UseVisualStyleBackColor = false;
@@ -314,10 +315,10 @@ namespace BiblioApp.Forms
             btnLast.FlatStyle = FlatStyle.Flat;
             btnLast.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnLast.Image = (Image)resources.GetObject("btnLast.Image");
-            btnLast.Location = new Point(152, 54);
+            btnLast.Location = new Point(122, 43);
             btnLast.Margin = new Padding(2);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(48, 35);
+            btnLast.Size = new Size(38, 28);
             btnLast.TabIndex = 20;
             btnLast.TextAlign = ContentAlignment.MiddleRight;
             btnLast.UseVisualStyleBackColor = false;
@@ -327,10 +328,10 @@ namespace BiblioApp.Forms
             // 
             txtCurrentPage.AutoSize = true;
             txtCurrentPage.ForeColor = Color.Maroon;
-            txtCurrentPage.Location = new Point(206, 58);
+            txtCurrentPage.Location = new Point(165, 46);
             txtCurrentPage.Margin = new Padding(2, 0, 2, 0);
             txtCurrentPage.Name = "txtCurrentPage";
-            txtCurrentPage.Size = new Size(19, 25);
+            txtCurrentPage.Size = new Size(15, 20);
             txtCurrentPage.TabIndex = 21;
             txtCurrentPage.Text = "_";
             // 
@@ -344,10 +345,10 @@ namespace BiblioApp.Forms
             btnPrint.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnPrint.Image = (Image)resources.GetObject("btnPrint.Image");
             btnPrint.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPrint.Location = new Point(1338, 32);
+            btnPrint.Location = new Point(1196, 26);
             btnPrint.Margin = new Padding(2);
             btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(146, 36);
+            btnPrint.Size = new Size(117, 29);
             btnPrint.TabIndex = 22;
             btnPrint.Text = "Print PDF";
             btnPrint.TextAlign = ContentAlignment.MiddleRight;
@@ -355,7 +356,7 @@ namespace BiblioApp.Forms
             // 
             // BooksForms
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(btnPrint);
             Controls.Add(txtCurrentPage);
@@ -363,7 +364,6 @@ namespace BiblioApp.Forms
             Controls.Add(btnNext);
             Controls.Add(btnPrevious);
             Controls.Add(btnFirst);
-            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnNewBook);
             Controls.Add(txtNbBooks);
@@ -373,7 +373,7 @@ namespace BiblioApp.Forms
             Controls.Add(groupBox1);
             Margin = new Padding(2);
             Name = "BooksForms";
-            Size = new Size(1488, 639);
+            Size = new Size(1316, 511);
             Load += BooksForms_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvBooks).EndInit();

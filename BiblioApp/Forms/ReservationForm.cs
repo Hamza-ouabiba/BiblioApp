@@ -44,10 +44,12 @@ namespace BiblioApp.Forms
         public void LoadData()
         {
             var predicate = PredicateBuilder.New<Reservation>(true);
-
             if (!string.IsNullOrEmpty(txtAdherentCriteria.Text))
             {
-                predicate = predicate.And(e => e.Adherent.NomAdherent == txtAdherentCriteria.Text);
+                if (txtAdherentCriteria.SelectedIndex != 0)
+                {
+                    predicate = predicate.And(e => e.Adherent.NomAdherent == txtAdherentCriteria.Text);
+                }
             }
 
             TotalPages = CalculatePages();

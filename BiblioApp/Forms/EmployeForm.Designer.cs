@@ -81,7 +81,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvEmployes.DefaultCellStyle = dataGridViewCellStyle3;
             dgvEmployes.EnableHeadersVisualStyles = false;
-            dgvEmployes.Location = new Point(48, 108);
+            dgvEmployes.Location = new Point(38, 108);
             dgvEmployes.Margin = new Padding(2);
             dgvEmployes.Name = "dgvEmployes";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -94,7 +94,7 @@
             dgvEmployes.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvEmployes.RowHeadersWidth = 62;
             dgvEmployes.RowTemplate.Height = 40;
-            dgvEmployes.Size = new Size(1556, 400);
+            dgvEmployes.Size = new Size(1245, 320);
             dgvEmployes.TabIndex = 6;
             dgvEmployes.CellContentClick += dgvEmployes_CellContentClick;
             dgvEmployes.CellMouseEnter += dgvEmployes_CellMouseEnter;
@@ -104,20 +104,20 @@
             txtNbEmploye.AutoSize = true;
             txtNbEmploye.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             txtNbEmploye.ForeColor = Color.Maroon;
-            txtNbEmploye.Location = new Point(348, 34);
+            txtNbEmploye.Location = new Point(278, 27);
             txtNbEmploye.Margin = new Padding(2, 0, 2, 0);
             txtNbEmploye.Name = "txtNbEmploye";
-            txtNbEmploye.Size = new Size(24, 28);
+            txtNbEmploye.Size = new Size(20, 23);
             txtNbEmploye.TabIndex = 9;
             txtNbEmploye.Text = "_";
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(31, 28);
+            pictureBox2.Location = new Point(25, 22);
             pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(45, 32);
+            pictureBox2.Size = new Size(36, 26);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 8;
             pictureBox2.TabStop = false;
@@ -126,10 +126,10 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(81, 31);
+            label5.Location = new Point(65, 25);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(259, 28);
+            label5.Size = new Size(218, 23);
             label5.TabIndex = 7;
             label5.Text = "Liste des Employées: ";
             // 
@@ -143,10 +143,10 @@
             btnPrint.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnPrint.Image = (Image)resources.GetObject("btnPrint.Image");
             btnPrint.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPrint.Location = new Point(1465, 31);
+            btnPrint.Location = new Point(1172, 25);
             btnPrint.Margin = new Padding(2);
             btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(139, 36);
+            btnPrint.Size = new Size(111, 29);
             btnPrint.TabIndex = 24;
             btnPrint.Text = "Print PDF";
             btnPrint.TextAlign = ContentAlignment.MiddleRight;
@@ -162,10 +162,10 @@
             btnNewEmp.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnNewEmp.Image = (Image)resources.GetObject("btnNewEmp.Image");
             btnNewEmp.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNewEmp.Location = new Point(1200, 30);
+            btnNewEmp.Location = new Point(960, 24);
             btnNewEmp.Margin = new Padding(2);
             btnNewEmp.Name = "btnNewEmp";
-            btnNewEmp.Size = new Size(251, 36);
+            btnNewEmp.Size = new Size(201, 29);
             btnNewEmp.TabIndex = 23;
             btnNewEmp.Text = "Nouveau employé";
             btnNewEmp.TextAlign = ContentAlignment.MiddleRight;
@@ -176,11 +176,11 @@
             // 
             txtNameCriteria.BackColor = Color.White;
             txtNameCriteria.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtNameCriteria.Location = new Point(18, 29);
+            txtNameCriteria.Location = new Point(14, 23);
             txtNameCriteria.Margin = new Padding(2);
             txtNameCriteria.Name = "txtNameCriteria";
             txtNameCriteria.PlaceholderText = "Cherchez un employé ...";
-            txtNameCriteria.Size = new Size(429, 32);
+            txtNameCriteria.Size = new Size(344, 28);
             txtNameCriteria.TabIndex = 10;
             // 
             // btnSearch
@@ -192,10 +192,10 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnSearch.Image = (Image)resources.GetObject("btnSearch.Image");
-            btnSearch.Location = new Point(465, 28);
+            btnSearch.Location = new Point(372, 22);
             btnSearch.Margin = new Padding(2);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(48, 35);
+            btnSearch.Size = new Size(38, 28);
             btnSearch.TabIndex = 16;
             btnSearch.TextAlign = ContentAlignment.MiddleRight;
             btnSearch.UseVisualStyleBackColor = false;
@@ -205,11 +205,11 @@
             // 
             groupBox1.Controls.Add(txtNameCriteria);
             groupBox1.Controls.Add(btnSearch);
-            groupBox1.Location = new Point(409, 14);
+            groupBox1.Location = new Point(327, 11);
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(531, 74);
+            groupBox1.Size = new Size(425, 59);
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
             // 
@@ -217,10 +217,10 @@
             // 
             txtCurrentPage.AutoSize = true;
             txtCurrentPage.ForeColor = Color.Maroon;
-            txtCurrentPage.Location = new Point(223, 73);
+            txtCurrentPage.Location = new Point(178, 58);
             txtCurrentPage.Margin = new Padding(2, 0, 2, 0);
             txtCurrentPage.Name = "txtCurrentPage";
-            txtCurrentPage.Size = new Size(19, 25);
+            txtCurrentPage.Size = new Size(15, 20);
             txtCurrentPage.TabIndex = 30;
             txtCurrentPage.Text = "_";
             // 
@@ -232,10 +232,10 @@
             btnLast.FlatStyle = FlatStyle.Flat;
             btnLast.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnLast.Image = (Image)resources.GetObject("btnLast.Image");
-            btnLast.Location = new Point(169, 69);
+            btnLast.Location = new Point(135, 55);
             btnLast.Margin = new Padding(2);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(48, 35);
+            btnLast.Size = new Size(38, 28);
             btnLast.TabIndex = 29;
             btnLast.TextAlign = ContentAlignment.MiddleRight;
             btnLast.UseVisualStyleBackColor = false;
@@ -249,10 +249,10 @@
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnNext.Image = (Image)resources.GetObject("btnNext.Image");
-            btnNext.Location = new Point(119, 69);
+            btnNext.Location = new Point(95, 55);
             btnNext.Margin = new Padding(2);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(52, 35);
+            btnNext.Size = new Size(42, 28);
             btnNext.TabIndex = 28;
             btnNext.TextAlign = ContentAlignment.MiddleRight;
             btnNext.UseVisualStyleBackColor = false;
@@ -266,10 +266,10 @@
             btnPrevious.FlatStyle = FlatStyle.Flat;
             btnPrevious.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
-            btnPrevious.Location = new Point(89, 73);
+            btnPrevious.Location = new Point(71, 58);
             btnPrevious.Margin = new Padding(2);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(32, 28);
+            btnPrevious.Size = new Size(26, 22);
             btnPrevious.TabIndex = 27;
             btnPrevious.TextAlign = ContentAlignment.MiddleRight;
             btnPrevious.UseVisualStyleBackColor = false;
@@ -283,10 +283,10 @@
             btnFirst.FlatStyle = FlatStyle.Flat;
             btnFirst.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
-            btnFirst.Location = new Point(37, 69);
+            btnFirst.Location = new Point(30, 55);
             btnFirst.Margin = new Padding(2);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(48, 35);
+            btnFirst.Size = new Size(38, 28);
             btnFirst.TabIndex = 26;
             btnFirst.TextAlign = ContentAlignment.MiddleRight;
             btnFirst.UseVisualStyleBackColor = false;
@@ -294,7 +294,7 @@
             // 
             // EmployeForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(txtCurrentPage);
             Controls.Add(btnLast);
@@ -310,7 +310,7 @@
             Controls.Add(dgvEmployes);
             Margin = new Padding(2);
             Name = "EmployeForm";
-            Size = new Size(1636, 639);
+            Size = new Size(1309, 511);
             Load += EmployeForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEmployes).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
