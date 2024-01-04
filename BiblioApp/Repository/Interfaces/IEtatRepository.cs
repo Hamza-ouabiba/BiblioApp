@@ -11,5 +11,6 @@ namespace BiblioApp.Repository.Interfaces
     public interface IEtatRepository : IRepository<Etat>
     {
         public IEnumerable GetCreationEtat();
+        public Etat GetEtatByName(string name);
     }
 }

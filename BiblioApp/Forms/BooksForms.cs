@@ -40,7 +40,7 @@ namespace BiblioApp.Forms
         }
         public void LoadData()
         {
-            //initializing a predicate delegate : 
+            //initializing a delegate : 
             var predicate = PredicateBuilder.New<Livre>(true);
 
             Auteur auteur = (Auteur)txtAuthorCriteria.SelectedItem;

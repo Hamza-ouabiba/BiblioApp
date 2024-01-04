@@ -61,7 +61,7 @@ namespace BiblioApp
                         if (res > 0)
                         {
                             MessageBox.Show("Employee created successfully ID : " + employe.IdEmploye, "Info Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            emp.LoadData(uow);
+                            emp.LoadData();
                             txtName.Text = "";
                             txtEmail.Text = "";
                             txtName.Focus();

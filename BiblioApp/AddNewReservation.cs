@@ -59,7 +59,7 @@ namespace BiblioApp
 
                         uow.Reservation.Add(reservation);
                         Livre livre = uow.Livre.Get(Convert.ToInt32(comboLivre.SelectedValue));
-                        Etat etat = uow.Etat.Get(2);
+                        Etat etat = uow.Etat.GetEtatByName("Emprunté");
                         livre.Etat = etat;
 
                         if (uow.Complete() > 0)

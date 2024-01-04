@@ -21,5 +21,9 @@ namespace BiblioApp.Repository.Implementations
                 .Select(e => e)
                 .ToList();
         }
+        public Etat GetEtatByName(string name)
+        {
+            return bibliothequeDbContext.Etats.FirstOrDefault(e => e.Nom == name);
+        }
     }
 }

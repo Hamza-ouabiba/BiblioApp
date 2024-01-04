@@ -1,5 +1,7 @@
 ﻿using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
+using BiblioApp.Utils;
+using LinqKit;
 using System.Data;
 using System.Linq.Expressions;
 
@@ -8,6 +10,8 @@ namespace BiblioApp.Forms
     public partial class EmployeForm : UserControl
     {
         private readonly int idEmp;
+        private Pagination pagination;
+        private int TotalPages;
         public EmployeForm()
         {
             InitializeComponent();
@@ -16,26 +20,59 @@ namespace BiblioApp.Forms
         {
             InitializeComponent();
             this.idEmp = idCurrentEmp;
-        }
-        public void LoadData(UnitOfWork uow)
-        {
-            Expression<Func<Employe, bool>> search = e => e.IdEmploye != idEmp;
-            dgvEmployes.DataSource = uow.Employe.Find(search, "").Select(e => new
+            pagination = new Pagination()
             {
-                IdEmploye = e.IdEmploye,
-                Nom_Employe = e.Nom,
-                E_mail_employe = e.Email,
-                Etat = e.IsAdmin == true ? "Administrateur" : "Utilisateur normal",
-                Sexe_Employe = e.Genre,
-            }).ToList();
-            txtNbEmploye.Text = dgvEmployes.RowCount.ToString();
+                PageIndex = 1,
+                PageSize = 7,
+            };
+        }
+        private int CalculatePages()
+        {
+            using (UnitOfWork uow = new(new BibliothequeDbContext()))
+            {
+                return (int)Math.Ceiling((double)uow.Livre.GetAll().Count() / pagination.PageSize);
+            }
+        }
+        private void PageLastModifier()
+        {
+            if (dgvEmployes.Rows.Count == 1 && pagination.PageIndex > 1)
+            {
+                pagination.PageIndex--;
+            }
+        }
+        public void LoadData()
+        {
+            //initializing a predicate delegate : 
+            var predicate = PredicateBuilder.New<Employe>(true);
+            predicate = predicate.And(l => l.IdEmploye != idEmp);
+
+            if (!string.IsNullOrEmpty(txtNameCriteria.Text))
+            {
+                predicate = predicate.And(e => e.Nom == txtNameCriteria.Text);
+            }
+
+            TotalPages = CalculatePages();
+            txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
+
+            using (UnitOfWork uow = new(new BibliothequeDbContext()))
+            {
+                dgvEmployes.DataSource = uow.Employe.Find(predicate, "", pagination).Select(e => new
+                {
+                    IdEmploye = e.IdEmploye,
+                    Nom_Employe = e.Nom,
+                    E_mail_employe = e.Email,
+                    Etat = e.IsAdmin == true ? "Administrateur" : "Utilisateur normal",
+                    Sexe_Employe = e.Genre,
+                }).ToList();
+                txtNbEmploye.Text = dgvEmployes.RowCount.ToString();
+            }
         }
 
         private void EmployeForm_Load(object sender, EventArgs e)
         {
             using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
             {
-                LoadData(uow);
+                LoadData();
 
                 dgvEmployes.Columns["IdEmploye"].Visible = false;
                 dgvEmployes.Columns["Nom_Employe"].Width = 300;
@@ -64,7 +101,7 @@ namespace BiblioApp.Forms
                             Employe employe = uow.Employe.Get(idEmploye);
                             uow.Employe.Remove(employe);
                             uow.Complete();
-                            LoadData(uow);
+                            LoadData();
                             txtNbEmploye.Text = dgvEmployes.RowCount.ToString();
                             MessageBox.Show($"Employe {employe.Nom} supprimée !");
                         }
@@ -98,6 +135,40 @@ namespace BiblioApp.Forms
         {
             AjouEmploye ajouEmploye = new AjouEmploye(this);
             ajouEmploye.ShowDialog();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (pagination.PageIndex > 1)
+            {
+                pagination.PageIndex--;
+                LoadData();
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (pagination.PageIndex < TotalPages)
+            {
+                pagination.PageIndex++;
+                LoadData();
+            }
+        }
+
+        private void btnLast_Click(object sender, EventArgs e)
+        {
+            pagination.PageIndex = TotalPages;
+
+        }
+
+        private void btnFirst_Click(object sender, EventArgs e)
+        {
+            pagination.PageIndex = 1;
         }
     }
 }
