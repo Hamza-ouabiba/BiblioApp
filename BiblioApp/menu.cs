@@ -5,15 +5,29 @@ namespace BiblioApp.Forms
 {
     public partial class menu : Form
     {
+        private readonly string nomEmp;
+        private readonly bool isAdmin;
         public menu()
         {
             InitializeComponent();
+        }
+
+        public menu(string name,bool isAdmin)
+        {
+            this.isAdmin = isAdmin;
+            this.nomEmp = name;
         }
 
         private void menu_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            btnAuteur_Click(sender, e);
+            date.Text = DateTime.Now.ToString();
+            /*if(!isAdmin)
+            {
+                GestionEmp.Visible = false;
+            }*/
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -36,7 +50,6 @@ namespace BiblioApp.Forms
             panelContent.Controls.Clear();
             panelContent.Controls.Add(frmBook);
         }
-
         private void GestionEmp_Click(object sender, EventArgs e)
         {
             EmployeForm frmEmp = new EmployeForm();

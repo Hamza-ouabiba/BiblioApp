@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -31,7 +30,6 @@ namespace BiblioApp.Models
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer("Server=.\\;Database=BibliothequeDb;Trusted_Connection=True;");
-
             }
         }
 
@@ -51,6 +49,10 @@ namespace BiblioApp.Models
                 entity.Property(e => e.DateInscription)
                     .HasColumnType("date")
                     .HasColumnName("dateInscription");
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.NomAdherent)
                     .HasMaxLength(255)
@@ -85,7 +87,6 @@ namespace BiblioApp.Models
                     .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("nomAuteur");
-
             });
 
             modelBuilder.Entity<Categorie>(entity =>
@@ -112,14 +113,16 @@ namespace BiblioApp.Models
 
                 entity.Property(e => e.IdEmploye).HasColumnName("idEmploye");
 
+                entity.Property(e => e.IsAdmin).HasColumnName("isAdmin");
+
                 entity.Property(e => e.Nom)
                     .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("nom");
 
-                entity.Property(e => e.IsAdmin)
-                    .HasColumnName("isAdmin");
-
+                entity.Property(e => e.Password)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Etat>(entity =>
@@ -183,9 +186,11 @@ namespace BiblioApp.Models
                 entity.Property(e => e.DateDebut)
                     .HasColumnType("date")
                     .HasColumnName("dateDebut");
+
                 entity.Property(e => e.DateFin)
                     .HasColumnType("date")
                     .HasColumnName("dateFin");
+
                 entity.HasOne(d => d.Adherent)
                     .WithMany(p => p.Reservations)
                     .HasForeignKey(d => d.IdAdherent)

@@ -10,64 +10,33 @@ namespace BiblioApp.Forms
         {
             InitializeComponent();
         }
-        private void LoadData(UnitOfWork uow)
+        public void LoadData(UnitOfWork uow)
         {
             dgvEmployes.DataSource = uow.Employe.Find(null, "").Select(e => new
             {
-                e.IdEmploye,
-                e.Nom,
-                e.Email,
-                e.IsAdmin,
-                e.Genre
+                IdEmploye = e.IdEmploye,
+                Nom_Employe = e.Nom,
+                E_mail_employe = e.Email,
+                Etat = e.IsAdmin == true ? "Administrateur" : "Utilisateur normal",
+                Sexe_Employe = e.Genre,
             }).ToList();
-        }
-        private void btnSaveEmploye_Click(object sender, EventArgs e)
-        {
-            if (txtName.Text != "" && txtEmail.Text != "" && (txtGenderF.Checked || txtGenderM.Checked))
-            {
-                using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
-                {
-                    Employe employe = new Employe()
-                    {
-                        Nom = txtName.Text,
-                        Email = txtEmail.Text,
-                        Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text
-                    };
-                    MessageBox.Show(employe.Email);
-                    uow.Employe.Add(employe);
-                    int res = uow.Complete();
-                    if (res > 0)
-                    {
-                        MessageBox.Show("Employee created successfully ID : " + employe.IdEmploye, "Info Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadData(uow);
-                        txtName.Text = "";
-                        txtEmail.Text = "";
-                        txtName.Focus();
-                        txtGenderM.Select();
-                    }
-                }
-            }
-            else MessageBox.Show("Remplir les fields");
+            txtNbEmploye.Text = dgvEmployes.RowCount.ToString();
         }
 
         private void EmployeForm_Load(object sender, EventArgs e)
         {
-            txtName.Focus();
-            txtGenderM.Select();
             using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
             {
                 LoadData(uow);
 
                 dgvEmployes.Columns["IdEmploye"].Visible = false;
-                dgvEmployes.Columns["Nom"].Width = 300;
-                dgvEmployes.Columns["Email"].Width = 300;
-                dgvEmployes.Columns["genre"].Width = 100;
-                dgvEmployes.RowHeadersVisible = false;
+                dgvEmployes.Columns["Nom_Employe"].Width = 300;
+                dgvEmployes.Columns["E_mail_employe"].Width = 300;
+                dgvEmployes.Columns["Etat"].Width = 300;
+                dgvEmployes.Columns["Sexe_Employe"].Width = 300;
                 SharedData.AddColumnIcon(dgvEmployes, "print", "print");
                 SharedData.AddColumnIcon(dgvEmployes, "delete", "delete");
                 SharedData.AddColumnIcon(dgvEmployes, "edit", "edit");
-                txtNbEmploye.Text = dgvEmployes.RowCount.ToString();
-                btnUpdateEmploye.Visible = false;
             }
         }
 
@@ -115,6 +84,12 @@ namespace BiblioApp.Forms
                     dgvEmployes.Cursor = Cursors.Hand;
                 }
             }
+        }
+
+        private void btnNewEmp_Click(object sender, EventArgs e)
+        {
+            AjouEmploye ajouEmploye = new AjouEmploye(this);
+            ajouEmploye.ShowDialog();
         }
     }
 }

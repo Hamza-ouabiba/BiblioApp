@@ -34,192 +34,29 @@ namespace BiblioApp.Forms
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            label1 = new Label();
-            pictureBox1 = new PictureBox();
-            groupBox1 = new GroupBox();
-            btnUpdateAuthor = new Button();
-            btnSaveAuthor = new Button();
-            txtGenderF = new RadioButton();
-            txtGenderM = new RadioButton();
-            label4 = new Label();
-            txtEmail = new TextBox();
-            label3 = new Label();
-            txtName = new TextBox();
-            label2 = new Label();
             pictureBox2 = new PictureBox();
             label5 = new Label();
             dgvAuthors = new DataGridView();
             txtNbAuthors = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            groupBox1.SuspendLayout();
+            groupBox2 = new GroupBox();
+            btnSearch = new Button();
+            txtTitleCriteria = new TextBox();
+            btnNewAuteur = new Button();
+            btnLast = new Button();
+            btnNext = new Button();
+            btnPrevious = new Button();
+            btnFirst = new Button();
+            txtCurrentPage = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAuthors).BeginInit();
+            groupBox2.SuspendLayout();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(52, 14);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(150, 23);
-            label1.TabIndex = 0;
-            label1.Text = "Ajouter Auteur";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(11, 10);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(36, 26);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(btnUpdateAuthor);
-            groupBox1.Controls.Add(btnSaveAuthor);
-            groupBox1.Controls.Add(txtGenderF);
-            groupBox1.Controls.Add(txtGenderM);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(txtEmail);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(txtName);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(11, 54);
-            groupBox1.Margin = new Padding(2, 2, 2, 2);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(2, 2, 2, 2);
-            groupBox1.Size = new Size(323, 334);
-            groupBox1.TabIndex = 2;
-            groupBox1.TabStop = false;
-            // 
-            // btnUpdateAuthor
-            // 
-            btnUpdateAuthor.BackColor = Color.LightCyan;
-            btnUpdateAuthor.Cursor = Cursors.Hand;
-            btnUpdateAuthor.FlatAppearance.BorderSize = 0;
-            btnUpdateAuthor.FlatStyle = FlatStyle.Flat;
-            btnUpdateAuthor.Font = new Font("Agency FB", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnUpdateAuthor.Image = (Image)resources.GetObject("btnUpdateAuthor.Image");
-            btnUpdateAuthor.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUpdateAuthor.Location = new Point(104, 288);
-            btnUpdateAuthor.Margin = new Padding(2, 2, 2, 2);
-            btnUpdateAuthor.Name = "btnUpdateAuthor";
-            btnUpdateAuthor.Size = new Size(102, 32);
-            btnUpdateAuthor.TabIndex = 8;
-            btnUpdateAuthor.Text = "Update";
-            btnUpdateAuthor.UseVisualStyleBackColor = false;
-            btnUpdateAuthor.Click += btnUpdateAuthor_Click;
-            // 
-            // btnSaveAuthor
-            // 
-            btnSaveAuthor.BackColor = Color.LightGray;
-            btnSaveAuthor.Cursor = Cursors.Hand;
-            btnSaveAuthor.FlatAppearance.BorderSize = 0;
-            btnSaveAuthor.FlatStyle = FlatStyle.Flat;
-            btnSaveAuthor.Font = new Font("Agency FB", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSaveAuthor.Image = (Image)resources.GetObject("btnSaveAuthor.Image");
-            btnSaveAuthor.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSaveAuthor.Location = new Point(216, 288);
-            btnSaveAuthor.Margin = new Padding(2, 2, 2, 2);
-            btnSaveAuthor.Name = "btnSaveAuthor";
-            btnSaveAuthor.Size = new Size(102, 32);
-            btnSaveAuthor.TabIndex = 7;
-            btnSaveAuthor.Text = "Save";
-            btnSaveAuthor.UseVisualStyleBackColor = false;
-            btnSaveAuthor.Click += btnSaveAuthor_Click;
-            // 
-            // txtGenderF
-            // 
-            txtGenderF.AutoSize = true;
-            txtGenderF.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtGenderF.Location = new Point(165, 222);
-            txtGenderF.Margin = new Padding(2, 2, 2, 2);
-            txtGenderF.Name = "txtGenderF";
-            txtGenderF.Size = new Size(38, 24);
-            txtGenderF.TabIndex = 6;
-            txtGenderF.TabStop = true;
-            txtGenderF.Text = "F";
-            txtGenderF.UseVisualStyleBackColor = true;
-            // 
-            // txtGenderM
-            // 
-            txtGenderM.AutoSize = true;
-            txtGenderM.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtGenderM.Location = new Point(104, 222);
-            txtGenderM.Margin = new Padding(2, 2, 2, 2);
-            txtGenderM.Name = "txtGenderM";
-            txtGenderM.Size = new Size(44, 24);
-            txtGenderM.TabIndex = 5;
-            txtGenderM.TabStop = true;
-            txtGenderM.Text = "M";
-            txtGenderM.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.ForeColor = Color.Brown;
-            label4.Location = new Point(18, 220);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(88, 25);
-            label4.TabIndex = 4;
-            label4.Text = "Gender : ";
-            // 
-            // txtEmail
-            // 
-            txtEmail.BackColor = Color.LightBlue;
-            txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            txtEmail.Location = new Point(18, 154);
-            txtEmail.Margin = new Padding(2, 2, 2, 2);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(286, 34);
-            txtEmail.TabIndex = 3;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = Color.Brown;
-            label3.Location = new Point(18, 117);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(72, 25);
-            label3.TabIndex = 2;
-            label3.Text = "Email : ";
-            // 
-            // txtName
-            // 
-            txtName.BackColor = Color.LightBlue;
-            txtName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            txtName.Location = new Point(18, 67);
-            txtName.Margin = new Padding(2, 2, 2, 2);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(286, 34);
-            txtName.TabIndex = 1;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = Color.Brown;
-            label2.Location = new Point(18, 30);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(76, 25);
-            label2.TabIndex = 0;
-            label2.Text = "Name : ";
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(387, 10);
-            pictureBox2.Margin = new Padding(2, 2, 2, 2);
+            pictureBox2.Location = new Point(23, 14);
+            pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(36, 26);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -230,7 +67,7 @@ namespace BiblioApp.Forms
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(428, 14);
+            label5.Location = new Point(64, 18);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(184, 23);
@@ -266,8 +103,8 @@ namespace BiblioApp.Forms
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvAuthors.DefaultCellStyle = dataGridViewCellStyle3;
             dgvAuthors.EnableHeadersVisualStyles = false;
-            dgvAuthors.Location = new Point(387, 54);
-            dgvAuthors.Margin = new Padding(2, 2, 2, 2);
+            dgvAuthors.Location = new Point(23, 96);
+            dgvAuthors.Margin = new Padding(2);
             dgvAuthors.Name = "dgvAuthors";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.Maroon;
@@ -279,7 +116,7 @@ namespace BiblioApp.Forms
             dgvAuthors.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvAuthors.RowHeadersWidth = 62;
             dgvAuthors.RowTemplate.Height = 40;
-            dgvAuthors.Size = new Size(777, 320);
+            dgvAuthors.Size = new Size(1236, 320);
             dgvAuthors.TabIndex = 5;
             dgvAuthors.CellContentClick += dgvAuthors_CellContentClick;
             dgvAuthors.CellMouseEnter += dgvAuthors_CellMouseEnter;
@@ -289,54 +126,192 @@ namespace BiblioApp.Forms
             txtNbAuthors.AutoSize = true;
             txtNbAuthors.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             txtNbAuthors.ForeColor = Color.Maroon;
-            txtNbAuthors.Location = new Point(608, 14);
+            txtNbAuthors.Location = new Point(244, 18);
             txtNbAuthors.Margin = new Padding(2, 0, 2, 0);
             txtNbAuthors.Name = "txtNbAuthors";
             txtNbAuthors.Size = new Size(20, 23);
             txtNbAuthors.TabIndex = 6;
             txtNbAuthors.Text = "_";
             // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(btnSearch);
+            groupBox2.Controls.Add(txtTitleCriteria);
+            groupBox2.Location = new Point(315, 2);
+            groupBox2.Margin = new Padding(2);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new Padding(2);
+            groupBox2.Size = new Size(484, 59);
+            groupBox2.TabIndex = 16;
+            groupBox2.TabStop = false;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSearch.BackColor = SystemColors.ButtonFace;
+            btnSearch.Cursor = Cursors.Hand;
+            btnSearch.FlatAppearance.BorderSize = 0;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSearch.Image = (Image)resources.GetObject("btnSearch.Image");
+            btnSearch.Location = new Point(429, 21);
+            btnSearch.Margin = new Padding(2);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(38, 28);
+            btnSearch.TabIndex = 16;
+            btnSearch.TextAlign = ContentAlignment.MiddleRight;
+            btnSearch.UseVisualStyleBackColor = false;
+            // 
+            // txtTitleCriteria
+            // 
+            txtTitleCriteria.BackColor = Color.White;
+            txtTitleCriteria.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTitleCriteria.Location = new Point(0, 21);
+            txtTitleCriteria.Margin = new Padding(2);
+            txtTitleCriteria.Name = "txtTitleCriteria";
+            txtTitleCriteria.PlaceholderText = "Cherchez sur un auteur";
+            txtTitleCriteria.Size = new Size(389, 28);
+            txtTitleCriteria.TabIndex = 10;
+            // 
+            // btnNewAuteur
+            // 
+            btnNewAuteur.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnNewAuteur.BackColor = Color.DeepSkyBlue;
+            btnNewAuteur.Cursor = Cursors.Hand;
+            btnNewAuteur.FlatAppearance.BorderSize = 0;
+            btnNewAuteur.FlatStyle = FlatStyle.Flat;
+            btnNewAuteur.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNewAuteur.Image = (Image)resources.GetObject("btnNewAuteur.Image");
+            btnNewAuteur.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNewAuteur.Location = new Point(1073, 23);
+            btnNewAuteur.Margin = new Padding(2);
+            btnNewAuteur.Name = "btnNewAuteur";
+            btnNewAuteur.Size = new Size(186, 29);
+            btnNewAuteur.TabIndex = 17;
+            btnNewAuteur.Text = "Nouveau Auteur";
+            btnNewAuteur.TextAlign = ContentAlignment.MiddleRight;
+            btnNewAuteur.UseVisualStyleBackColor = false;
+            btnNewAuteur.Click += btnNewAuteur_Click;
+            // 
+            // btnLast
+            // 
+            btnLast.BackColor = SystemColors.ButtonFace;
+            btnLast.Cursor = Cursors.Hand;
+            btnLast.FlatAppearance.BorderSize = 0;
+            btnLast.FlatStyle = FlatStyle.Flat;
+            btnLast.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLast.Image = (Image)resources.GetObject("btnLast.Image");
+            btnLast.Location = new Point(129, 52);
+            btnLast.Margin = new Padding(2);
+            btnLast.Name = "btnLast";
+            btnLast.Size = new Size(38, 28);
+            btnLast.TabIndex = 44;
+            btnLast.TextAlign = ContentAlignment.MiddleRight;
+            btnLast.UseVisualStyleBackColor = false;
+            btnLast.Click += btnLast_Click;
+            // 
+            // btnNext
+            // 
+            btnNext.BackColor = SystemColors.ButtonFace;
+            btnNext.Cursor = Cursors.Hand;
+            btnNext.FlatAppearance.BorderSize = 0;
+            btnNext.FlatStyle = FlatStyle.Flat;
+            btnNext.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNext.Image = (Image)resources.GetObject("btnNext.Image");
+            btnNext.Location = new Point(89, 52);
+            btnNext.Margin = new Padding(2);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(42, 28);
+            btnNext.TabIndex = 43;
+            btnNext.TextAlign = ContentAlignment.MiddleRight;
+            btnNext.UseVisualStyleBackColor = false;
+            btnNext.Click += btnNext_Click;
+            // 
+            // btnPrevious
+            // 
+            btnPrevious.BackColor = SystemColors.ButtonFace;
+            btnPrevious.Cursor = Cursors.Hand;
+            btnPrevious.FlatAppearance.BorderSize = 0;
+            btnPrevious.FlatStyle = FlatStyle.Flat;
+            btnPrevious.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
+            btnPrevious.Location = new Point(65, 55);
+            btnPrevious.Margin = new Padding(2);
+            btnPrevious.Name = "btnPrevious";
+            btnPrevious.Size = new Size(26, 22);
+            btnPrevious.TabIndex = 42;
+            btnPrevious.TextAlign = ContentAlignment.MiddleRight;
+            btnPrevious.UseVisualStyleBackColor = false;
+            btnPrevious.Click += btnPrevious_Click;
+            // 
+            // btnFirst
+            // 
+            btnFirst.BackColor = SystemColors.ButtonFace;
+            btnFirst.Cursor = Cursors.Hand;
+            btnFirst.FlatAppearance.BorderSize = 0;
+            btnFirst.FlatStyle = FlatStyle.Flat;
+            btnFirst.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
+            btnFirst.Location = new Point(23, 52);
+            btnFirst.Margin = new Padding(2);
+            btnFirst.Name = "btnFirst";
+            btnFirst.Size = new Size(38, 28);
+            btnFirst.TabIndex = 41;
+            btnFirst.TextAlign = ContentAlignment.MiddleRight;
+            btnFirst.UseVisualStyleBackColor = false;
+            btnFirst.Click += btnFirst_Click;
+            // 
+            // txtCurrentPage
+            // 
+            txtCurrentPage.AutoSize = true;
+            txtCurrentPage.ForeColor = Color.Maroon;
+            txtCurrentPage.Location = new Point(180, 52);
+            txtCurrentPage.Margin = new Padding(2, 0, 2, 0);
+            txtCurrentPage.Name = "txtCurrentPage";
+            txtCurrentPage.Size = new Size(15, 20);
+            txtCurrentPage.TabIndex = 40;
+            txtCurrentPage.Text = "_";
+            // 
             // AuthorsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnLast);
+            Controls.Add(btnNext);
+            Controls.Add(btnPrevious);
+            Controls.Add(btnFirst);
+            Controls.Add(txtCurrentPage);
+            Controls.Add(btnNewAuteur);
+            Controls.Add(groupBox2);
             Controls.Add(txtNbAuthors);
             Controls.Add(dgvAuthors);
             Controls.Add(pictureBox2);
             Controls.Add(label5);
-            Controls.Add(groupBox1);
-            Controls.Add(pictureBox1);
-            Controls.Add(label1);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "AuthorsForm";
-            Size = new Size(1190, 511);
+            Size = new Size(1287, 511);
             Load += AuthorsForm_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvAuthors).EndInit();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
-        private PictureBox pictureBox1;
-        private GroupBox groupBox1;
-        private RadioButton txtGenderF;
-        private RadioButton txtGenderM;
-        private Label label4;
-        private TextBox txtEmail;
-        private Label label3;
-        private TextBox txtName;
-        private Label label2;
-        private Button btnSaveAuthor;
         private PictureBox pictureBox2;
         private Label label5;
         private DataGridView dgvAuthors;
         private Label txtNbAuthors;
-        private Button btnUpdateAuthor;
+        private GroupBox groupBox2;
+        private Button btnSearch;
+        private Button btnNewAuteur;
+        private TextBox txtTitleCriteria;
+        private Button btnLast;
+        private Button btnNext;
+        private Button btnPrevious;
+        private Button btnFirst;
+        private Label txtCurrentPage;
     }
 }

@@ -15,7 +15,7 @@ namespace BiblioApp.Forms
             InitializeComponent();
             pagination = new Pagination()
             {
-                PageSize = 3,
+                PageSize = 7,
                 PageIndex = 1
             };
         }
@@ -51,7 +51,7 @@ namespace BiblioApp.Forms
 
             if (!string.IsNullOrEmpty(txtCategoryCriteria.Text))
             {
-                if(txtCategoryCriteria.SelectedIndex != 0)
+                if (txtCategoryCriteria.SelectedIndex != 0)
                 {
                     predicate = predicate.And(l => l.Categorie.NomCategorie.ToLower().Contains(txtCategoryCriteria.Text.ToLower()));
                 }
@@ -59,7 +59,7 @@ namespace BiblioApp.Forms
 
             if (!string.IsNullOrEmpty(txtAuthorCriteria.Text))
             {
-                if(txtAuthorCriteria.SelectedIndex != 0)
+                if (txtAuthorCriteria.SelectedIndex != 0)
                 {
                     predicate = predicate.And(l => l.IdAuteur == auteur.IdAuteur);
                 }
@@ -148,7 +148,6 @@ namespace BiblioApp.Forms
                             //btnFirst_Click(sender, e); // worst case scenario : 
                             PageLastModifier();
                             LoadData();
-                            txtNbBooks.Text = dgvBooks.RowCount.ToString();
                             MessageBox.Show($"Livre {livre.Title} supprimée !");
                         }
                     }
@@ -196,6 +195,22 @@ namespace BiblioApp.Forms
         private void btnSearch_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void dgvBooks_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != -1)
+            {
+                string colName = dgvBooks.Columns[e.ColumnIndex].Name;
+                if (colName != "delete" && colName != "print" && colName != "edit")
+                {
+                    dgvBooks.Cursor = Cursors.Default;
+                }
+                else
+                {
+                    dgvBooks.Cursor = Cursors.Hand;
+                }
+            }
         }
     }
 }

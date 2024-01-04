@@ -41,6 +41,22 @@ namespace BiblioApp.Forms
         private void ReservationForm_Load(object sender, EventArgs e)
         {
             LoadData();
+            txtAdherentCriteria.Items.Add(new Adherent()
+            {
+                IdAdherent = -1,
+                NomAdherent = "----Tous les Adherents----"
+            });
+            using (UnitOfWork uow = new(new BibliothequeDbContext()))
+            {
+                foreach (Adherent adherent in uow.Adherent.GetAll())
+                {
+                    txtAdherentCriteria.Items.Add(adherent);
+                }
+                txtAdherentCriteria.ValueMember = "IdAdherent";
+                txtAdherentCriteria.DisplayMember = "NomAdherent";
+                txtAdherentCriteria.SelectedIndex = 0;
+            }
+
 
             dgvReservations.Columns["IdLivre"].Visible = false;
             dgvReservations.Columns["IdAdherent"].Visible = false;
@@ -56,8 +72,13 @@ namespace BiblioApp.Forms
 
         private void btnNewReser_Click(object sender, EventArgs e)
         {
-            AddNewReservation addNewReservation = new AddNewReservation();
+            AddNewReservation addNewReservation = new AddNewReservation(this);
             addNewReservation.ShowDialog();
+        }
+
+        private void rechercherBtn_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

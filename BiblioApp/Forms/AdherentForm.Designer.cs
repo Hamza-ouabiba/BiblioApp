@@ -1,16 +1,17 @@
-﻿namespace BiblioApp.Forms
+﻿
+namespace BiblioApp.Forms
 {
     partial class AdherentForm
     {
         /// <summary> 
-        /// Variable nécessaire au concepteur.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
-        /// Nettoyage des ressources utilisées.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,345 +21,199 @@
             base.Dispose(disposing);
         }
 
-        #region Code généré par le Concepteur de composants
+        #region Component Designer generated code
 
         /// <summary> 
-        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas 
-        /// le contenu de cette méthode avec l'éditeur de code.
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdherentForm));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            groupBox1 = new GroupBox();
-            txtPrenom = new TextBox();
-            label4 = new Label();
-            btnUpdateAdherent = new Button();
-            btnSaveAdherent = new Button();
-            txtEmail = new TextBox();
-            label3 = new Label();
-            txtName = new TextBox();
-            label2 = new Label();
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
-            txtNbAdherents = new Label();
-            dgvAdherent = new DataGridView();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             pictureBox2 = new PictureBox();
             label5 = new Label();
-            txtAuthorCriteria = new ComboBox();
-            label6 = new Label();
-            txtCategoryCriteria = new TextBox();
-            label7 = new Label();
+            dgvBooks = new DataGridView();
+            txtNbBooks = new Label();
+            label1 = new Label();
             txtTitleCriteria = new TextBox();
-            label8 = new Label();
-            groupBox2 = new GroupBox();
+            label2 = new Label();
+            label3 = new Label();
+            txtAuthorCriteria = new ComboBox();
+            groupBox1 = new GroupBox();
+            txtCategoryCriteria = new ComboBox();
             btnSearch = new Button();
-            groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAdherent).BeginInit();
+            txtCurrentPage = new Label();
+            btnPrint = new Button();
+            btnLast = new Button();
+            btnNext = new Button();
+            btnPrevious = new Button();
+            btnFirst = new Button();
+            btnNewReser = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvBooks).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(txtPrenom);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(btnUpdateAdherent);
-            groupBox1.Controls.Add(btnSaveAdherent);
-            groupBox1.Controls.Add(txtEmail);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(txtName);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(27, 83);
-            groupBox1.Margin = new Padding(2, 2, 2, 2);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(2, 2, 2, 2);
-            groupBox1.Size = new Size(323, 334);
-            groupBox1.TabIndex = 9;
-            groupBox1.TabStop = false;
-            // 
-            // txtPrenom
-            // 
-            txtPrenom.BackColor = Color.LightBlue;
-            txtPrenom.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            txtPrenom.Location = new Point(18, 234);
-            txtPrenom.Margin = new Padding(2, 2, 2, 2);
-            txtPrenom.Name = "txtPrenom";
-            txtPrenom.Size = new Size(286, 34);
-            txtPrenom.TabIndex = 10;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.ForeColor = Color.Brown;
-            label4.Location = new Point(18, 198);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(78, 25);
-            label4.TabIndex = 9;
-            label4.Text = "Prenom";
-            // 
-            // btnUpdateAdherent
-            // 
-            btnUpdateAdherent.BackColor = Color.LightCyan;
-            btnUpdateAdherent.Cursor = Cursors.Hand;
-            btnUpdateAdherent.FlatAppearance.BorderSize = 0;
-            btnUpdateAdherent.FlatStyle = FlatStyle.Flat;
-            btnUpdateAdherent.Font = new Font("Agency FB", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnUpdateAdherent.Image = (Image)resources.GetObject("btnUpdateAdherent.Image");
-            btnUpdateAdherent.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUpdateAdherent.Location = new Point(104, 288);
-            btnUpdateAdherent.Margin = new Padding(2, 2, 2, 2);
-            btnUpdateAdherent.Name = "btnUpdateAdherent";
-            btnUpdateAdherent.Size = new Size(102, 32);
-            btnUpdateAdherent.TabIndex = 8;
-            btnUpdateAdherent.Text = "Update";
-            btnUpdateAdherent.UseVisualStyleBackColor = false;
-            btnUpdateAdherent.Click += btnUpdateAdherent_Click;
-            // 
-            // btnSaveAdherent
-            // 
-            btnSaveAdherent.BackColor = Color.LightGray;
-            btnSaveAdherent.Cursor = Cursors.Hand;
-            btnSaveAdherent.FlatAppearance.BorderSize = 0;
-            btnSaveAdherent.FlatStyle = FlatStyle.Flat;
-            btnSaveAdherent.Font = new Font("Agency FB", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSaveAdherent.Image = (Image)resources.GetObject("btnSaveAdherent.Image");
-            btnSaveAdherent.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSaveAdherent.Location = new Point(216, 288);
-            btnSaveAdherent.Margin = new Padding(2, 2, 2, 2);
-            btnSaveAdherent.Name = "btnSaveAdherent";
-            btnSaveAdherent.Size = new Size(102, 32);
-            btnSaveAdherent.TabIndex = 7;
-            btnSaveAdherent.Text = "Save";
-            btnSaveAdherent.UseVisualStyleBackColor = false;
-            btnSaveAdherent.Click += btnSaveAdherent_Click;
-            // 
-            // txtEmail
-            // 
-            txtEmail.BackColor = Color.LightBlue;
-            txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            txtEmail.Location = new Point(18, 154);
-            txtEmail.Margin = new Padding(2, 2, 2, 2);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(286, 34);
-            txtEmail.TabIndex = 3;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = Color.Brown;
-            label3.Location = new Point(18, 117);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(72, 25);
-            label3.TabIndex = 2;
-            label3.Text = "Email : ";
-            // 
-            // txtName
-            // 
-            txtName.BackColor = Color.LightBlue;
-            txtName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            txtName.Location = new Point(18, 67);
-            txtName.Margin = new Padding(2, 2, 2, 2);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(286, 34);
-            txtName.TabIndex = 1;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = Color.Brown;
-            label2.Location = new Point(18, 30);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(76, 25);
-            label2.TabIndex = 0;
-            label2.Text = "Name : ";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(27, 39);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(36, 26);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 8;
-            pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(68, 42);
-            label1.Margin = new Padding(2, 0, 2, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(176, 23);
-            label1.TabIndex = 7;
-            label1.Text = "Ajouter Adherent";
-            // 
-            // txtNbAdherents
-            // 
-            txtNbAdherents.AutoSize = true;
-            txtNbAdherents.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            txtNbAdherents.ForeColor = Color.Maroon;
-            txtNbAdherents.Location = new Point(673, 83);
-            txtNbAdherents.Margin = new Padding(2, 0, 2, 0);
-            txtNbAdherents.Name = "txtNbAdherents";
-            txtNbAdherents.Size = new Size(20, 23);
-            txtNbAdherents.TabIndex = 13;
-            txtNbAdherents.Text = "_";
-            // 
-            // dgvAdherent
-            // 
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(0, 0, 192);
-            dgvAdherent.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dgvAdherent.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvAdherent.BackgroundColor = SystemColors.ButtonFace;
-            dgvAdherent.BorderStyle = BorderStyle.None;
-            dgvAdherent.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvAdherent.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.Maroon;
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvAdherent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvAdherent.ColumnHeadersHeight = 33;
-            dgvAdherent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvAdherent.DefaultCellStyle = dataGridViewCellStyle3;
-            dgvAdherent.EnableHeadersVisualStyles = false;
-            dgvAdherent.Location = new Point(397, 132);
-            dgvAdherent.Margin = new Padding(2, 2, 2, 2);
-            dgvAdherent.Name = "dgvAdherent";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.Maroon;
-            dataGridViewCellStyle4.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvAdherent.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dgvAdherent.RowHeadersWidth = 62;
-            dgvAdherent.RowTemplate.Height = 40;
-            dgvAdherent.Size = new Size(791, 348);
-            dgvAdherent.TabIndex = 12;
-            dgvAdherent.CellDoubleClick += dgvAdherent_CellDoubleClick;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(413, 83);
-            pictureBox2.Margin = new Padding(2, 2, 2, 2);
+            pictureBox2.Location = new Point(18, 6);
+            pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(36, 26);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 11;
+            pictureBox2.TabIndex = 4;
             pictureBox2.TabStop = false;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(453, 83);
+            label5.Location = new Point(58, 10);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(204, 23);
-            label5.TabIndex = 10;
-            label5.Text = "Liste des Adherents:";
+            label5.Size = new Size(155, 23);
+            label5.TabIndex = 3;
+            label5.Text = "Liste adhérents";
             // 
-            // txtAuthorCriteria
+            // dgvBooks
             // 
-            txtAuthorCriteria.BackColor = Color.PaleTurquoise;
-            txtAuthorCriteria.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtAuthorCriteria.FormattingEnabled = true;
-            txtAuthorCriteria.Location = new Point(703, 39);
-            txtAuthorCriteria.Margin = new Padding(2);
-            txtAuthorCriteria.Name = "txtAuthorCriteria";
-            txtAuthorCriteria.Size = new Size(195, 29);
-            txtAuthorCriteria.TabIndex = 21;
+            dataGridViewCellStyle9.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = Color.FromArgb(0, 0, 192);
+            dgvBooks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dgvBooks.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvBooks.BackgroundColor = SystemColors.ButtonFace;
+            dgvBooks.BorderStyle = BorderStyle.None;
+            dgvBooks.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvBooks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = Color.Maroon;
+            dataGridViewCellStyle10.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dgvBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dgvBooks.ColumnHeadersHeight = 33;
+            dgvBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = SystemColors.Window;
+            dataGridViewCellStyle11.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            dgvBooks.DefaultCellStyle = dataGridViewCellStyle11;
+            dgvBooks.EnableHeadersVisualStyles = false;
+            dgvBooks.Location = new Point(16, 84);
+            dgvBooks.Margin = new Padding(2);
+            dgvBooks.Name = "dgvBooks";
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = Color.Maroon;
+            dataGridViewCellStyle12.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            dgvBooks.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dgvBooks.RowHeadersWidth = 62;
+            dgvBooks.RowTemplate.Height = 40;
+            dgvBooks.Size = new Size(1320, 343);
+            dgvBooks.TabIndex = 5;
             // 
-            // label6
+            // txtNbBooks
             // 
-            label6.AutoSize = true;
-            label6.ForeColor = Color.Maroon;
-            label6.Location = new Point(703, 15);
-            label6.Margin = new Padding(2, 0, 2, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(65, 20);
-            label6.TabIndex = 20;
-            label6.Text = "Author : ";
+            txtNbBooks.AutoSize = true;
+            txtNbBooks.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            txtNbBooks.ForeColor = Color.Maroon;
+            txtNbBooks.Location = new Point(217, 10);
+            txtNbBooks.Margin = new Padding(2, 0, 2, 0);
+            txtNbBooks.Name = "txtNbBooks";
+            txtNbBooks.Size = new Size(20, 23);
+            txtNbBooks.TabIndex = 6;
+            txtNbBooks.Text = "_";
             // 
-            // txtCategoryCriteria
+            // label1
             // 
-            txtCategoryCriteria.BackColor = Color.PaleTurquoise;
-            txtCategoryCriteria.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCategoryCriteria.Location = new Point(562, 40);
-            txtCategoryCriteria.Margin = new Padding(2);
-            txtCategoryCriteria.Name = "txtCategoryCriteria";
-            txtCategoryCriteria.Size = new Size(128, 28);
-            txtCategoryCriteria.TabIndex = 19;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.ForeColor = Color.Maroon;
-            label7.Location = new Point(558, 15);
-            label7.Margin = new Padding(2, 0, 2, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(80, 20);
-            label7.TabIndex = 18;
-            label7.Text = "Category : ";
+            label1.AutoSize = true;
+            label1.ForeColor = Color.Maroon;
+            label1.Location = new Point(248, 5);
+            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(45, 20);
+            label1.TabIndex = 9;
+            label1.Text = "Title :";
             // 
             // txtTitleCriteria
             // 
-            txtTitleCriteria.BackColor = Color.PaleTurquoise;
+            txtTitleCriteria.BackColor = Color.White;
             txtTitleCriteria.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtTitleCriteria.Location = new Point(424, 40);
+            txtTitleCriteria.Location = new Point(4, 23);
             txtTitleCriteria.Margin = new Padding(2);
             txtTitleCriteria.Name = "txtTitleCriteria";
-            txtTitleCriteria.Size = new Size(128, 28);
-            txtTitleCriteria.TabIndex = 17;
+            txtTitleCriteria.Size = new Size(156, 28);
+            txtTitleCriteria.TabIndex = 10;
             // 
-            // label8
+            // label2
             // 
-            label8.AutoSize = true;
-            label8.ForeColor = Color.Maroon;
-            label8.Location = new Point(420, 15);
-            label8.Margin = new Padding(2, 0, 2, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(45, 20);
-            label8.TabIndex = 16;
-            label8.Text = "Title :";
+            label2.AutoSize = true;
+            label2.ForeColor = Color.Maroon;
+            label2.Location = new Point(161, 3);
+            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(80, 20);
+            label2.TabIndex = 11;
+            label2.Text = "Category : ";
             // 
-            // groupBox2
+            // label3
             // 
-            groupBox2.Controls.Add(btnSearch);
-            groupBox2.Location = new Point(408, 12);
-            groupBox2.Margin = new Padding(2);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(2);
-            groupBox2.Size = new Size(559, 59);
-            groupBox2.TabIndex = 22;
-            groupBox2.TabStop = false;
+            label3.AutoSize = true;
+            label3.ForeColor = Color.Maroon;
+            label3.Location = new Point(419, 4);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(65, 20);
+            label3.TabIndex = 13;
+            label3.Text = "Author : ";
+            // 
+            // txtAuthorCriteria
+            // 
+            txtAuthorCriteria.BackColor = Color.White;
+            txtAuthorCriteria.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            txtAuthorCriteria.FormattingEnabled = true;
+            txtAuthorCriteria.Location = new Point(428, 23);
+            txtAuthorCriteria.Margin = new Padding(2);
+            txtAuthorCriteria.Name = "txtAuthorCriteria";
+            txtAuthorCriteria.Size = new Size(253, 29);
+            txtAuthorCriteria.TabIndex = 14;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(txtCategoryCriteria);
+            groupBox1.Controls.Add(btnSearch);
+            groupBox1.Controls.Add(txtAuthorCriteria);
+            groupBox1.Controls.Add(txtTitleCriteria);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Location = new Point(248, 2);
+            groupBox1.Margin = new Padding(2);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(2);
+            groupBox1.Size = new Size(763, 69);
+            groupBox1.TabIndex = 15;
+            groupBox1.TabStop = false;
+            // 
+            // txtCategoryCriteria
+            // 
+            txtCategoryCriteria.FormattingEnabled = true;
+            txtCategoryCriteria.Location = new Point(173, 23);
+            txtCategoryCriteria.Name = "txtCategoryCriteria";
+            txtCategoryCriteria.Size = new Size(250, 28);
+            txtCategoryCriteria.TabIndex = 17;
             // 
             // btnSearch
             // 
@@ -369,7 +224,7 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnSearch.Image = (Image)resources.GetObject("btnSearch.Image");
-            btnSearch.Location = new Point(854, 23);
+            btnSearch.Location = new Point(698, 24);
             btnSearch.Margin = new Padding(2);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(38, 28);
@@ -377,62 +232,165 @@
             btnSearch.TextAlign = ContentAlignment.MiddleRight;
             btnSearch.UseVisualStyleBackColor = false;
             // 
+            // txtCurrentPage
+            // 
+            txtCurrentPage.AutoSize = true;
+            txtCurrentPage.ForeColor = Color.Maroon;
+            txtCurrentPage.Location = new Point(165, 46);
+            txtCurrentPage.Margin = new Padding(2, 0, 2, 0);
+            txtCurrentPage.Name = "txtCurrentPage";
+            txtCurrentPage.Size = new Size(15, 20);
+            txtCurrentPage.TabIndex = 21;
+            txtCurrentPage.Text = "_";
+            // 
+            // btnPrint
+            // 
+            btnPrint.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnPrint.BackColor = Color.LightCyan;
+            btnPrint.Cursor = Cursors.Hand;
+            btnPrint.FlatAppearance.BorderSize = 0;
+            btnPrint.FlatStyle = FlatStyle.Flat;
+            btnPrint.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPrint.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPrint.Location = new Point(1230, 26);
+            btnPrint.Margin = new Padding(2);
+            btnPrint.Name = "btnPrint";
+            btnPrint.Size = new Size(117, 29);
+            btnPrint.TabIndex = 22;
+            btnPrint.Text = "Print PDF";
+            btnPrint.TextAlign = ContentAlignment.MiddleRight;
+            btnPrint.UseVisualStyleBackColor = false;
+            // 
+            // btnLast
+            // 
+            btnLast.BackColor = SystemColors.ButtonFace;
+            btnLast.Cursor = Cursors.Hand;
+            btnLast.FlatAppearance.BorderSize = 0;
+            btnLast.FlatStyle = FlatStyle.Flat;
+            btnLast.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLast.Image = (Image)resources.GetObject("btnLast.Image");
+            btnLast.Location = new Point(114, 46);
+            btnLast.Margin = new Padding(2);
+            btnLast.Name = "btnLast";
+            btnLast.Size = new Size(38, 28);
+            btnLast.TabIndex = 39;
+            btnLast.TextAlign = ContentAlignment.MiddleRight;
+            btnLast.UseVisualStyleBackColor = false;
+            // 
+            // btnNext
+            // 
+            btnNext.BackColor = SystemColors.ButtonFace;
+            btnNext.Cursor = Cursors.Hand;
+            btnNext.FlatAppearance.BorderSize = 0;
+            btnNext.FlatStyle = FlatStyle.Flat;
+            btnNext.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNext.Image = (Image)resources.GetObject("btnNext.Image");
+            btnNext.Location = new Point(74, 46);
+            btnNext.Margin = new Padding(2);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(42, 28);
+            btnNext.TabIndex = 38;
+            btnNext.TextAlign = ContentAlignment.MiddleRight;
+            btnNext.UseVisualStyleBackColor = false;
+            // 
+            // btnPrevious
+            // 
+            btnPrevious.BackColor = SystemColors.ButtonFace;
+            btnPrevious.Cursor = Cursors.Hand;
+            btnPrevious.FlatAppearance.BorderSize = 0;
+            btnPrevious.FlatStyle = FlatStyle.Flat;
+            btnPrevious.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
+            btnPrevious.Location = new Point(50, 49);
+            btnPrevious.Margin = new Padding(2);
+            btnPrevious.Name = "btnPrevious";
+            btnPrevious.Size = new Size(26, 22);
+            btnPrevious.TabIndex = 37;
+            btnPrevious.TextAlign = ContentAlignment.MiddleRight;
+            btnPrevious.UseVisualStyleBackColor = false;
+            // 
+            // btnFirst
+            // 
+            btnFirst.BackColor = SystemColors.ButtonFace;
+            btnFirst.Cursor = Cursors.Hand;
+            btnFirst.FlatAppearance.BorderSize = 0;
+            btnFirst.FlatStyle = FlatStyle.Flat;
+            btnFirst.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
+            btnFirst.Location = new Point(8, 46);
+            btnFirst.Margin = new Padding(2);
+            btnFirst.Name = "btnFirst";
+            btnFirst.Size = new Size(38, 28);
+            btnFirst.TabIndex = 36;
+            btnFirst.TextAlign = ContentAlignment.MiddleRight;
+            btnFirst.UseVisualStyleBackColor = false;
+            // 
+            // btnNewReser
+            // 
+            btnNewReser.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnNewReser.BackColor = Color.DeepSkyBlue;
+            btnNewReser.Cursor = Cursors.Hand;
+            btnNewReser.FlatAppearance.BorderSize = 0;
+            btnNewReser.FlatStyle = FlatStyle.Flat;
+            btnNewReser.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNewReser.Image = (Image)resources.GetObject("btnNewReser.Image");
+            btnNewReser.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNewReser.Location = new Point(1044, 25);
+            btnNewReser.Margin = new Padding(2);
+            btnNewReser.Name = "btnNewReser";
+            btnNewReser.Size = new Size(207, 35);
+            btnNewReser.TabIndex = 40;
+            btnNewReser.Text = "Nouveau adhérent";
+            btnNewReser.TextAlign = ContentAlignment.MiddleRight;
+            btnNewReser.UseVisualStyleBackColor = false;
+            // 
             // AdherentForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(txtAuthorCriteria);
-            Controls.Add(label6);
-            Controls.Add(txtCategoryCriteria);
-            Controls.Add(label7);
-            Controls.Add(txtTitleCriteria);
-            Controls.Add(label8);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
-            Controls.Add(pictureBox1);
+            Controls.Add(btnNewReser);
+            Controls.Add(btnLast);
+            Controls.Add(btnNext);
+            Controls.Add(btnPrevious);
+            Controls.Add(btnFirst);
+            Controls.Add(btnPrint);
+            Controls.Add(txtCurrentPage);
             Controls.Add(label1);
-            Controls.Add(txtNbAdherents);
-            Controls.Add(dgvAdherent);
+            Controls.Add(txtNbBooks);
+            Controls.Add(dgvBooks);
             Controls.Add(pictureBox2);
             Controls.Add(label5);
-            Margin = new Padding(2, 2, 2, 2);
+            Controls.Add(groupBox1);
+            Margin = new Padding(2);
             Name = "AdherentForm";
-            Size = new Size(1204, 539);
-            Load += AdherentForm_Load;
+            Size = new Size(1349, 511);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvBooks).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAdherent).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private GroupBox groupBox1;
-        private Button btnUpdateAdherent;
-        private Button btnSaveAdherent;
-        private TextBox txtEmail;
-        private Label label3;
-        private TextBox txtName;
-        private Label label2;
-        private PictureBox pictureBox1;
-        private Label label1;
-        private Label txtNbAdherents;
-        private DataGridView dgvAdherent;
-        private PictureBox pictureBox2;
-        private Label label5;
-        private TextBox txtPrenom;
-        private Label label4;
-        private ComboBox txtAuthorCriteria;
-        private Label label6;
-        private TextBox txtCategoryCriteria;
-        private Label label7;
-        private TextBox txtTitleCriteria;
-        private Label label8;
-        private GroupBox groupBox2;
-        private Button btnSearch;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dgvBooks;
+        private System.Windows.Forms.Label txtNbBooks;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtTitleCriteria;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox txtAuthorCriteria;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label txtCurrentPage;
+        private System.Windows.Forms.Button btnPrint;
+        private ComboBox txtCategoryCriteria;
+        private Button btnLast;
+        private Button btnNext;
+        private Button btnPrevious;
+        private Button btnFirst;
+        private Button btnNewReser;
     }
 }

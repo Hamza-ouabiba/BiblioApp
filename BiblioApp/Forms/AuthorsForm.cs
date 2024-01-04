@@ -1,62 +1,59 @@
 ﻿using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
+using BiblioApp.Utils;
 using System.Data;
 namespace BiblioApp.Forms
 {
     public partial class AuthorsForm : UserControl
     {
-        private int idAuthorUp;
+        private int TotalPages;
+        private Pagination pagination;
         public AuthorsForm()
         {
             InitializeComponent();
-        }
-
-        private void LoadData(UnitOfWork uow)
-        {
-            dgvAuthors.DataSource = uow.Auteur.Find(null, "Livres").Select(p => new
+            pagination = new Pagination()
             {
-                p.IdAuteur,
-                p.NomAuteur,
-                p.Email,
-                p.Genre,
-                nbBooks = p.Livres.Count()
-            }).ToList();
+                PageSize = 7,
+                PageIndex = 1
+            };
         }
-        private void btnSaveAuthor_Click(object sender, EventArgs e)
+        private void PageLastModifier()
         {
-            if (txtName.Text != "" && txtEmail.Text != "" && (txtGenderF.Checked || txtGenderM.Checked))
+            if (dgvAuthors.Rows.Count == 1 && pagination.PageIndex > 1)
             {
-                using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
-                {
-                    Auteur auteur = new Auteur()
-                    {
-                        NomAuteur = txtName.Text,
-                        Email = txtEmail.Text,
-                        Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text
-                    };
-                    uow.Auteur.Add(auteur);
-                    int res = uow.Complete();
-                    if (res > 0)
-                    {
-                        MessageBox.Show("Author created successfully ID : " + auteur.IdAuteur, "Info Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadData(uow);
-                        txtName.Text = "";
-                        txtEmail.Text = "";
-                        txtName.Focus();
-                        txtGenderM.Select();
-                        txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
-                    }
-                }
+                pagination.PageIndex--;
             }
-            else MessageBox.Show("Remplir les fields");
+        }
+        private int CalculatePages()
+        {
+            using (UnitOfWork uow = new(new BibliothequeDbContext()))
+            {
+                return (int)Math.Ceiling((double)uow.Auteur.GetAll().Count() / pagination.PageSize);
+            }
+        }
+        public void LoadData()
+        {
+
+            TotalPages = CalculatePages();
+            txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
+
+            using (UnitOfWork uow = new(new BibliothequeDbContext()))
+            {
+                dgvAuthors.DataSource = uow.Auteur.Find(null, "Livres", pagination).Select(p => new
+                {
+                    p.IdAuteur,
+                    p.NomAuteur,
+                    p.Email,
+                    p.Genre,
+                    nbBooks = p.Livres.Count()
+                }).ToList();
+            }
         }
         private void AuthorsForm_Load(object sender, EventArgs e)
         {
-            txtName.Focus();
-            txtGenderM.Select();
             using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
             {
-                LoadData(uow);
+                LoadData();
 
                 dgvAuthors.Columns["IdAuteur"].Visible = false;
                 dgvAuthors.Columns["NomAuteur"].Width = 300;
@@ -68,7 +65,6 @@ namespace BiblioApp.Forms
                 SharedData.AddColumnIcon(dgvAuthors, "delete", "delete");
                 SharedData.AddColumnIcon(dgvAuthors, "edit", "edit");
                 txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
-                btnUpdateAuthor.Visible = false;
             }
         }
 
@@ -77,14 +73,13 @@ namespace BiblioApp.Forms
             if (e.ColumnIndex != -1)
             {
                 string colName = dgvAuthors.Columns[e.ColumnIndex].Name;
-                if (colName != "delete" && colName != "print")
+                if (colName != "delete" && colName != "print" && colName != "edit")
                 {
                     dgvAuthors.Cursor = Cursors.Default;
                 }
                 else
                 {
                     dgvAuthors.Cursor = Cursors.Hand;
-
                 }
             }
         }
@@ -105,7 +100,7 @@ namespace BiblioApp.Forms
                             Auteur auteur = uow.Auteur.Get(idAuteur);
                             uow.Auteur.Remove(auteur);
                             uow.Complete();
-                            LoadData(uow);
+                            LoadData();
                             txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
                             MessageBox.Show($"Auteur {auteur.NomAuteur} supprimée !");
                         }
@@ -114,33 +109,46 @@ namespace BiblioApp.Forms
                 }
                 if (colName == "edit")
                 {
-                    idAuthorUp = int.Parse(dgvAuthors.Rows[e.RowIndex].Cells["IdAuteur"].Value.ToString());
-                    using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
-                    {
-                        Auteur aut = uow.Auteur.Get(idAuthorUp);
-                        txtName.Text = aut.NomAuteur;
-                        txtEmail.Text = aut.Email;
-                        txtGenderM.Checked = (aut.Genre == "M") ? true : false;
-                        txtGenderF.Checked = (aut.Genre == "F") ? true : false;
-                        btnUpdateAuthor.Visible = true;
-                    }
+                    AddNewAuteur addAu = new AddNewAuteur(this, idAuteur);
+                    addAu.ShowDialog();
                 }
             }
         }
 
 
-        private void btnUpdateAuthor_Click(object sender, EventArgs e)
+        private void btnNext_Click(object sender, EventArgs e)
         {
-            using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+            if (pagination.PageIndex < TotalPages)
             {
-                Auteur auth = uow.Auteur.Get(idAuthorUp);
-                auth.NomAuteur = txtName.Text;
-                auth.Email = txtEmail.Text;
-                auth.Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text;
-                uow.Complete();
-                LoadData(uow);
-                btnUpdateAuthor.Visible = false;
+                pagination.PageIndex++;
+                LoadData();
             }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (pagination.PageIndex > 1)
+            {
+                pagination.PageIndex--;
+                LoadData();
+            }
+        }
+
+        private void btnFirst_Click(object sender, EventArgs e)
+        {
+            pagination.PageIndex = 1;
+        }
+
+        private void btnLast_Click(object sender, EventArgs e)
+        {
+            pagination.PageIndex = TotalPages;
+            LoadData();
+        }
+
+        private void btnNewAuteur_Click(object sender, EventArgs e)
+        {
+            AddNewAuteur addAu = new AddNewAuteur(this,-1);
+            addAu.ShowDialog();
         }
     }
 }

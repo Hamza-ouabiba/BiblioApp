@@ -45,6 +45,7 @@ namespace BiblioApp.Forms
             label3 = new Label();
             txtAuthorCriteria = new ComboBox();
             groupBox1 = new GroupBox();
+            txtCategoryCriteria = new ComboBox();
             btnSearch = new Button();
             btnFirst = new Button();
             btnPrevious = new Button();
@@ -52,7 +53,6 @@ namespace BiblioApp.Forms
             btnLast = new Button();
             txtCurrentPage = new Label();
             btnPrint = new Button();
-            txtCategoryCriteria = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvBooks).BeginInit();
             groupBox1.SuspendLayout();
@@ -125,6 +125,7 @@ namespace BiblioApp.Forms
             dgvBooks.Size = new Size(1161, 343);
             dgvBooks.TabIndex = 5;
             dgvBooks.CellContentClick += dgvBooks_CellContentClick;
+            dgvBooks.CellMouseEnter += dgvBooks_CellMouseEnter;
             // 
             // txtNbBooks
             // 
@@ -148,12 +149,12 @@ namespace BiblioApp.Forms
             btnNewBook.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnNewBook.Image = (Image)resources.GetObject("btnNewBook.Image");
             btnNewBook.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNewBook.Location = new Point(954, 25);
+            btnNewBook.Location = new Point(899, 25);
             btnNewBook.Margin = new Padding(2);
             btnNewBook.Name = "btnNewBook";
-            btnNewBook.Size = new Size(111, 29);
+            btnNewBook.Size = new Size(166, 29);
             btnNewBook.TabIndex = 8;
-            btnNewBook.Text = "New Book";
+            btnNewBook.Text = "Nouveau livre";
             btnNewBook.TextAlign = ContentAlignment.MiddleRight;
             btnNewBook.UseVisualStyleBackColor = false;
             btnNewBook.Click += btnNewBook_Click;
@@ -194,7 +195,7 @@ namespace BiblioApp.Forms
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.Maroon;
-            label3.Location = new Point(531, 5);
+            label3.Location = new Point(337, 4);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(65, 20);
@@ -218,6 +219,7 @@ namespace BiblioApp.Forms
             groupBox1.Controls.Add(btnSearch);
             groupBox1.Controls.Add(txtAuthorCriteria);
             groupBox1.Controls.Add(txtTitleCriteria);
+            groupBox1.Controls.Add(label3);
             groupBox1.Location = new Point(236, 2);
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
@@ -225,6 +227,14 @@ namespace BiblioApp.Forms
             groupBox1.Size = new Size(616, 59);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
+            // 
+            // txtCategoryCriteria
+            // 
+            txtCategoryCriteria.FormattingEnabled = true;
+            txtCategoryCriteria.Location = new Point(162, 26);
+            txtCategoryCriteria.Name = "txtCategoryCriteria";
+            txtCategoryCriteria.Size = new Size(151, 28);
+            txtCategoryCriteria.TabIndex = 17;
             // 
             // btnSearch
             // 
@@ -333,22 +343,14 @@ namespace BiblioApp.Forms
             btnPrint.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnPrint.Image = (Image)resources.GetObject("btnPrint.Image");
             btnPrint.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPrint.Location = new Point(1076, 26);
+            btnPrint.Location = new Point(1070, 26);
             btnPrint.Margin = new Padding(2);
             btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(111, 29);
+            btnPrint.Size = new Size(117, 29);
             btnPrint.TabIndex = 22;
             btnPrint.Text = "Print PDF";
             btnPrint.TextAlign = ContentAlignment.MiddleRight;
             btnPrint.UseVisualStyleBackColor = false;
-            // 
-            // txtCategoryCriteria
-            // 
-            txtCategoryCriteria.FormattingEnabled = true;
-            txtCategoryCriteria.Location = new Point(162, 26);
-            txtCategoryCriteria.Name = "txtCategoryCriteria";
-            txtCategoryCriteria.Size = new Size(151, 28);
-            txtCategoryCriteria.TabIndex = 17;
             // 
             // BooksForms
             // 
@@ -360,7 +362,6 @@ namespace BiblioApp.Forms
             Controls.Add(btnNext);
             Controls.Add(btnPrevious);
             Controls.Add(btnFirst);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnNewBook);
