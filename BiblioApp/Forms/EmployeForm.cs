@@ -48,7 +48,7 @@ namespace BiblioApp.Forms
 
             if (!string.IsNullOrEmpty(txtNameCriteria.Text))
             {
-                predicate = predicate.And(e => e.Nom == txtNameCriteria.Text);
+                predicate = predicate.And(e => e.Nom.Contains(txtNameCriteria.Text));
             }
 
             TotalPages = CalculatePages();

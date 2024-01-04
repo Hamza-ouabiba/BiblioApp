@@ -30,17 +30,17 @@ namespace BiblioApp.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorsForm));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             pictureBox2 = new PictureBox();
             label5 = new Label();
             dgvAuthors = new DataGridView();
             txtNbAuthors = new Label();
             groupBox2 = new GroupBox();
             btnSearch = new Button();
-            txtTitleCriteria = new TextBox();
+            txtNameCriteria = new TextBox();
             btnNewAuteur = new Button();
             btnLast = new Button();
             btnNext = new Button();
@@ -55,10 +55,10 @@ namespace BiblioApp.Forms
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(23, 14);
+            pictureBox2.Location = new Point(29, 18);
             pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(36, 26);
+            pictureBox2.Size = new Size(45, 32);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 4;
             pictureBox2.TabStop = false;
@@ -67,56 +67,56 @@ namespace BiblioApp.Forms
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(64, 18);
+            label5.Location = new Point(80, 22);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(184, 23);
+            label5.Size = new Size(219, 28);
             label5.TabIndex = 3;
             label5.Text = "Liste des Auteurs: ";
             // 
             // dgvAuthors
             // 
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(0, 0, 192);
-            dgvAuthors.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(0, 0, 192);
+            dgvAuthors.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             dgvAuthors.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvAuthors.BackgroundColor = SystemColors.ButtonFace;
             dgvAuthors.BorderStyle = BorderStyle.None;
             dgvAuthors.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvAuthors.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.Maroon;
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvAuthors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = Color.Maroon;
+            dataGridViewCellStyle6.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvAuthors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvAuthors.ColumnHeadersHeight = 33;
             dgvAuthors.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvAuthors.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Window;
+            dataGridViewCellStyle7.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dgvAuthors.DefaultCellStyle = dataGridViewCellStyle7;
             dgvAuthors.EnableHeadersVisualStyles = false;
-            dgvAuthors.Location = new Point(23, 96);
+            dgvAuthors.Location = new Point(29, 120);
             dgvAuthors.Margin = new Padding(2);
             dgvAuthors.Name = "dgvAuthors";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.Maroon;
-            dataGridViewCellStyle4.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvAuthors.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.Maroon;
+            dataGridViewCellStyle8.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dgvAuthors.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dgvAuthors.RowHeadersWidth = 62;
             dgvAuthors.RowTemplate.Height = 40;
-            dgvAuthors.Size = new Size(1236, 320);
+            dgvAuthors.Size = new Size(1545, 400);
             dgvAuthors.TabIndex = 5;
             dgvAuthors.CellContentClick += dgvAuthors_CellContentClick;
             dgvAuthors.CellMouseEnter += dgvAuthors_CellMouseEnter;
@@ -126,22 +126,22 @@ namespace BiblioApp.Forms
             txtNbAuthors.AutoSize = true;
             txtNbAuthors.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             txtNbAuthors.ForeColor = Color.Maroon;
-            txtNbAuthors.Location = new Point(244, 18);
+            txtNbAuthors.Location = new Point(305, 22);
             txtNbAuthors.Margin = new Padding(2, 0, 2, 0);
             txtNbAuthors.Name = "txtNbAuthors";
-            txtNbAuthors.Size = new Size(20, 23);
+            txtNbAuthors.Size = new Size(24, 28);
             txtNbAuthors.TabIndex = 6;
             txtNbAuthors.Text = "_";
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(btnSearch);
-            groupBox2.Controls.Add(txtTitleCriteria);
-            groupBox2.Location = new Point(315, 2);
+            groupBox2.Controls.Add(txtNameCriteria);
+            groupBox2.Location = new Point(394, 2);
             groupBox2.Margin = new Padding(2);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(2);
-            groupBox2.Size = new Size(484, 59);
+            groupBox2.Size = new Size(605, 74);
             groupBox2.TabIndex = 16;
             groupBox2.TabStop = false;
             // 
@@ -154,24 +154,25 @@ namespace BiblioApp.Forms
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnSearch.Image = (Image)resources.GetObject("btnSearch.Image");
-            btnSearch.Location = new Point(429, 21);
+            btnSearch.Location = new Point(536, 26);
             btnSearch.Margin = new Padding(2);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(38, 28);
+            btnSearch.Size = new Size(48, 35);
             btnSearch.TabIndex = 16;
             btnSearch.TextAlign = ContentAlignment.MiddleRight;
             btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
-            // txtTitleCriteria
+            // txtNameCriteria
             // 
-            txtTitleCriteria.BackColor = Color.White;
-            txtTitleCriteria.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtTitleCriteria.Location = new Point(0, 21);
-            txtTitleCriteria.Margin = new Padding(2);
-            txtTitleCriteria.Name = "txtTitleCriteria";
-            txtTitleCriteria.PlaceholderText = "Cherchez sur un auteur";
-            txtTitleCriteria.Size = new Size(389, 28);
-            txtTitleCriteria.TabIndex = 10;
+            txtNameCriteria.BackColor = Color.White;
+            txtNameCriteria.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNameCriteria.Location = new Point(0, 26);
+            txtNameCriteria.Margin = new Padding(2);
+            txtNameCriteria.Name = "txtNameCriteria";
+            txtNameCriteria.PlaceholderText = "Cherchez sur un auteur";
+            txtNameCriteria.Size = new Size(485, 32);
+            txtNameCriteria.TabIndex = 10;
             // 
             // btnNewAuteur
             // 
@@ -183,10 +184,10 @@ namespace BiblioApp.Forms
             btnNewAuteur.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnNewAuteur.Image = (Image)resources.GetObject("btnNewAuteur.Image");
             btnNewAuteur.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNewAuteur.Location = new Point(1073, 23);
+            btnNewAuteur.Location = new Point(1341, 29);
             btnNewAuteur.Margin = new Padding(2);
             btnNewAuteur.Name = "btnNewAuteur";
-            btnNewAuteur.Size = new Size(186, 29);
+            btnNewAuteur.Size = new Size(232, 36);
             btnNewAuteur.TabIndex = 17;
             btnNewAuteur.Text = "Nouveau Auteur";
             btnNewAuteur.TextAlign = ContentAlignment.MiddleRight;
@@ -201,10 +202,10 @@ namespace BiblioApp.Forms
             btnLast.FlatStyle = FlatStyle.Flat;
             btnLast.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnLast.Image = (Image)resources.GetObject("btnLast.Image");
-            btnLast.Location = new Point(129, 52);
+            btnLast.Location = new Point(161, 65);
             btnLast.Margin = new Padding(2);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(38, 28);
+            btnLast.Size = new Size(48, 35);
             btnLast.TabIndex = 44;
             btnLast.TextAlign = ContentAlignment.MiddleRight;
             btnLast.UseVisualStyleBackColor = false;
@@ -218,10 +219,10 @@ namespace BiblioApp.Forms
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnNext.Image = (Image)resources.GetObject("btnNext.Image");
-            btnNext.Location = new Point(89, 52);
+            btnNext.Location = new Point(111, 65);
             btnNext.Margin = new Padding(2);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(42, 28);
+            btnNext.Size = new Size(52, 35);
             btnNext.TabIndex = 43;
             btnNext.TextAlign = ContentAlignment.MiddleRight;
             btnNext.UseVisualStyleBackColor = false;
@@ -235,10 +236,10 @@ namespace BiblioApp.Forms
             btnPrevious.FlatStyle = FlatStyle.Flat;
             btnPrevious.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
-            btnPrevious.Location = new Point(65, 55);
+            btnPrevious.Location = new Point(81, 69);
             btnPrevious.Margin = new Padding(2);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(26, 22);
+            btnPrevious.Size = new Size(32, 28);
             btnPrevious.TabIndex = 42;
             btnPrevious.TextAlign = ContentAlignment.MiddleRight;
             btnPrevious.UseVisualStyleBackColor = false;
@@ -252,10 +253,10 @@ namespace BiblioApp.Forms
             btnFirst.FlatStyle = FlatStyle.Flat;
             btnFirst.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
-            btnFirst.Location = new Point(23, 52);
+            btnFirst.Location = new Point(29, 65);
             btnFirst.Margin = new Padding(2);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(38, 28);
+            btnFirst.Size = new Size(48, 35);
             btnFirst.TabIndex = 41;
             btnFirst.TextAlign = ContentAlignment.MiddleRight;
             btnFirst.UseVisualStyleBackColor = false;
@@ -265,16 +266,16 @@ namespace BiblioApp.Forms
             // 
             txtCurrentPage.AutoSize = true;
             txtCurrentPage.ForeColor = Color.Maroon;
-            txtCurrentPage.Location = new Point(180, 52);
+            txtCurrentPage.Location = new Point(225, 65);
             txtCurrentPage.Margin = new Padding(2, 0, 2, 0);
             txtCurrentPage.Name = "txtCurrentPage";
-            txtCurrentPage.Size = new Size(15, 20);
+            txtCurrentPage.Size = new Size(19, 25);
             txtCurrentPage.TabIndex = 40;
             txtCurrentPage.Text = "_";
             // 
             // AuthorsForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(btnLast);
             Controls.Add(btnNext);
@@ -289,7 +290,7 @@ namespace BiblioApp.Forms
             Controls.Add(label5);
             Margin = new Padding(2);
             Name = "AuthorsForm";
-            Size = new Size(1287, 511);
+            Size = new Size(1609, 639);
             Load += AuthorsForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvAuthors).EndInit();
@@ -307,7 +308,7 @@ namespace BiblioApp.Forms
         private GroupBox groupBox2;
         private Button btnSearch;
         private Button btnNewAuteur;
-        private TextBox txtTitleCriteria;
+        private TextBox txtNameCriteria;
         private Button btnLast;
         private Button btnNext;
         private Button btnPrevious;

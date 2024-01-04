@@ -1,6 +1,7 @@
 ﻿using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
 using BiblioApp.Utils;
+using LinqKit;
 using System.Data;
 namespace BiblioApp.Forms
 {
@@ -33,13 +34,20 @@ namespace BiblioApp.Forms
         }
         public void LoadData()
         {
+            //initializing a predicate delegate : 
+            var predicate = PredicateBuilder.New<Auteur>(true);
+
+            if (!string.IsNullOrEmpty(txtNameCriteria.Text))
+            {
+                predicate = predicate.And(e => e.NomAuteur.Contains(txtNameCriteria.Text));
+            }
 
             TotalPages = CalculatePages();
             txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
 
             using (UnitOfWork uow = new(new BibliothequeDbContext()))
             {
-                dgvAuthors.DataSource = uow.Auteur.Find(null, "Livres", pagination).Select(p => new
+                dgvAuthors.DataSource = uow.Auteur.Find(predicate, "Livres", pagination).Select(p => new
                 {
                     p.IdAuteur,
                     p.NomAuteur,
@@ -101,6 +109,7 @@ namespace BiblioApp.Forms
                             uow.Auteur.Remove(auteur);
                             uow.Complete();
                             LoadData();
+                            PageLastModifier();
                             txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
                             MessageBox.Show($"Auteur {auteur.NomAuteur} supprimée !");
                         }
@@ -147,8 +156,13 @@ namespace BiblioApp.Forms
 
         private void btnNewAuteur_Click(object sender, EventArgs e)
         {
-            AddNewAuteur addAu = new AddNewAuteur(this,-1);
+            AddNewAuteur addAu = new AddNewAuteur(this, -1);
             addAu.ShowDialog();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

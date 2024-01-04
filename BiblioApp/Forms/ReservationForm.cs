@@ -16,16 +16,45 @@ namespace BiblioApp.Forms
 {
     public partial class ReservationForm : UserControl
     {
+        private int TotalPages;
+        private Pagination pagination;
         public ReservationForm()
         {
             InitializeComponent();
+            this.pagination = new Pagination()
+            {
+                PageIndex = 1,
+                PageSize = 7
+            };
         }
-
-        public void LoadData()
+        private void PageLastModifier()
+        {
+            if (dgvReservations.Rows.Count == 1 && pagination.PageIndex > 1)
+            {
+                pagination.PageIndex--;
+            }
+        }
+        private int CalculatePages()
         {
             using (UnitOfWork uow = new(new BibliothequeDbContext()))
             {
-                dgvReservations.DataSource = uow.Reservation.Find(null, "Adherent,Livre").Select(r => new
+                return (int)Math.Ceiling((double)uow.Auteur.GetAll().Count() / pagination.PageSize);
+            }
+        }
+        public void LoadData()
+        {
+            var predicate = PredicateBuilder.New<Reservation>(true);
+
+            if (!string.IsNullOrEmpty(txtAdherentCriteria.Text))
+            {
+                predicate = predicate.And(e => e.Adherent.NomAdherent == txtAdherentCriteria.Text);
+            }
+
+            TotalPages = CalculatePages();
+            txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
+            using (UnitOfWork uow = new(new BibliothequeDbContext()))
+            {
+                dgvReservations.DataSource = uow.Reservation.Find(predicate, "Adherent,Livre").Select(r => new
                 {
                     IdLivre = r.IdLivre,
                     TitreLivre = r.Livre.Title,
@@ -79,6 +108,24 @@ namespace BiblioApp.Forms
         private void rechercherBtn_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (pagination.PageIndex < TotalPages)
+            {
+                pagination.PageIndex++;
+                LoadData();
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (pagination.PageIndex > 1)
+            {
+                pagination.PageIndex--;
+                LoadData();
+            }
         }
     }
 }
