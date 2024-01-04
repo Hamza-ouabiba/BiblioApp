@@ -1,3 +1,4 @@
+using BiblioApp.Forms;
 using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
 using System.Data;
@@ -34,9 +35,15 @@ namespace BiblioApp
             {
                 if(userName.Text != "" && pass.Text != "")
                 {
-                    Expression<Func<Employe, bool>> search = a => a.Nom == userName.Text && a.Password == pass.Text;
-                    Employe employe = (Employe)uow.Employe.Find(search, null, null);
-                    MessageBox.Show(employe.Nom);
+                    string username = userName.Text;
+                    string password = pass.Text;
+                    Employe employe = uow.Employe.CurrentEmployee(username, password);
+                    if (employe != null)
+                    {
+                        menu menu = new menu(employe);
+                        menu.ShowDialog();
+                        this.Close();
+                    }
                 }
             }
         }

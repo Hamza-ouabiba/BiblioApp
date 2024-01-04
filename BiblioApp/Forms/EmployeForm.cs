@@ -1,18 +1,26 @@
 ﻿using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
 using System.Data;
+using System.Linq.Expressions;
 
 namespace BiblioApp.Forms
 {
     public partial class EmployeForm : UserControl
     {
+        private readonly int idEmp;
         public EmployeForm()
         {
             InitializeComponent();
         }
+        public EmployeForm(int idCurrentEmp)
+        {
+            InitializeComponent();
+            this.idEmp = idCurrentEmp;
+        }
         public void LoadData(UnitOfWork uow)
         {
-            dgvEmployes.DataSource = uow.Employe.Find(null, "").Select(e => new
+            Expression<Func<Employe, bool>> search = e => e.IdEmploye != idEmp;
+            dgvEmployes.DataSource = uow.Employe.Find(search, "").Select(e => new
             {
                 IdEmploye = e.IdEmploye,
                 Nom_Employe = e.Nom,

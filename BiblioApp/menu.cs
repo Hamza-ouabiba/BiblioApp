@@ -1,21 +1,21 @@
-﻿using System;
+﻿using BiblioApp.Models;
+using System;
 using System.Data;
 using System.Windows.Forms;
 namespace BiblioApp.Forms
 {
     public partial class menu : Form
     {
-        private readonly string nomEmp;
-        private readonly bool isAdmin;
+        private readonly Employe emp;
         public menu()
         {
             InitializeComponent();
         }
 
-        public menu(string name,bool isAdmin)
+        public menu(Employe emp)
         {
-            this.isAdmin = isAdmin;
-            this.nomEmp = name;
+            InitializeComponent();
+            this.emp = emp;
         }
 
         private void menu_Load(object sender, EventArgs e)
@@ -24,10 +24,10 @@ namespace BiblioApp.Forms
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             btnAuteur_Click(sender, e);
             date.Text = DateTime.Now.ToString();
-            /*if(!isAdmin)
+            if(emp.IsAdmin == false)
             {
-                GestionEmp.Visible = false;
-            }*/
+                GestionEmp.Enabled = false;
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace BiblioApp.Forms
         }
         private void GestionEmp_Click(object sender, EventArgs e)
         {
-            EmployeForm frmEmp = new EmployeForm();
+            EmployeForm frmEmp = new EmployeForm(emp.IdEmploye);
             frmEmp.Dock = DockStyle.Fill;
             panelContent.Controls.Clear();
             panelContent.Controls.Add(frmEmp);

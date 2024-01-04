@@ -53,6 +53,7 @@ namespace BiblioApp
                             Nom = txtName.Text,
                             Email = txtEmail.Text,
                             Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text,
+                            Password = txtPassword.Text,
                             IsAdmin = GetValueCombo(key: comboTypeCom.SelectedItem.ToString())
                         };
                         uow.Employe.Add(employe);
