@@ -108,7 +108,7 @@ namespace BiblioApp
             {
                 Reservation reservation = uow.Reservation.Get(idReservation);
                 Livre livre = uow.Livre.Get(reservation.IdLivre);
-                livre.Etat.IdEtat = uow.Etat.GetEtatByName("Disponible").IdEtat;
+                livre.IdEtat = uow.Etat.GetEtatByName("Disponible").IdEtat;
                 reservation.Status = true;
                 if (uow.Complete() > 0)
                 {
