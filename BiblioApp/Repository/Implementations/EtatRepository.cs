@@ -25,5 +25,6 @@ namespace BiblioApp.Repository.Implementations
         {
             return bibliothequeDbContext.Etats.FirstOrDefault(e => e.Nom == name);
         }
+
     }
 }

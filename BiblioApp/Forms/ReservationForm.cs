@@ -1,5 +1,6 @@
 ﻿using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
+using BiblioApp.Repository.Interfaces;
 using BiblioApp.Utils;
 using LinqKit;
 using System;
@@ -64,6 +65,7 @@ namespace BiblioApp.Forms
                     NomAdherent = r.Adherent.NomAdherent,
                     Date_Debut = r.DateDebut,
                     Date_fin = r.DateFin,
+                    Status = r.Status == true ? "Terminée" : "En cours"
                 }).ToList();
                 txtNbReservs.Text = dgvReservations.RowCount.ToString();
             }

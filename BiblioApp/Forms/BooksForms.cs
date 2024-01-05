@@ -3,7 +3,6 @@ using BiblioApp.Repository.Implementations;
 using BiblioApp.Utils;
 using LinqKit;
 using System.Data;
-using System.Linq.Expressions;
 namespace BiblioApp.Forms
 {
     public partial class BooksForms : UserControl
@@ -143,6 +142,7 @@ namespace BiblioApp.Forms
                         using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
                         {
                             Livre livre = uow.Livre.Get(idLivre);
+
                             uow.Livre.Remove(livre);
                             uow.Complete();
                             //btnFirst_Click(sender, e); // worst case scenario : 

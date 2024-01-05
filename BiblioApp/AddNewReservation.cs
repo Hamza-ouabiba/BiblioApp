@@ -36,42 +36,40 @@ namespace BiblioApp
         {
             this.Close();
         }
-
+     
         private void btnSaveReserv_Click(object sender, EventArgs e)
         {
             using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
             {
-                try
-                {
+               
                     DateTime debut = txtDateDebut.Value.Date;
                     DateTime fin = txtDateFin.Value.Date;
                     DateTime maintenant = DateTime.Now.Date;
-                    MessageBox.Show(fin.CompareTo(maintenant).ToString());
                     if ((debut.CompareTo(maintenant) == -1 || debut.CompareTo(maintenant) == 0) && fin.CompareTo(maintenant) == 1)
                     {
-                        Reservation reservation = new Reservation()
+                        if (uow.Livre.IsBookEmprunte(Convert.ToInt32(comboLivre.SelectedValue)))
                         {
-                            IdAdherent = Convert.ToInt32(comboAdherent.SelectedValue),
-                            IdLivre = Convert.ToInt32(comboLivre.SelectedValue),
-                            DateDebut = txtDateDebut.Value.Date,
-                            DateFin = txtDateFin.Value.Date
-                        };
+                            Reservation reservation = new Reservation()
+                            {
+                                IdAdherent = Convert.ToInt32(comboAdherent.SelectedValue),
+                                IdLivre = Convert.ToInt32(comboLivre.SelectedValue),
+                                DateDebut = txtDateDebut.Value.Date,
+                                DateFin = txtDateFin.Value.Date
+                            };
 
-                        uow.Reservation.Add(reservation);
-                        Livre livre = uow.Livre.Get(Convert.ToInt32(comboLivre.SelectedValue));
-                        Etat etat = uow.Etat.GetEtatByName("Emprunté");
-                        livre.Etat = etat;
+                            uow.Reservation.Add(reservation);
+                            Livre livre = uow.Livre.Get(Convert.ToInt32(comboLivre.SelectedValue));
+                            Etat etat = uow.Etat.GetEtatByName("Emprunté");
+                            livre.Etat = etat;
 
-                        if (uow.Complete() > 0)
-                        {
-                            MessageBox.Show("Reservation ajoutée");
-                            reservationForm.LoadData();
+                            if (uow.Complete() > 0)
+                            {
+                                MessageBox.Show("Reservation ajoutée");
+                                reservationForm.LoadData();
+                            }
                         }
-                    }
-                } catch (Exception inner)
-                {
-                    MessageBox.Show($"inner Error: {inner.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                        else MessageBox.Show("deja reserve");
+                } 
             }
         }
 

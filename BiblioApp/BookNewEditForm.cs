@@ -1,17 +1,9 @@
 ﻿using BiblioApp.Forms;
 using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
-using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Windows.Forms;
-using System.Xml.Linq;
+
 namespace BiblioApp
 {
     public partial class BookNewEditForm : Form
@@ -34,6 +26,7 @@ namespace BiblioApp
         {
             this.Close();
         }
+
 
         private void BookNewEditForm_Load(object sender, EventArgs e)
         {
@@ -126,6 +119,21 @@ namespace BiblioApp
                             livre.Prix = (float)Convert.ToDouble(txtPrice.Text);
                             livre.NbPages = Convert.ToInt32(txtNbPages.Text);
                             livre.Couverture = (String.IsNullOrEmpty(txtImageCoverPath.Text) ? livre.Couverture : SharedData.ConvertToBinaryFromFile(txtImageCoverPath.Text));
+
+                            IEnumerable<Reservation> reservations = uow.Reservation.GetAll();
+                            //Changing reservations status 
+
+                            if(reservations.Count() > 0)
+                            {
+                                foreach (Reservation reservation in reservations)
+                                {
+                                    if (reservation.IdLivre == livre.IdLivre)
+                                    {
+                                        MessageBox.Show("La reservation liée a ce livre est terminée");
+                                        reservation.Status = true;
+                                    }
+                                }
+                            }
                         }
 
                         if (uow.Complete() > 0)

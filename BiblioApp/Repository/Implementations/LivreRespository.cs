@@ -3,10 +3,6 @@ using BiblioApp.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BiblioApp.Repository.Implementations
 {
@@ -16,6 +12,13 @@ namespace BiblioApp.Repository.Implementations
         {
         }
         public BibliothequeDbContext bibliothequeDbContext { get => _context as BibliothequeDbContext; }
+
+        public bool IsBookEmprunte(int id)
+        {
+            Livre livre = bibliothequeDbContext.Livres.Include("Etat").Where(l => l.IdLivre == id && l.Etat.Nom != "Emprunté").FirstOrDefault();
+            return livre != null;
+        }
+
         IEnumerable ILivreRepository.LivreParAuteur()
         {
             return bibliothequeDbContext.Livres.Include(l => l.Auteur)
@@ -23,5 +26,6 @@ namespace BiblioApp.Repository.Implementations
                 .Select(l => new {Auteur = l.Key , Livres = l.Count()})
                 .ToList();
         }
+
     }
 }

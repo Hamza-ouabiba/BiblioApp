@@ -172,16 +172,12 @@ namespace BiblioApp.Models
 
             modelBuilder.Entity<Reservation>(entity =>
             {
-                entity.HasKey(e => new { e.IdLivre, e.IdAdherent })
-                    .HasName("PK__Reservat__44382DB50ED7A50C");
+                entity.HasKey(e => e.IdReservation)
+                    .HasName("PK__Reservat__B5B0E410CDDAB687");
 
                 entity.ToTable("Reservation");
 
-                entity.HasIndex(e => e.IdAdherent, "IX_Reservation_idAdherent");
-
-                entity.Property(e => e.IdLivre).HasColumnName("idLivre");
-
-                entity.Property(e => e.IdAdherent).HasColumnName("idAdherent");
+                entity.Property(e => e.IdReservation).HasColumnName("idReservation");
 
                 entity.Property(e => e.DateDebut)
                     .HasColumnType("date")
@@ -190,6 +186,14 @@ namespace BiblioApp.Models
                 entity.Property(e => e.DateFin)
                     .HasColumnType("date")
                     .HasColumnName("dateFin");
+
+                entity.Property(e => e.IdAdherent).HasColumnName("idAdherent");
+
+                entity.Property(e => e.IdLivre).HasColumnName("idLivre");
+
+                entity.Property(e => e.Status)
+                    .IsRequired()
+                    .HasDefaultValueSql("(CONVERT([bit],(0)))");
 
                 entity.HasOne(d => d.Adherent)
                     .WithMany(p => p.Reservations)
