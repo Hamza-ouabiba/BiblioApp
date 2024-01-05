@@ -129,8 +129,11 @@ namespace BiblioApp
                                 {
                                     if (reservation.IdLivre == livre.IdLivre)
                                     {
-                                        MessageBox.Show("La reservation liée a ce livre est terminée");
-                                        reservation.Status = true;
+                                       if(reservation.Status == false) 
+                                        {
+                                            MessageBox.Show("La reservation liée a ce livre est terminée");
+                                            reservation.Status = true;
+                                        }
                                     }
                                 }
                             }

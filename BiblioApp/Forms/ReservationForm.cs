@@ -3,15 +3,7 @@ using BiblioApp.Repository.Implementations;
 using BiblioApp.Repository.Interfaces;
 using BiblioApp.Utils;
 using LinqKit;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace BiblioApp.Forms
 {
@@ -59,6 +51,7 @@ namespace BiblioApp.Forms
             {
                 dgvReservations.DataSource = uow.Reservation.Find(predicate, "Adherent,Livre").Select(r => new
                 {
+                    IdReservation = r.IdReservation,
                     IdLivre = r.IdLivre,
                     TitreLivre = r.Livre.Title,
                     IdAdherent = r.IdAdherent,
@@ -90,7 +83,7 @@ namespace BiblioApp.Forms
                 txtAdherentCriteria.SelectedIndex = 0;
             }
 
-
+            dgvReservations.Columns["IdReservation"].Visible = false;
             dgvReservations.Columns["IdLivre"].Visible = false;
             dgvReservations.Columns["IdAdherent"].Visible = false;
             dgvReservations.Columns["NomAdherent"].Width = 300;
@@ -105,7 +98,7 @@ namespace BiblioApp.Forms
 
         private void btnNewReser_Click(object sender, EventArgs e)
         {
-            AddNewReservation addNewReservation = new AddNewReservation(this);
+            AddNewReservation addNewReservation = new AddNewReservation(this,-1);
             addNewReservation.ShowDialog();
         }
 
@@ -129,6 +122,64 @@ namespace BiblioApp.Forms
             {
                 pagination.PageIndex--;
                 LoadData();
+            }
+        }
+
+        private void dgvReservations_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != -1)
+            {
+                string colName = dgvReservations.Columns[e.ColumnIndex].Name;
+                if (colName != "delete" && colName != "edit")
+                {
+                    dgvReservations.Cursor = Cursors.Default;
+                }
+                else
+                {
+                    dgvReservations.Cursor = Cursors.Hand;
+                }
+            }
+        }
+
+        private void dgvReservations_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != -1)
+            {
+                string colName = dgvReservations.Columns[e.ColumnIndex].Name;
+                int idReservation = int.Parse(dgvReservations.Rows[e.RowIndex].Cells["IdReservation"].Value.ToString());
+                if (colName == "delete")
+                {
+                    bool confirm = SharedData.ConfirmDelete("Voulez vous vraiment supprimer cett reservation  ?");
+                    if (confirm)
+                    {
+                        using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+                        {
+                            Reservation reservation = uow.Reservation.Get(idReservation);
+                            uow.Reservation.Remove(reservation);
+                            uow.Complete();
+                            LoadData();
+                            PageLastModifier();
+                            txtNbReservs.Text = dgvReservations.RowCount.ToString();
+                            MessageBox.Show($"reservation {reservation.IdReservation} supprimée !");
+                        }
+                    }
+
+                }
+                if (colName == "edit")
+                {
+                    using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+                    {
+                        Reservation reservation = uow.Reservation.Get(idReservation);
+                        if(reservation.Status == true)
+                        {
+                            SharedData.MessageUser("Reservation non modifiable");
+                        } else
+                        {
+                            AddNewReservation addNewReservation = new AddNewReservation(this, reservation.IdReservation);
+                            addNewReservation.ShowDialog();
+                        }
+                    }
+                }
             }
         }
     }

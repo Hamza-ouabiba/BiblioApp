@@ -53,6 +53,16 @@ namespace BiblioApp
             return (dr == DialogResult.Yes);
         }
 
+        public static bool MessageUser(string msg)
+        {
+            DialogResult dr = MessageBox.Show(msg,
+                "Warning",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+                );
+            return (dr == DialogResult.Yes);
+        }
+
         public static byte[] ConvertToBinaryFromFile(string file)
         {
             byte[] bytes;

@@ -77,7 +77,6 @@ namespace BiblioApp
                         auteur.NomAuteur = txtName.Text;
                         auteur.Email = txtEmail.Text;
                         auteur.Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text;
-
                     }
 
                     int res = uow.Complete();

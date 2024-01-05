@@ -295,6 +295,8 @@
             dgvReservations.RowTemplate.Height = 40;
             dgvReservations.Size = new Size(1451, 429);
             dgvReservations.TabIndex = 25;
+            dgvReservations.CellContentClick += dgvReservations_CellContentClick;
+            dgvReservations.CellMouseEnter += dgvReservations_CellMouseEnter;
             // 
             // pictureBox2
             // 
