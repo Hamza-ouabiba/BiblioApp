@@ -71,7 +71,8 @@ namespace BiblioApp
                                 IdAdherent = Convert.ToInt32(comboAdherent.SelectedValue),
                                 IdLivre = Convert.ToInt32(comboLivre.SelectedValue),
                                 DateDebut = txtDateDebut.Value.Date,
-                                DateFin = txtDateFin.Value.Date
+                                DateFin = txtDateFin.Value.Date,
+                                Status = false
                             };
 
                             uow.Reservation.Add(reservation);
