@@ -146,6 +146,7 @@ namespace BiblioApp.Forms
         private void btnFirst_Click(object sender, EventArgs e)
         {
             pagination.PageIndex = 1;
+            LoadData();
         }
 
         private void btnLast_Click(object sender, EventArgs e)

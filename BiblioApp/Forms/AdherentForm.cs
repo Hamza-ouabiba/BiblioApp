@@ -4,6 +4,7 @@ using BiblioApp.Repository.Implementations;
 using BiblioApp.Utils;
 using LinqKit;
 using Microsoft.VisualBasic.FileIO;
+using OfficeOpenXml;
 
 namespace BiblioApp.Forms
 {
@@ -40,6 +41,10 @@ namespace BiblioApp.Forms
                 {
                     LoadCsvData(filePath);
                 }
+                else if (filePath.EndsWith(".xlsx"))
+                {
+                    LoadExcelData(filePath);
+                }
             }
         }
         private int CalculatePages()
@@ -53,12 +58,94 @@ namespace BiblioApp.Forms
         {
             using (UnitOfWork uow = (new(new BibliothequeDbContext())))
             {
-               if(!uow.Adherent.isExistAdherentByEmail(adherent.Email)) 
+                if (!uow.Adherent.isExistAdherentByEmail(adherent.Email))
                 {
                     uow.Adherent.Add(adherent);
                     uow.Complete();
                 }
             }
+        }
+        private void LoadExcelData(string filePath)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            using (ExcelPackage package = new ExcelPackage(new FileInfo(filePath)))
+            {
+                ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+
+                DataTable dataTable = new DataTable();
+
+                // Assuming the first row contains column headers
+                for (int col = 1; col <= worksheet.Dimension.Columns; col++)
+                {
+                    dataTable.Columns.Add(worksheet.Cells[1, col].Text);
+                }
+
+                for (int row = 2; row <= worksheet.Dimension.Rows; row++)
+                {
+                    List<string> rowData = new List<string>();
+                    for (int col = 1; col <= worksheet.Dimension.Columns; col++)
+                    {
+                        rowData.Add(worksheet.Cells[row, col].Text);
+                    }
+
+                    if (DateTime.TryParse(rowData[2], out DateTime result))
+                    {
+                        DateTime? nullableDateTime = result;
+                        Console.WriteLine(nullableDateTime);
+                    }
+
+                    Adherent adherent = new Adherent
+                    {
+                        NomAdherent = rowData[0],
+                        PrenomAdherent = rowData[1],
+                        DateInscription = result,
+                        Email = rowData[3],
+                    };
+                    DataRow dataRow = dataTable.NewRow();
+                    dataRow["NomAdherent"] = adherent.NomAdherent;
+                    dataRow["PrenomAdherent"] = adherent.PrenomAdherent;
+                    dataRow["DateInscription"] = adherent.DateInscription;
+                    dataRow["Email"] = adherent.Email;
+
+                    dataTable.Rows.Add(dataRow);
+                }
+
+                dgvAdherent.DataSource = dataTable;
+            }
+        }
+
+        private void ExportDataExcel()
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            using (ExcelPackage package = new ExcelPackage())
+            {
+                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
+
+                worksheet.Cells[1, 1].Value = "IdAdherent";
+                worksheet.Cells[1, 2].Value = "PrenomAdherent";
+                worksheet.Cells[1, 3].Value = "DateInscription";
+                worksheet.Cells[1, 4].Value = "Email";
+
+                using (UnitOfWork uow = new(new BibliothequeDbContext()))
+                {
+                    int rows = 2;
+                    foreach(Adherent adherent in uow.Adherent.GetAll())
+                    {
+                        worksheet.Cells[rows, 1].Value = adherent.NomAdherent;
+                        worksheet.Cells[rows, 2].Value = adherent.PrenomAdherent;
+                        worksheet.Cells[rows, 3].Value = adherent.DateInscription;
+                        worksheet.Cells[rows, 4].Value = adherent.Email;
+
+                        rows++;
+                    }
+                }
+
+                string formattedDateTime = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                package.SaveAs(new FileInfo($"C:/Documents/AdherentData{formattedDateTime}.xlsx"));
+            }
+
         }
         private void LoadCsvData(string filePath)
         {
@@ -121,7 +208,7 @@ namespace BiblioApp.Forms
                     PrenomAdherent = a.PrenomAdherent,
                     EmailAdherent = a.Email,
                 }).ToList();
-                txtNbAdh.Text = dgvAdherent.RowCount.ToString();
+                txtNbAdh.Text = uow.Adherent.GetAll().Count().ToString();
             }
         }
         private void AdherentForm_Load(object sender, EventArgs e)
@@ -131,7 +218,6 @@ namespace BiblioApp.Forms
             dgvAdherent.Columns["NomAdherent"].Width = 300;
             dgvAdherent.Columns["PrenomAdherent"].Width = 300;
             dgvAdherent.Columns["EmailAdherent"].Width = 300;
-            SharedData.AddColumnIcon(dgvAdherent, "print", "print");
             SharedData.AddColumnIcon(dgvAdherent, "delete", "delete");
             SharedData.AddColumnIcon(dgvAdherent, "edit", "edit");
             dgvAdherent.RowHeadersVisible = false;
@@ -153,6 +239,23 @@ namespace BiblioApp.Forms
                 pagination.PageIndex--;
                 LoadData();
             }
+        }
+
+        private void btnLast_Click(object sender, EventArgs e)
+        {
+            pagination.PageIndex = TotalPages;
+            LoadData();
+        }
+
+        private void btnFirst_Click(object sender, EventArgs e)
+        {
+            pagination.PageIndex = 1;
+            LoadData();
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            ExportDataExcel();
         }
     }
 }
