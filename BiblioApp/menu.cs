@@ -24,7 +24,8 @@ namespace BiblioApp.Forms
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             btnAuteur_Click(sender, e);
             date.Text = DateTime.Now.ToString();
-            if(emp.IsAdmin == false)
+            utilisateurEn.Text = emp.Nom;
+            if (emp.IsAdmin == false)
             {
                 GestionEmp.Enabled = false;
             }
@@ -64,6 +65,14 @@ namespace BiblioApp.Forms
             frmRes.Dock = DockStyle.Fill;
             panelContent.Controls.Clear();
             panelContent.Controls.Add(frmRes);
+        }
+
+        private void btnAdherent_Click(object sender, EventArgs e)
+        {
+            AdherentForm frmAdherent = new AdherentForm();
+            frmAdherent.Dock = DockStyle.Fill;
+            panelContent.Controls.Clear();
+            panelContent.Controls.Add(frmAdherent);
         }
     }
 }
