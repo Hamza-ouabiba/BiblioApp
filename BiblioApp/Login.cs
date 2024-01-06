@@ -31,20 +31,26 @@ namespace BiblioApp
 
         private void cnxBtn_Click(object sender, EventArgs e)
         {
-            using(UnitOfWork uow = new(new BibliothequeDbContext()))
+           try
             {
-                if(userName.Text != "" && pass.Text != "")
+                using (UnitOfWork uow = new(new BibliothequeDbContext()))
                 {
-                    string username = userName.Text;
-                    string password = pass.Text;
-                    Employe employe = uow.Employe.CurrentEmployee(username, password);
-                    if (employe != null)
+                    if (userName.Text != "" && pass.Text != "")
                     {
-                        menu menu = new menu(employe);
-                        menu.ShowDialog();
-                        this.Close();
+                        string username = userName.Text;
+                        string password = pass.Text;
+                        Employe employe = uow.Employe.CurrentEmployee(username, password);
+                        if (employe != null)
+                        {
+                            menu menu = new menu(employe);
+                            menu.ShowDialog();
+                            this.Close();
+                        }
                     }
                 }
+            } catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
     }

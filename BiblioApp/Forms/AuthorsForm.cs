@@ -34,45 +34,57 @@ namespace BiblioApp.Forms
         }
         public void LoadData()
         {
-            //initializing a predicate delegate : 
-            var predicate = PredicateBuilder.New<Auteur>(true);
-
-            if (!string.IsNullOrEmpty(txtNameCriteria.Text))
+            try
             {
-                predicate = predicate.And(e => e.NomAuteur.Contains(txtNameCriteria.Text));
-            }
+                //initializing a predicate delegate : 
+                var predicate = PredicateBuilder.New<Auteur>(true);
 
-            TotalPages = CalculatePages();
-            txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
-
-            using (UnitOfWork uow = new(new BibliothequeDbContext()))
-            {
-                dgvAuthors.DataSource = uow.Auteur.Find(predicate, "Livres", pagination).Select(p => new
+                if (!string.IsNullOrEmpty(txtNameCriteria.Text))
                 {
-                    p.IdAuteur,
-                    p.NomAuteur,
-                    p.Email,
-                    p.Genre,
-                    nbBooks = p.Livres.Count()
-                }).ToList();
+                    predicate = predicate.And(e => e.NomAuteur.Contains(txtNameCriteria.Text));
+                }
+
+                TotalPages = CalculatePages();
+                txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
+
+                using (UnitOfWork uow = new(new BibliothequeDbContext()))
+                {
+                    dgvAuthors.DataSource = uow.Auteur.Find(predicate, "Livres", pagination).Select(p => new
+                    {
+                        p.IdAuteur,
+                        p.NomAuteur,
+                        p.Email,
+                        p.Genre,
+                        nbBooks = p.Livres.Count()
+                    }).ToList();
+                }
+            } catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
         private void AuthorsForm_Load(object sender, EventArgs e)
         {
-            using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+            try
             {
-                LoadData();
+                using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+                {
+                    LoadData();
 
-                dgvAuthors.Columns["IdAuteur"].Visible = false;
-                dgvAuthors.Columns["NomAuteur"].Width = 300;
-                dgvAuthors.Columns["Email"].Width = 300;
-                dgvAuthors.Columns["Genre"].Width = 100;
-                dgvAuthors.Columns["nbBooks"].Width = 100;
-                dgvAuthors.RowHeadersVisible = false;
-                SharedData.AddColumnIcon(dgvAuthors, "print", "print");
-                SharedData.AddColumnIcon(dgvAuthors, "delete", "delete");
-                SharedData.AddColumnIcon(dgvAuthors, "edit", "edit");
-                txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
+                    dgvAuthors.Columns["IdAuteur"].Visible = false;
+                    dgvAuthors.Columns["NomAuteur"].Width = 300;
+                    dgvAuthors.Columns["Email"].Width = 300;
+                    dgvAuthors.Columns["Genre"].Width = 100;
+                    dgvAuthors.Columns["nbBooks"].Width = 100;
+                    dgvAuthors.RowHeadersVisible = false;
+                    SharedData.AddColumnIcon(dgvAuthors, "print", "print");
+                    SharedData.AddColumnIcon(dgvAuthors, "delete", "delete");
+                    SharedData.AddColumnIcon(dgvAuthors, "edit", "edit");
+                    txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
+                }
+            } catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
 
@@ -94,33 +106,39 @@ namespace BiblioApp.Forms
 
         private void dgvAuthors_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex != -1)
+           try
             {
-                string colName = dgvAuthors.Columns[e.ColumnIndex].Name;
-                int idAuteur = int.Parse(dgvAuthors.Rows[e.RowIndex].Cells["IdAuteur"].Value.ToString());
-                if (colName == "delete")
+                if (e.ColumnIndex != -1)
                 {
-                    bool confirm = SharedData.ConfirmDelete("Voulez vous vraiment supprimer cet auteur  ?");
-                    if (confirm)
+                    string colName = dgvAuthors.Columns[e.ColumnIndex].Name;
+                    int idAuteur = int.Parse(dgvAuthors.Rows[e.RowIndex].Cells["IdAuteur"].Value.ToString());
+                    if (colName == "delete")
                     {
-                        using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+                        bool confirm = SharedData.ConfirmDelete("Voulez vous vraiment supprimer cet auteur  ?");
+                        if (confirm)
                         {
-                            Auteur auteur = uow.Auteur.Get(idAuteur);
-                            uow.Auteur.Remove(auteur);
-                            uow.Complete();
-                            LoadData();
-                            PageLastModifier();
-                            txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
-                            MessageBox.Show($"Auteur {auteur.NomAuteur} supprimée !");
+                            using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+                            {
+                                Auteur auteur = uow.Auteur.Get(idAuteur);
+                                uow.Auteur.Remove(auteur);
+                                uow.Complete();
+                                LoadData();
+                                PageLastModifier();
+                                txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
+                                MessageBox.Show($"Auteur {auteur.NomAuteur} supprimée !");
+                            }
                         }
-                    }
 
+                    }
+                    if (colName == "edit")
+                    {
+                        AddNewAuteur addAu = new AddNewAuteur(this, idAuteur);
+                        addAu.ShowDialog();
+                    }
                 }
-                if (colName == "edit")
-                {
-                    AddNewAuteur addAu = new AddNewAuteur(this, idAuteur);
-                    addAu.ShowDialog();
-                }
+            } catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
 

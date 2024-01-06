@@ -31,38 +31,44 @@ namespace BiblioApp
         private void BookNewEditForm_Load(object sender, EventArgs e)
         {
             txtImageCoverPath.Text = "";
-            using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+            try
             {
-                comboAuteur.DataSource = uow.Auteur.GetAll();
-                comboAuteur.ValueMember = "IdAuteur";
-                comboAuteur.DisplayMember = "NomAuteur";
-
-                comboCategory.DataSource = uow.Category.GetAll();
-                comboCategory.ValueMember = "IdCategorie";
-                comboCategory.DisplayMember = "NomCategorie";
-
-                comboEtat.DataSource = uow.Etat.GetCreationEtat();
-                comboEtat.ValueMember = "IdEtat";
-                comboEtat.DisplayMember = "Nom";
-
-                if (idLivre != -1)
+                using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
                 {
-                    btnSaveBook.Text = "Modifier livre";
-                    txtTitleForm.Text = "Modifier livre";
-                    Livre livre = uow.Livre.Get(idLivre);
-                    txtTitle.Text = livre.Title;
-                    txtDescrip.Text = livre.Description;
-                    comboCategory.SelectedItem = livre.Categorie;
-                    comboAuteur.SelectedItem = livre.Auteur;
-                    txtPublishedDate.Value = livre.DatePublication;
-                    txtNbPages.Text = livre.NbPages.ToString();
-                    txtPrice.Text = livre.Prix.ToString();
-                    if (livre.Couverture != null)
+                    comboAuteur.DataSource = uow.Auteur.GetAll();
+                    comboAuteur.ValueMember = "IdAuteur";
+                    comboAuteur.DisplayMember = "NomAuteur";
+
+                    comboCategory.DataSource = uow.Category.GetAll();
+                    comboCategory.ValueMember = "IdCategorie";
+                    comboCategory.DisplayMember = "NomCategorie";
+
+                    comboEtat.DataSource = uow.Etat.GetCreationEtat();
+                    comboEtat.ValueMember = "IdEtat";
+                    comboEtat.DisplayMember = "Nom";
+
+                    if (idLivre != -1)
                     {
-                        MemoryStream memoryStream = new MemoryStream(livre.Couverture);
-                        txtImageCover.Image = Image.FromStream(memoryStream);
+                        btnSaveBook.Text = "Modifier livre";
+                        txtTitleForm.Text = "Modifier livre";
+                        Livre livre = uow.Livre.Get(idLivre);
+                        txtTitle.Text = livre.Title;
+                        txtDescrip.Text = livre.Description;
+                        comboCategory.SelectedItem = livre.Categorie;
+                        comboAuteur.SelectedItem = livre.Auteur;
+                        txtPublishedDate.Value = livre.DatePublication;
+                        txtNbPages.Text = livre.NbPages.ToString();
+                        txtPrice.Text = livre.Prix.ToString();
+                        if (livre.Couverture != null)
+                        {
+                            MemoryStream memoryStream = new MemoryStream(livre.Couverture);
+                            txtImageCover.Image = Image.FromStream(memoryStream);
+                        }
                     }
                 }
+            } catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
 

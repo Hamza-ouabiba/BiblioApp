@@ -117,110 +117,134 @@ namespace BiblioApp.Forms
 
         private void ExportDataExcel()
         {
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-
-            using (ExcelPackage package = new ExcelPackage())
+            try
             {
-                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-                worksheet.Cells[1, 1].Value = "IdAdherent";
-                worksheet.Cells[1, 2].Value = "PrenomAdherent";
-                worksheet.Cells[1, 3].Value = "DateInscription";
-                worksheet.Cells[1, 4].Value = "Email";
-
-                using (UnitOfWork uow = new(new BibliothequeDbContext()))
+                using (ExcelPackage package = new ExcelPackage())
                 {
-                    int rows = 2;
-                    foreach(Adherent adherent in uow.Adherent.GetAll())
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
+
+                    worksheet.Cells[1, 1].Value = "IdAdherent";
+                    worksheet.Cells[1, 2].Value = "PrenomAdherent";
+                    worksheet.Cells[1, 3].Value = "DateInscription";
+                    worksheet.Cells[1, 4].Value = "Email";
+
+                    using (UnitOfWork uow = new(new BibliothequeDbContext()))
                     {
-                        worksheet.Cells[rows, 1].Value = adherent.NomAdherent;
-                        worksheet.Cells[rows, 2].Value = adherent.PrenomAdherent;
-                        worksheet.Cells[rows, 3].Value = adherent.DateInscription;
-                        worksheet.Cells[rows, 4].Value = adherent.Email;
+                        int rows = 2;
+                        foreach (Adherent adherent in uow.Adherent.GetAll())
+                        {
+                            worksheet.Cells[rows, 1].Value = adherent.NomAdherent;
+                            worksheet.Cells[rows, 2].Value = adherent.PrenomAdherent;
+                            worksheet.Cells[rows, 3].Value = adherent.DateInscription;
+                            worksheet.Cells[rows, 4].Value = adherent.Email;
 
-                        rows++;
+                            rows++;
+                        }
                     }
+
+                    string formattedDateTime = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                    package.SaveAs(new FileInfo($"C:/Documents/AdherentData{formattedDateTime}.xlsx"));
+
                 }
-
-                string formattedDateTime = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                package.SaveAs(new FileInfo($"C:/Documents/AdherentData{formattedDateTime}.xlsx"));
+            } catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
-
         }
         private void LoadCsvData(string filePath)
         {
-            using (TextFieldParser parser = new TextFieldParser(filePath))
+           try
             {
-                parser.TextFieldType = FieldType.Delimited;
-                parser.SetDelimiters(",");
-
-                DataTable dataTable = new DataTable();
-
-                // Assume the first row contains column headers
-                string[] fields = parser.ReadFields();
-
-                foreach (string field in fields)
+                using (TextFieldParser parser = new TextFieldParser(filePath))
                 {
-                    dataTable.Columns.Add(field);
-                }
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
 
-                while (!parser.EndOfData)
-                {
-                    string[] rowData = parser.ReadFields();
-                    dataTable.Rows.Add(rowData);
-                    if (DateTime.TryParse(rowData[2], out DateTime result))
+                    DataTable dataTable = new DataTable();
+
+                    // Assume the first row contains column headers
+                    string[] fields = parser.ReadFields();
+
+                    foreach (string field in fields)
                     {
-                        DateTime? nullableDateTime = result;
-                        Console.WriteLine(nullableDateTime);
+                        dataTable.Columns.Add(field);
                     }
-                    Adherent adherent = new Adherent
-                    {
-                        NomAdherent = rowData[0],
-                        PrenomAdherent = rowData[1],
-                        DateInscription = result,
-                        Email = rowData[3],
-                    };
-                    AddToDb(adherent);
-                }
 
-                dgvAdherent.DataSource = dataTable;
+                    while (!parser.EndOfData)
+                    {
+                        string[] rowData = parser.ReadFields();
+                        dataTable.Rows.Add(rowData);
+                        if (DateTime.TryParse(rowData[2], out DateTime result))
+                        {
+                            DateTime? nullableDateTime = result;
+                            Console.WriteLine(nullableDateTime);
+                        }
+                        Adherent adherent = new Adherent
+                        {
+                            NomAdherent = rowData[0],
+                            PrenomAdherent = rowData[1],
+                            DateInscription = result,
+                            Email = rowData[3],
+                        };
+                        AddToDb(adherent);
+                    }
+
+                    dgvAdherent.DataSource = dataTable;
+                }
+            } catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
         public void LoadData()
         {
-            var predicate = PredicateBuilder.New<Adherent>(true);
-            if (!string.IsNullOrEmpty(txtAdherentCriteria.Text))
+            try
             {
-                if (txtAdherentCriteria.Text != "")
+                var predicate = PredicateBuilder.New<Adherent>(true);
+                if (!string.IsNullOrEmpty(txtAdherentCriteria.Text))
                 {
-                    predicate = predicate.And(e => e.NomAdherent.Contains(txtAdherentCriteria.Text));
+                    if (txtAdherentCriteria.Text != "")
+                    {
+                        predicate = predicate.And(e => e.NomAdherent.Contains(txtAdherentCriteria.Text));
+                    }
                 }
-            }
 
-            TotalPages = CalculatePages();
-            txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
-            using (UnitOfWork uow = new(new BibliothequeDbContext()))
-            {
-                dgvAdherent.DataSource = uow.Adherent.Find(predicate, "", pagination).Select(a => new
+                TotalPages = CalculatePages();
+                txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
+                using (UnitOfWork uow = new(new BibliothequeDbContext()))
                 {
-                    IdAdherent = a.IdAdherent,
-                    NomAdherent = a.NomAdherent,
-                    PrenomAdherent = a.PrenomAdherent,
-                    EmailAdherent = a.Email,
-                }).ToList();
-                txtNbAdh.Text = uow.Adherent.GetAll().Count().ToString();
+                    dgvAdherent.DataSource = uow.Adherent.Find(predicate, "", pagination).Select(a => new
+                    {
+                        IdAdherent = a.IdAdherent,
+                        NomAdherent = a.NomAdherent,
+                        PrenomAdherent = a.PrenomAdherent,
+                        EmailAdherent = a.Email,
+                    }).ToList();
+                    txtNbAdh.Text = uow.Adherent.GetAll().Count().ToString();
+                }
+            } catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
         private void AdherentForm_Load(object sender, EventArgs e)
         {
-            LoadData();
-            dgvAdherent.Columns["IdAdherent"].Visible = false;
-            dgvAdherent.Columns["NomAdherent"].Width = 300;
-            dgvAdherent.Columns["PrenomAdherent"].Width = 300;
-            dgvAdherent.Columns["EmailAdherent"].Width = 300;
-            SharedData.AddColumnIcon(dgvAdherent, "delete", "delete");
-            SharedData.AddColumnIcon(dgvAdherent, "edit", "edit");
-            dgvAdherent.RowHeadersVisible = false;
+            try
+            {
+                LoadData();
+                dgvAdherent.Columns["IdAdherent"].Visible = false;
+                dgvAdherent.Columns["NomAdherent"].Width = 300;
+                dgvAdherent.Columns["PrenomAdherent"].Width = 300;
+                dgvAdherent.Columns["EmailAdherent"].Width = 300;
+                SharedData.AddColumnIcon(dgvAdherent, "delete", "delete");
+                SharedData.AddColumnIcon(dgvAdherent, "edit", "edit");
+                dgvAdherent.RowHeadersVisible = false;
+            } catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
