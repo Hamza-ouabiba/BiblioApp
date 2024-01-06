@@ -9,6 +9,7 @@ namespace BiblioApp
     {
         private readonly int idAdherent;
         private readonly AdherentForm adherentForm;
+        private bool vNom, vPrenom, vEmail = false;
         public AddNewAdherent()
         {
             InitializeComponent();
@@ -22,40 +23,46 @@ namespace BiblioApp
 
         private void btnSaveAut_Click(object sender, EventArgs e)
         {
-            if (txtName.Text != "" && txtPrenom.Text != "" && (txtGenderF.Checked || txtGenderM.Checked))
+            try
             {
-                using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+                if (vNom && vPrenom && vEmail && (txtGenderF.Checked || txtGenderM.Checked))
                 {
-                    if (idAdherent == -1)
+                    using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
                     {
-                        Adherent auteur = new Adherent()
+                        if (idAdherent == -1)
                         {
-                            NomAdherent = txtName.Text,
-                            PrenomAdherent = txtPrenom.Text,
-                            Email = txtPrenom.Text,
-                            Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text,
-                        };
-                        uow.Adherent.Add(auteur);
-                    }
-                    else
-                    {
-                        Adherent adherent = uow.Adherent.Get(idAdherent);
-                        adherent.NomAdherent = txtName.Text;
-                        adherent.PrenomAdherent = txtPrenom.Text;
-                        adherent.Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text;
-                    }
-                    int res = uow.Complete();
+                            Adherent auteur = new Adherent()
+                            {
+                                NomAdherent = txtName.Text,
+                                PrenomAdherent = txtPrenom.Text,
+                                Email = txtPrenom.Text,
+                                Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text,
+                            };
+                            uow.Adherent.Add(auteur);
+                        }
+                        else
+                        {
+                            Adherent adherent = uow.Adherent.Get(idAdherent);
+                            adherent.NomAdherent = txtName.Text;
+                            adherent.PrenomAdherent = txtPrenom.Text;
+                            adherent.Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text;
+                        }
+                        int res = uow.Complete();
 
-                    if (res > 0)
-                    {
-                        string state = idAdherent == -1 ? "created" : "updated";
-                        MessageBox.Show($"Adherent {state} successfully  ");
-                        adherentForm.LoadData();
-                        this.Close();
+                        if (res > 0)
+                        {
+                            string state = idAdherent == -1 ? "created" : "updated";
+                            MessageBox.Show($"Adherent {state} successfully  ");
+                            adherentForm.LoadData();
+                            this.Close();
+                        }
                     }
                 }
+                else MessageBox.Show("Remplir les fields");
+            } catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message);
             }
-            else MessageBox.Show("Remplir les fields");
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -65,23 +72,44 @@ namespace BiblioApp
 
         private void AddNewAdherent_Load(object sender, EventArgs e)
         {
-            if (idAdherent != -1)
+            try
             {
-                btnSaveAut.Text = "Update";
-                using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+                if (idAdherent != -1)
                 {
-                    Adherent adherent = uow.Adherent.Get(idAdherent);
-                    txtEmail.Text = adherent.Email;
-                    txtName.Text = adherent.NomAdherent;
-                    txtPrenom.Text = adherent.PrenomAdherent;
-                    if (adherent.Genre == "M")
-                        txtGenderM.Checked = true;
-                    else if (adherent.Genre == "F")
-                        txtGenderF.Checked = true;
+                    btnSaveAut.Text = "Update";
+                    using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+                    {
+                        Adherent adherent = uow.Adherent.Get(idAdherent);
+                        txtEmail.Text = adherent.Email;
+                        txtName.Text = adherent.NomAdherent;
+                        txtPrenom.Text = adherent.PrenomAdherent;
+                        if (adherent.Genre == "M")
+                            txtGenderM.Checked = true;
+                        else if (adherent.Genre == "F")
+                            txtGenderF.Checked = true;
 
-                    txtTitleForm.Text = "Update Adherent";
+                        txtTitleForm.Text = "Update Adherent";
+                    }
                 }
+            } catch(Exception excpetion)
+            {
+                MessageBox.Show(excpetion.Message);
             }
+        }
+
+        private void txtName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            vNom = SharedData.ValidateData(ErrProvider, txtName, "Name error", btnSaveAut, false);
+        }
+
+        private void txtPrenom_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            vPrenom = SharedData.ValidateData(ErrProvider, txtPrenom, "Prenom error", btnSaveAut, false);
+        }
+
+        private void txtEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            vEmail = SharedData.ValidateData(ErrProvider, txtEmail, "Email error", btnSaveAut, false);
         }
     }
 }

@@ -168,6 +168,7 @@ namespace BiblioApp
             txtName.Name = "txtName";
             txtName.Size = new Size(356, 39);
             txtName.TabIndex = 1;
+            txtName.Validating += txtName_Validating;
             // 
             // label2
             // 
@@ -210,6 +211,7 @@ namespace BiblioApp
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(362, 39);
             txtEmail.TabIndex = 10;
+            txtEmail.Validating += txtEmail_Validating;
             // 
             // label1
             // 
@@ -250,6 +252,7 @@ namespace BiblioApp
             txtPrenom.Name = "txtPrenom";
             txtPrenom.Size = new Size(362, 39);
             txtPrenom.TabIndex = 3;
+            txtPrenom.Validating += txtPrenom_Validating;
             // 
             // AddNewAdherent
             // 

@@ -1,16 +1,8 @@
 ﻿using BiblioApp.Forms;
 using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace BiblioApp
 {
@@ -18,6 +10,7 @@ namespace BiblioApp
     {
         private readonly AuthorsForm authorForm;
         private readonly int idAuteur;
+        private bool vNom, vEmail = false;
         public AddNewAuteur()
         {
             InitializeComponent();
@@ -45,7 +38,7 @@ namespace BiblioApp
                     txtName.Text = auteur.NomAuteur;
                     if (auteur.Genre == "M")
                         txtGenderM.Checked = true;
-                    else if(auteur.Genre == "F")
+                    else if (auteur.Genre == "F")
                         txtGenderF.Checked = true;
 
                     txtTitleForm.Text = "Update auteur";
@@ -91,6 +84,16 @@ namespace BiblioApp
                 }
             }
             else MessageBox.Show("Remplir les fields");
+        }
+
+        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            vEmail = SharedData.ValidateData(ErrProvider, txtEmail, "Email error", btnSaveAut, false);
+        }
+
+        private void txtName_Validating(object sender, CancelEventArgs e)
+        {
+            vNom = SharedData.ValidateData(ErrProvider, txtName, "Nom error", btnSaveAut, false);
         }
     }
 }
