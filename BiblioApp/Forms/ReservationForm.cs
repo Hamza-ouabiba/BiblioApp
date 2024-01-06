@@ -4,6 +4,7 @@ using BiblioApp.Repository.Interfaces;
 using BiblioApp.Utils;
 using LinqKit;
 using System.Data;
+using System.Windows.Forms;
 
 namespace BiblioApp.Forms
 {
@@ -34,6 +35,8 @@ namespace BiblioApp.Forms
                 return (int)Math.Ceiling((double)uow.Auteur.GetAll().Count() / pagination.PageSize);
             }
         }
+
+
         public void LoadData()
         {
             try
@@ -64,7 +67,8 @@ namespace BiblioApp.Forms
                     }).ToList();
                     txtNbReservs.Text = dgvReservations.RowCount.ToString();
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -98,11 +102,12 @@ namespace BiblioApp.Forms
                 dgvReservations.Columns["TitreLivre"].Width = 300;
                 dgvReservations.Columns["Date_Debut"].Width = 300;
                 dgvReservations.Columns["Date_fin"].Width = 300;
-                SharedData.AddColumnIcon(dgvReservations, "print", "print");
                 SharedData.AddColumnIcon(dgvReservations, "delete", "delete");
                 SharedData.AddColumnIcon(dgvReservations, "edit", "edit");
                 dgvReservations.RowHeadersVisible = false;
-            } catch(Exception exception)
+
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -110,13 +115,14 @@ namespace BiblioApp.Forms
 
         private void btnNewReser_Click(object sender, EventArgs e)
         {
-            AddNewReservation addNewReservation = new AddNewReservation(this,-1);
+            AddNewReservation addNewReservation = new AddNewReservation(this, -1);
             addNewReservation.ShowDialog();
         }
 
         private void rechercherBtn_Click(object sender, EventArgs e)
         {
             LoadData();
+
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -139,7 +145,7 @@ namespace BiblioApp.Forms
 
         private void dgvReservations_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-           try
+            try
             {
                 if (e.ColumnIndex != -1)
                 {
@@ -153,7 +159,8 @@ namespace BiblioApp.Forms
                         dgvReservations.Cursor = Cursors.Hand;
                     }
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -202,9 +209,25 @@ namespace BiblioApp.Forms
                         }
                     }
                 }
-            } catch(Exception exception )
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void dgvReservations_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            for (int i = 0; i < dgvReservations.Rows.Count; i++)
+            {
+                if (dgvReservations.Rows[i].Cells["Status"].Value.ToString() == "Terminée")
+                {
+                    dgvReservations.Rows[i].Cells["Status"].Style.BackColor = Color.Lime;
+                }
+                else if (dgvReservations.Rows[i].Cells["Status"].Value.ToString() == "En cours")
+                {
+                    dgvReservations.Rows[i].Cells["Status"].Style.BackColor = Color.Red;
+                }
             }
         }
     }

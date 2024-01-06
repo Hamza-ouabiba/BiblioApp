@@ -297,6 +297,7 @@
             dgvReservations.TabIndex = 25;
             dgvReservations.CellContentClick += dgvReservations_CellContentClick;
             dgvReservations.CellMouseEnter += dgvReservations_CellMouseEnter;
+            dgvReservations.DataBindingComplete += dgvReservations_DataBindingComplete;
             // 
             // pictureBox2
             // 
