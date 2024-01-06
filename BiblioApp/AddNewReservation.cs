@@ -88,7 +88,7 @@ namespace BiblioApp
                                 livre.Etat = etat;
 
                             }
-                            else SharedData.MessageUser($"Livre {comboLivre.SelectedItem} est déja reservé");
+                            else SharedData.MessageUser($"Livre {uow.Livre.Get(Convert.ToInt32(comboLivre.SelectedValue)).Title} est déja reservé");
                         }
                         else
                         {

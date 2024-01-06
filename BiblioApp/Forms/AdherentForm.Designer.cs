@@ -48,7 +48,7 @@ namespace BiblioApp.Forms
             btnNext = new Button();
             btnPrevious = new Button();
             btnFirst = new Button();
-            btnNewReser = new Button();
+            btnNewAdh = new Button();
             btnExport = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvAdherent).BeginInit();
@@ -121,6 +121,7 @@ namespace BiblioApp.Forms
             dgvAdherent.RowTemplate.Height = 40;
             dgvAdherent.Size = new Size(1734, 429);
             dgvAdherent.TabIndex = 5;
+            dgvAdherent.CellContentClick += dgvAdherent_CellContentClick;
             // 
             // txtNbAdh
             // 
@@ -284,24 +285,25 @@ namespace BiblioApp.Forms
             btnFirst.UseVisualStyleBackColor = false;
             btnFirst.Click += btnFirst_Click;
             // 
-            // btnNewReser
+            // btnNewAdh
             // 
-            btnNewReser.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnNewReser.BackColor = Color.DeepSkyBlue;
-            btnNewReser.Cursor = Cursors.Hand;
-            btnNewReser.FlatAppearance.BorderSize = 0;
-            btnNewReser.FlatStyle = FlatStyle.Flat;
-            btnNewReser.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnNewReser.Image = (Image)resources.GetObject("btnNewReser.Image");
-            btnNewReser.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNewReser.Location = new Point(1171, 54);
-            btnNewReser.Margin = new Padding(2);
-            btnNewReser.Name = "btnNewReser";
-            btnNewReser.Size = new Size(259, 44);
-            btnNewReser.TabIndex = 40;
-            btnNewReser.Text = "Nouveau adhérent";
-            btnNewReser.TextAlign = ContentAlignment.MiddleRight;
-            btnNewReser.UseVisualStyleBackColor = false;
+            btnNewAdh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnNewAdh.BackColor = Color.DeepSkyBlue;
+            btnNewAdh.Cursor = Cursors.Hand;
+            btnNewAdh.FlatAppearance.BorderSize = 0;
+            btnNewAdh.FlatStyle = FlatStyle.Flat;
+            btnNewAdh.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNewAdh.Image = (Image)resources.GetObject("btnNewAdh.Image");
+            btnNewAdh.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNewAdh.Location = new Point(1171, 54);
+            btnNewAdh.Margin = new Padding(2);
+            btnNewAdh.Name = "btnNewAdh";
+            btnNewAdh.Size = new Size(259, 44);
+            btnNewAdh.TabIndex = 40;
+            btnNewAdh.Text = "Nouveau adhérent";
+            btnNewAdh.TextAlign = ContentAlignment.MiddleRight;
+            btnNewAdh.UseVisualStyleBackColor = false;
+            btnNewAdh.Click += btnNewAdh_Click;
             // 
             // btnExport
             // 
@@ -327,7 +329,7 @@ namespace BiblioApp.Forms
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(btnExport);
-            Controls.Add(btnNewReser);
+            Controls.Add(btnNewAdh);
             Controls.Add(btnLast);
             Controls.Add(btnNext);
             Controls.Add(btnPrevious);
@@ -366,7 +368,7 @@ namespace BiblioApp.Forms
         private Button btnNext;
         private Button btnPrevious;
         private Button btnFirst;
-        private Button btnNewReser;
+        private Button btnNewAdh;
         private Button btnExport;
     }
 }

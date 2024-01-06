@@ -56,9 +56,9 @@ namespace BiblioApp
         public static bool MessageUser(string msg)
         {
             DialogResult dr = MessageBox.Show(msg,
-                "Warning",
+                "Information",
                 MessageBoxButtons.OK,
-                MessageBoxIcon.Warning
+                MessageBoxIcon.Information
                 );
             return (dr == DialogResult.Yes);
         }

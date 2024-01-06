@@ -107,7 +107,7 @@ namespace BiblioApp.Forms
                     dataRow["PrenomAdherent"] = adherent.PrenomAdherent;
                     dataRow["DateInscription"] = adherent.DateInscription;
                     dataRow["Email"] = adherent.Email;
-
+                    dataRow["Genre"] = adherent.Genre;
                     dataTable.Rows.Add(dataRow);
                 }
 
@@ -145,17 +145,19 @@ namespace BiblioApp.Forms
                     }
 
                     string formattedDateTime = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                    package.SaveAs(new FileInfo($"C:/Documents/AdherentData{formattedDateTime}.xlsx"));
-
+                    string cheminFichier = $"C:/Documents/AdherentData{formattedDateTime}.xlsx";
+                    package.SaveAs(new FileInfo(cheminFichier));
+                    SharedData.MessageUser($"Data exportée avec succés dans le chemin suivant {cheminFichier}");
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
         }
         private void LoadCsvData(string filePath)
         {
-           try
+            try
             {
                 using (TextFieldParser parser = new TextFieldParser(filePath))
                 {
@@ -193,7 +195,8 @@ namespace BiblioApp.Forms
 
                     dgvAdherent.DataSource = dataTable;
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -212,7 +215,11 @@ namespace BiblioApp.Forms
                 }
 
                 TotalPages = CalculatePages();
-                txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
+
+                if(TotalPages > 0)
+                {
+                    txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
+                }
                 using (UnitOfWork uow = new(new BibliothequeDbContext()))
                 {
                     dgvAdherent.DataSource = uow.Adherent.Find(predicate, "", pagination).Select(a => new
@@ -221,10 +228,12 @@ namespace BiblioApp.Forms
                         NomAdherent = a.NomAdherent,
                         PrenomAdherent = a.PrenomAdherent,
                         EmailAdherent = a.Email,
+                        Gender = a.Genre
                     }).ToList();
                     txtNbAdh.Text = uow.Adherent.GetAll().Count().ToString();
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -238,10 +247,12 @@ namespace BiblioApp.Forms
                 dgvAdherent.Columns["NomAdherent"].Width = 300;
                 dgvAdherent.Columns["PrenomAdherent"].Width = 300;
                 dgvAdherent.Columns["EmailAdherent"].Width = 300;
+                dgvAdherent.Columns["Gender"].Width = 300;
                 SharedData.AddColumnIcon(dgvAdherent, "delete", "delete");
                 SharedData.AddColumnIcon(dgvAdherent, "edit", "edit");
                 dgvAdherent.RowHeadersVisible = false;
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -280,6 +291,50 @@ namespace BiblioApp.Forms
         private void btnExport_Click(object sender, EventArgs e)
         {
             ExportDataExcel();
+        }
+
+        private void dgvAdherent_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex != -1)
+                {
+                    string colName = dgvAdherent.Columns[e.ColumnIndex].Name;
+                    int idAdherent = int.Parse(dgvAdherent.Rows[e.RowIndex].Cells["IdAdherent"].Value.ToString());
+                    if (colName == "delete")
+                    {
+                        bool confirm = SharedData.ConfirmDelete("Voulez vous vraiment supprimer cet adherent  ?");
+                        if (confirm)
+                        {
+                            using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+                            {
+                                Adherent adherent = uow.Adherent.Get(idAdherent);
+                                uow.Adherent.Remove(adherent);
+                                uow.Complete();
+                                LoadData();
+                                PageLastModifier();
+                                txtNbAdh.Text = dgvAdherent.RowCount.ToString();
+                                MessageBox.Show($"Adherent {adherent.NomAdherent} supprimée !");
+                            }
+                        }
+
+                    }
+                    else if (colName == "edit")
+                    {
+                        AddNewAdherent addNewAdherent = new AddNewAdherent(this, idAdherent);
+                        addNewAdherent.ShowDialog();
+                    }
+                }
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnNewAdh_Click(object sender, EventArgs e)
+        {
+            AddNewAdherent addNewAdherent = new AddNewAdherent(this, -1);
+            addNewAdherent.ShowDialog();
         }
     }
 }
