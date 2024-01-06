@@ -1,10 +1,8 @@
 ﻿using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
-using BiblioApp.Repository.Interfaces;
 using BiblioApp.Utils;
 using LinqKit;
 using System.Data;
-using System.Windows.Forms;
 
 namespace BiblioApp.Forms
 {

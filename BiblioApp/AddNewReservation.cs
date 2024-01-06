@@ -71,24 +71,32 @@ namespace BiblioApp
                     {
                         if (idReservation == -1)
                         {
-                            if (uow.Livre.IsBookEmprunte(Convert.ToInt32(comboLivre.SelectedValue)))
+                            //verify first if the book is available : 
+                            if (uow.Livre.IsBookAvailable(Convert.ToInt32(comboLivre.SelectedValue)))
                             {
-                                Reservation reservation = new Reservation()
+                                //then verify if it is already reserved ?: )
+                                if (uow.Livre.IsBookNotEmprunte(Convert.ToInt32(comboLivre.SelectedValue)))
                                 {
-                                    IdAdherent = Convert.ToInt32(comboAdherent.SelectedValue),
-                                    IdLivre = Convert.ToInt32(comboLivre.SelectedValue),
-                                    DateDebut = txtDateDebut.Value.Date,
-                                    DateFin = txtDateFin.Value.Date,
-                                    Status = false
-                                };
+                                    Reservation reservation = new Reservation()
+                                    {
+                                        IdAdherent = Convert.ToInt32(comboAdherent.SelectedValue),
+                                        IdLivre = Convert.ToInt32(comboLivre.SelectedValue),
+                                        DateDebut = txtDateDebut.Value.Date,
+                                        DateFin = txtDateFin.Value.Date,
+                                        Status = false
+                                    };
 
-                                uow.Reservation.Add(reservation);
-                                Livre livre = uow.Livre.Get(Convert.ToInt32(comboLivre.SelectedValue));
-                                Etat etat = uow.Etat.GetEtatByName("Emprunté");
-                                livre.Etat = etat;
+                                    uow.Reservation.Add(reservation);
+                                    Livre livre = uow.Livre.Get(Convert.ToInt32(comboLivre.SelectedValue));
+                                    Etat etat = uow.Etat.GetEtatByName("Emprunté");
+                                    livre.Etat = etat;
 
+                                }
+                                else SharedData.MessageUser($"Livre {uow.Livre.Get(Convert.ToInt32(comboLivre.SelectedValue)).Title} est déja reservé");
                             }
-                            else SharedData.MessageUser($"Livre {uow.Livre.Get(Convert.ToInt32(comboLivre.SelectedValue)).Title} est déja reservé");
+                            else SharedData.MessageUser("Ce livre est non disponible pour le moment");
+
+                            
                         }
                         else
                         {

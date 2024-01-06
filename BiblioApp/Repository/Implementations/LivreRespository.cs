@@ -13,7 +13,13 @@ namespace BiblioApp.Repository.Implementations
         }
         public BibliothequeDbContext bibliothequeDbContext { get => _context as BibliothequeDbContext; }
 
-        public bool IsBookEmprunte(int id)
+        public bool IsBookAvailable(int id)
+        {
+            Livre livre = bibliothequeDbContext.Livres.Include("Etat").Where(l => l.IdLivre == id && l.Etat.Nom != "Non Disponible").FirstOrDefault();
+            return livre != null;
+        }
+
+        public bool IsBookNotEmprunte(int id)
         {
             Livre livre = bibliothequeDbContext.Livres.Include("Etat").Where(l => l.IdLivre == id && l.Etat.Nom != "Emprunté").FirstOrDefault();
             return livre != null;
