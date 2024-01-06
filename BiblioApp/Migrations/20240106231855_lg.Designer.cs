@@ -4,14 +4,16 @@ using BiblioApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BiblioApp.Migrations
 {
     [DbContext(typeof(BibliothequeDbContext))]
-    partial class BibliothequeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240106231855_lg")]
+    partial class lg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,9 +53,6 @@ namespace BiblioApp.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(255)")
                         .HasColumnName("prenomAdherent");
-
-                    b.Property<string>("password")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdAdherent")
                         .HasName("PK__Adherent__7FD6B6C3CA5DB3F3");

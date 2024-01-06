@@ -1,6 +1,7 @@
 ﻿using BiblioApp.Forms;
 using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
 
 namespace BiblioApp
@@ -25,6 +26,11 @@ namespace BiblioApp
         {
             try
             {
+
+                txtName_Validating(sender, e as CancelEventArgs);
+                txtEmail_Validating(sender, e as CancelEventArgs);
+                txtPrenom_Validating(sender, e as CancelEventArgs);
+
                 if (vNom && vPrenom && vEmail && (txtGenderF.Checked || txtGenderM.Checked))
                 {
                     using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))

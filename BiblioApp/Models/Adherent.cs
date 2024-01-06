@@ -18,6 +18,7 @@ namespace BiblioApp.Models
         public DateTime? DateInscription { get; set; }
         public string Email { get; set; }
         public string Genre {  get; set; }  
+        public string password {  get; set; }   
         public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

@@ -48,8 +48,9 @@ namespace BiblioApp
 
         private void btnSaveAut_Click(object sender, EventArgs e)
         {
-
-            if (txtName.Text != "" && txtEmail.Text != "" && (txtGenderF.Checked || txtGenderM.Checked))
+            txtName_Validating(sender, e as CancelEventArgs);
+            txtEmail_Validating(sender, e as CancelEventArgs);
+            if (vNom && vEmail && (txtGenderF.Checked || txtGenderM.Checked))
             {
                 using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
                 {
