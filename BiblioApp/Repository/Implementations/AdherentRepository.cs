@@ -15,6 +15,10 @@ namespace BiblioApp.Repository.Implementations
         {
 
         }
-
+        public BibliothequeDbContext bibliothequeDbContext { get => _context as BibliothequeDbContext; }
+        public bool isExistAdherentByEmail(string email)
+        {
+            return bibliothequeDbContext.Adherents.Where(adherent => adherent.Email == email).FirstOrDefault() != null;
+        }
     }
 }

@@ -53,8 +53,11 @@ namespace BiblioApp.Forms
         {
             using (UnitOfWork uow = (new(new BibliothequeDbContext())))
             {
-                uow.Adherent.Add(adherent);
-                uow.Complete();
+               if(!uow.Adherent.isExistAdherentByEmail(adherent.Email)) 
+                {
+                    uow.Adherent.Add(adherent);
+                    uow.Complete();
+                }
             }
         }
         private void LoadCsvData(string filePath)

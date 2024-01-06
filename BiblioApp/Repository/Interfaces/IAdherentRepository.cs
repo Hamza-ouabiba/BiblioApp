@@ -9,6 +9,6 @@ namespace BiblioApp.Repository.Interfaces
 {
     public interface IAdherentRepository : IRepository<Adherent>
     {
-
+        public bool isExistAdherentByEmail(string email); 
     }
 }
