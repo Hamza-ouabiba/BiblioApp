@@ -3,7 +3,6 @@ using BiblioApp.Repository.Implementations;
 using BiblioApp.Utils;
 using LinqKit;
 using System.Data;
-using System.Linq.Expressions;
 
 namespace BiblioApp.Forms
 {

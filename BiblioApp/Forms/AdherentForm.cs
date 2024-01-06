@@ -216,7 +216,7 @@ namespace BiblioApp.Forms
 
                 TotalPages = CalculatePages();
 
-                if(TotalPages > 0)
+                if (TotalPages > 0)
                 {
                     txtCurrentPage.Text = $"{pagination.PageIndex}/{TotalPages}";
                 }
@@ -325,7 +325,8 @@ namespace BiblioApp.Forms
                         addNewAdherent.ShowDialog();
                     }
                 }
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -335,6 +336,11 @@ namespace BiblioApp.Forms
         {
             AddNewAdherent addNewAdherent = new AddNewAdherent(this, -1);
             addNewAdherent.ShowDialog();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

@@ -1,16 +1,7 @@
 ﻿using BiblioApp.Forms;
 using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace BiblioApp
 {
@@ -66,5 +57,31 @@ namespace BiblioApp
             }
             else MessageBox.Show("Remplir les fields");
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void AddNewAdherent_Load(object sender, EventArgs e)
+        {
+            if (idAdherent != -1)
+            {
+                btnSaveAut.Text = "Update";
+                using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+                {
+                    Adherent adherent = uow.Adherent.Get(idAdherent);
+                    txtEmail.Text = adherent.Email;
+                    txtName.Text = adherent.NomAdherent;
+                    txtPrenom.Text = adherent.PrenomAdherent;
+                    if (adherent.Genre == "M")
+                        txtGenderM.Checked = true;
+                    else if (adherent.Genre == "F")
+                        txtGenderF.Checked = true;
+
+                    txtTitleForm.Text = "Update Adherent";
+                }
+            }
+        }
     }
- }
+}

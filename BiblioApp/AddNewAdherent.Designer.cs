@@ -79,6 +79,7 @@ namespace BiblioApp
             btnExit.TabIndex = 1;
             btnExit.Text = "X";
             btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
             // 
             // pictureBox1
             // 
@@ -263,6 +264,7 @@ namespace BiblioApp
             Name = "AddNewAdherent";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BookNewEditForm";
+            Load += AddNewAdherent_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
