@@ -119,36 +119,40 @@ namespace BiblioApp.Forms
         {
             try
             {
-                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-
-                using (ExcelPackage package = new ExcelPackage())
+                if (dgvAdherent.Rows.Count > 0)
                 {
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
+                    ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-                    worksheet.Cells[1, 1].Value = "IdAdherent";
-                    worksheet.Cells[1, 2].Value = "PrenomAdherent";
-                    worksheet.Cells[1, 3].Value = "DateInscription";
-                    worksheet.Cells[1, 4].Value = "Email";
-
-                    using (UnitOfWork uow = new(new BibliothequeDbContext()))
+                    using (ExcelPackage package = new ExcelPackage())
                     {
-                        int rows = 2;
-                        foreach (Adherent adherent in uow.Adherent.GetAll())
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
+
+                        worksheet.Cells[1, 1].Value = "IdAdherent";
+                        worksheet.Cells[1, 2].Value = "PrenomAdherent";
+                        worksheet.Cells[1, 3].Value = "DateInscription";
+                        worksheet.Cells[1, 4].Value = "Email";
+
+                        using (UnitOfWork uow = new(new BibliothequeDbContext()))
                         {
-                            worksheet.Cells[rows, 1].Value = adherent.NomAdherent;
-                            worksheet.Cells[rows, 2].Value = adherent.PrenomAdherent;
-                            worksheet.Cells[rows, 3].Value = adherent.DateInscription;
-                            worksheet.Cells[rows, 4].Value = adherent.Email;
+                            int rows = 2;
+                            foreach (Adherent adherent in uow.Adherent.GetAll())
+                            {
+                                worksheet.Cells[rows, 1].Value = adherent.NomAdherent;
+                                worksheet.Cells[rows, 2].Value = adherent.PrenomAdherent;
+                                worksheet.Cells[rows, 3].Value = adherent.DateInscription;
+                                worksheet.Cells[rows, 4].Value = adherent.Email;
 
-                            rows++;
+                                rows++;
+                            }
                         }
-                    }
 
-                    string formattedDateTime = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                    string cheminFichier = $"C:/Documents/AdherentData{formattedDateTime}.xlsx";
-                    package.SaveAs(new FileInfo(cheminFichier));
-                    SharedData.MessageUser($"Data exportée avec succés dans le chemin suivant {cheminFichier}");
+                        string formattedDateTime = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                        string cheminFichier = $"C:/Documents/AdherentData{formattedDateTime}.xlsx";
+                        package.SaveAs(new FileInfo(cheminFichier));
+                        SharedData.MessageUser($"Data exportée avec succés dans le chemin suivant {cheminFichier}");
+                    }
                 }
+                else SharedData.MessageUser("Impossible de faire exportation sans donnée");
             }
             catch (Exception exception)
             {
