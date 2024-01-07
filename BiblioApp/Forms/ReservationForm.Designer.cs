@@ -33,7 +33,6 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            btnPrint = new Button();
             btnLast = new Button();
             btnNext = new Button();
             btnPrevious = new Button();
@@ -54,25 +53,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
-            // btnPrint
-            // 
-            btnPrint.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnPrint.BackColor = Color.LightCyan;
-            btnPrint.Cursor = Cursors.Hand;
-            btnPrint.FlatAppearance.BorderSize = 0;
-            btnPrint.FlatStyle = FlatStyle.Flat;
-            btnPrint.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPrint.Image = (Image)resources.GetObject("btnPrint.Image");
-            btnPrint.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPrint.Location = new Point(1330, 50);
-            btnPrint.Margin = new Padding(2);
-            btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(139, 56);
-            btnPrint.TabIndex = 37;
-            btnPrint.Text = "Print PDF";
-            btnPrint.TextAlign = ContentAlignment.MiddleRight;
-            btnPrint.UseVisualStyleBackColor = false;
-            // 
             // btnLast
             // 
             btnLast.BackColor = SystemColors.ButtonFace;
@@ -81,10 +61,10 @@
             btnLast.FlatStyle = FlatStyle.Flat;
             btnLast.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnLast.Image = (Image)resources.GetObject("btnLast.Image");
-            btnLast.Location = new Point(150, 78);
+            btnLast.Location = new Point(120, 62);
             btnLast.Margin = new Padding(2);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(48, 35);
+            btnLast.Size = new Size(38, 28);
             btnLast.TabIndex = 35;
             btnLast.TextAlign = ContentAlignment.MiddleRight;
             btnLast.UseVisualStyleBackColor = false;
@@ -97,10 +77,10 @@
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnNext.Image = (Image)resources.GetObject("btnNext.Image");
-            btnNext.Location = new Point(100, 78);
+            btnNext.Location = new Point(80, 62);
             btnNext.Margin = new Padding(2);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(52, 35);
+            btnNext.Size = new Size(42, 28);
             btnNext.TabIndex = 34;
             btnNext.TextAlign = ContentAlignment.MiddleRight;
             btnNext.UseVisualStyleBackColor = false;
@@ -114,10 +94,10 @@
             btnPrevious.FlatStyle = FlatStyle.Flat;
             btnPrevious.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
-            btnPrevious.Location = new Point(70, 81);
+            btnPrevious.Location = new Point(56, 65);
             btnPrevious.Margin = new Padding(2);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(32, 28);
+            btnPrevious.Size = new Size(26, 22);
             btnPrevious.TabIndex = 33;
             btnPrevious.TextAlign = ContentAlignment.MiddleRight;
             btnPrevious.UseVisualStyleBackColor = false;
@@ -131,10 +111,10 @@
             btnFirst.FlatStyle = FlatStyle.Flat;
             btnFirst.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
-            btnFirst.Location = new Point(18, 78);
+            btnFirst.Location = new Point(14, 62);
             btnFirst.Margin = new Padding(2);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(48, 35);
+            btnFirst.Size = new Size(38, 28);
             btnFirst.TabIndex = 32;
             btnFirst.TextAlign = ContentAlignment.MiddleRight;
             btnFirst.UseVisualStyleBackColor = false;
@@ -148,10 +128,10 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnSearch.Image = (Image)resources.GetObject("btnSearch.Image");
-            btnSearch.Location = new Point(928, 29);
+            btnSearch.Location = new Point(742, 23);
             btnSearch.Margin = new Padding(2);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(48, 35);
+            btnSearch.Size = new Size(38, 28);
             btnSearch.TabIndex = 16;
             btnSearch.TextAlign = ContentAlignment.MiddleRight;
             btnSearch.UseVisualStyleBackColor = false;
@@ -160,10 +140,10 @@
             // 
             txtCurrentPage.AutoSize = true;
             txtCurrentPage.ForeColor = Color.Maroon;
-            txtCurrentPage.Location = new Point(204, 81);
+            txtCurrentPage.Location = new Point(163, 65);
             txtCurrentPage.Margin = new Padding(2, 0, 2, 0);
             txtCurrentPage.Name = "txtCurrentPage";
-            txtCurrentPage.Size = new Size(19, 25);
+            txtCurrentPage.Size = new Size(15, 20);
             txtCurrentPage.TabIndex = 36;
             txtCurrentPage.Text = "_";
             // 
@@ -173,11 +153,11 @@
             groupBox1.Controls.Add(txtAdherentCriteria);
             groupBox1.Controls.Add(btnSearch);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(450, 32);
+            groupBox1.Location = new Point(360, 26);
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(488, 91);
+            groupBox1.Size = new Size(390, 73);
             groupBox1.TabIndex = 31;
             groupBox1.TabStop = false;
             // 
@@ -190,10 +170,10 @@
             rechercherBtn.FlatStyle = FlatStyle.Flat;
             rechercherBtn.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             rechercherBtn.Image = (Image)resources.GetObject("rechercherBtn.Image");
-            rechercherBtn.Location = new Point(411, 39);
+            rechercherBtn.Location = new Point(329, 31);
             rechercherBtn.Margin = new Padding(2);
             rechercherBtn.Name = "rechercherBtn";
-            rechercherBtn.Size = new Size(48, 35);
+            rechercherBtn.Size = new Size(38, 28);
             rechercherBtn.TabIndex = 30;
             rechercherBtn.TextAlign = ContentAlignment.MiddleRight;
             rechercherBtn.UseVisualStyleBackColor = false;
@@ -202,20 +182,19 @@
             // txtAdherentCriteria
             // 
             txtAdherentCriteria.FormattingEnabled = true;
-            txtAdherentCriteria.Location = new Point(16, 39);
-            txtAdherentCriteria.Margin = new Padding(4);
+            txtAdherentCriteria.Location = new Point(13, 31);
             txtAdherentCriteria.Name = "txtAdherentCriteria";
-            txtAdherentCriteria.Size = new Size(353, 33);
+            txtAdherentCriteria.Size = new Size(283, 28);
             txtAdherentCriteria.TabIndex = 17;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.Maroon;
-            label2.Location = new Point(16, 10);
+            label2.Location = new Point(13, 8);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(144, 25);
+            label2.Size = new Size(118, 20);
             label2.TabIndex = 29;
             label2.Text = "Nom Adherent : ";
             // 
@@ -229,10 +208,10 @@
             btnNewReser.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnNewReser.Image = (Image)resources.GetObject("btnNewReser.Image");
             btnNewReser.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNewReser.Location = new Point(1051, 52);
+            btnNewReser.Location = new Point(841, 42);
             btnNewReser.Margin = new Padding(2);
             btnNewReser.Name = "btnNewReser";
-            btnNewReser.Size = new Size(274, 52);
+            btnNewReser.Size = new Size(219, 42);
             btnNewReser.TabIndex = 27;
             btnNewReser.Text = "Nouvelle reservation";
             btnNewReser.TextAlign = ContentAlignment.MiddleRight;
@@ -244,10 +223,10 @@
             txtNbReservs.AutoSize = true;
             txtNbReservs.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             txtNbReservs.ForeColor = Color.Maroon;
-            txtNbReservs.Location = new Point(292, 36);
+            txtNbReservs.Location = new Point(234, 29);
             txtNbReservs.Margin = new Padding(2, 0, 2, 0);
             txtNbReservs.Name = "txtNbReservs";
-            txtNbReservs.Size = new Size(24, 28);
+            txtNbReservs.Size = new Size(20, 23);
             txtNbReservs.TabIndex = 26;
             txtNbReservs.Text = "_";
             // 
@@ -280,7 +259,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvReservations.DefaultCellStyle = dataGridViewCellStyle3;
             dgvReservations.EnableHeadersVisualStyles = false;
-            dgvReservations.Location = new Point(18, 129);
+            dgvReservations.Location = new Point(14, 103);
             dgvReservations.Margin = new Padding(2);
             dgvReservations.Name = "dgvReservations";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -293,7 +272,7 @@
             dgvReservations.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvReservations.RowHeadersWidth = 62;
             dgvReservations.RowTemplate.Height = 40;
-            dgvReservations.Size = new Size(1451, 429);
+            dgvReservations.Size = new Size(1161, 343);
             dgvReservations.TabIndex = 25;
             dgvReservations.CellContentClick += dgvReservations_CellContentClick;
             dgvReservations.CellMouseEnter += dgvReservations_CellMouseEnter;
@@ -302,10 +281,10 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(20, 31);
+            pictureBox2.Location = new Point(16, 25);
             pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(45, 32);
+            pictureBox2.Size = new Size(36, 26);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 24;
             pictureBox2.TabStop = false;
@@ -314,18 +293,17 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(70, 36);
+            label5.Location = new Point(56, 29);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(220, 28);
+            label5.Size = new Size(185, 23);
             label5.TabIndex = 23;
             label5.Text = "List Reservations : ";
             // 
             // ReservationForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(btnPrint);
             Controls.Add(btnLast);
             Controls.Add(btnNext);
             Controls.Add(btnPrevious);
@@ -337,9 +315,8 @@
             Controls.Add(dgvReservations);
             Controls.Add(pictureBox2);
             Controls.Add(label5);
-            Margin = new Padding(4);
             Name = "ReservationForm";
-            Size = new Size(1488, 639);
+            Size = new Size(1190, 511);
             Load += ReservationForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -350,8 +327,6 @@
         }
 
         #endregion
-
-        private Button btnPrint;
         private Button btnLast;
         private Button btnNext;
         private Button btnPrevious;

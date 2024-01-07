@@ -37,7 +37,6 @@
             txtNbEmploye = new Label();
             pictureBox2 = new PictureBox();
             label5 = new Label();
-            btnPrint = new Button();
             btnNewEmp = new Button();
             txtNameCriteria = new TextBox();
             btnSearch = new Button();
@@ -132,25 +131,6 @@
             label5.Size = new Size(218, 23);
             label5.TabIndex = 7;
             label5.Text = "Liste des Employées: ";
-            // 
-            // btnPrint
-            // 
-            btnPrint.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnPrint.BackColor = Color.LightCyan;
-            btnPrint.Cursor = Cursors.Hand;
-            btnPrint.FlatAppearance.BorderSize = 0;
-            btnPrint.FlatStyle = FlatStyle.Flat;
-            btnPrint.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPrint.Image = (Image)resources.GetObject("btnPrint.Image");
-            btnPrint.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPrint.Location = new Point(1172, 25);
-            btnPrint.Margin = new Padding(2);
-            btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(111, 29);
-            btnPrint.TabIndex = 24;
-            btnPrint.Text = "Print PDF";
-            btnPrint.TextAlign = ContentAlignment.MiddleRight;
-            btnPrint.UseVisualStyleBackColor = false;
             // 
             // btnNewEmp
             // 
@@ -302,7 +282,6 @@
             Controls.Add(btnPrevious);
             Controls.Add(btnFirst);
             Controls.Add(groupBox1);
-            Controls.Add(btnPrint);
             Controls.Add(btnNewEmp);
             Controls.Add(txtNbEmploye);
             Controls.Add(pictureBox2);
@@ -325,7 +304,6 @@
         private Label txtNbEmploye;
         private PictureBox pictureBox2;
         private Label label5;
-        private Button btnPrint;
         private Button btnNewEmp;
         private TextBox txtNameCriteria;
         private Button btnSearch;
