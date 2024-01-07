@@ -122,6 +122,7 @@ namespace BiblioApp.Forms
             dgvAdherent.Size = new Size(1387, 343);
             dgvAdherent.TabIndex = 5;
             dgvAdherent.CellContentClick += dgvAdherent_CellContentClick;
+            dgvAdherent.CellMouseEnter += dgvAdherent_CellMouseEnter;
             // 
             // txtNbAdh
             // 

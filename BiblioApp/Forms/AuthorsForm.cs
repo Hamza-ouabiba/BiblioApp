@@ -77,7 +77,6 @@ namespace BiblioApp.Forms
                     dgvAuthors.Columns["Genre"].Width = 100;
                     dgvAuthors.Columns["nbBooks"].Width = 100;
                     dgvAuthors.RowHeadersVisible = false;
-                    SharedData.AddColumnIcon(dgvAuthors, "print", "print");
                     SharedData.AddColumnIcon(dgvAuthors, "delete", "delete");
                     SharedData.AddColumnIcon(dgvAuthors, "edit", "edit");
                     txtNbAuthors.Text = dgvAuthors.RowCount.ToString();

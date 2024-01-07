@@ -362,5 +362,21 @@ namespace BiblioApp.Forms
         {
             LoadData();
         }
+
+        private void dgvAdherent_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != -1)
+            {
+                string colName = dgvAdherent.Columns[e.ColumnIndex].Name;
+                if (colName != "delete" && colName != "print" && colName != "edit")
+                {
+                    dgvAdherent.Cursor = Cursors.Default;
+                }
+                else
+                {
+                    dgvAdherent.Cursor = Cursors.Hand;
+                }
+            }
+        }
     }
 }
