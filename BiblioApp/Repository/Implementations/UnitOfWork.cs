@@ -1,6 +1,8 @@
 ﻿
 using BiblioApp.Models;
 using BiblioApp.Repository.Interfaces;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace BiblioApp.Repository.Implementations
@@ -33,11 +35,36 @@ namespace BiblioApp.Repository.Implementations
             try
             {
                 return _context.SaveChanges();
-            } catch (Exception)
+            }
+            catch (DbUpdateException ex)
+            {
+                const int uniqueConstraintViolationErrorCode = 2627; 
+                if (ex.InnerException is SqlException sqlException)
+                {
+                    if (sqlException.Number ==  uniqueConstraintViolationErrorCode)
+                    {
+                        string affichageError = string.Empty;
+
+                        if (sqlException.Message.Contains("UNIQUE_EMAIL"))
+                        {
+                            affichageError = "Email ,";
+                        }
+                        if (sqlException.Message.Contains("UNIQUE_TITLE"))
+                        {
+                            affichageError += "Titre livre ";
+                        }
+                        throw new Exception($"Duplication du champ : {affichageError}");
+                    }
+                }
+                throw;
+            }
+            catch (Exception)
             {
                 throw;
             }
         }
+
+
 
         public void Dispose()
         {

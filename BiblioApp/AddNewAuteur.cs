@@ -1,6 +1,7 @@
 ﻿using BiblioApp.Forms;
 using BiblioApp.Models;
 using BiblioApp.Repository.Implementations;
+using Microsoft.Data.SqlClient;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 
@@ -48,43 +49,50 @@ namespace BiblioApp
 
         private void btnSaveAut_Click(object sender, EventArgs e)
         {
-            txtName_Validating(sender, e as CancelEventArgs);
-            txtEmail_Validating(sender, e as CancelEventArgs);
-            if (vNom && vEmail && (txtGenderF.Checked || txtGenderM.Checked))
+            try
             {
-                using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
+                txtName_Validating(sender, e as CancelEventArgs);
+                txtEmail_Validating(sender, e as CancelEventArgs);
+                if (vNom && vEmail && (txtGenderF.Checked || txtGenderM.Checked))
                 {
-                    if (idAuteur == -1)
+                    using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
                     {
-                        Auteur auteur = new Auteur()
+                        if (idAuteur == -1)
                         {
-                            NomAuteur = txtName.Text,
-                            Email = txtEmail.Text,
-                            Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text,
-                        };
-                        uow.Auteur.Add(auteur);
+                            Auteur auteur = new Auteur()
+                            {
+                                NomAuteur = txtName.Text,
+                                Email = txtEmail.Text,
+                                Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text,
+                            };
+                            uow.Auteur.Add(auteur);
 
-                    }
-                    else
-                    {
-                        Auteur auteur = uow.Auteur.Get(idAuteur);
-                        auteur.NomAuteur = txtName.Text;
-                        auteur.Email = txtEmail.Text;
-                        auteur.Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text;
-                    }
+                        }
+                        else
+                        {
+                            Auteur auteur = uow.Auteur.Get(idAuteur);
+                            auteur.NomAuteur = txtName.Text;
+                            auteur.Email = txtEmail.Text;
+                            auteur.Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text;
+                        }
 
-                    int res = uow.Complete();
+                        int res = uow.Complete();
 
-                    if (res > 0)
-                    {
-                        string state = idAuteur == -1 ? "created" : "updated";
-                        MessageBox.Show($"Auteur {state} successfully  ");
-                        authorForm.LoadData();
-                        this.Close();
+                        if (res > 0)
+                        {
+                            string state = idAuteur == -1 ? "created" : "updated";
+                            MessageBox.Show($"Auteur {state} successfully  ");
+                            authorForm.LoadData();
+                            this.Close();
+                        }
                     }
                 }
-            }
-            else MessageBox.Show("Remplir les fields");
+                else MessageBox.Show("Remplir les fields");
+             } 
+                 catch(Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
         }
 
         private void txtEmail_Validating(object sender, CancelEventArgs e)
