@@ -42,6 +42,8 @@ namespace BiblioApp
             txtName = new TextBox();
             label2 = new Label();
             groupBox1 = new GroupBox();
+            txtPass = new TextBox();
+            label5 = new Label();
             txtEmail = new TextBox();
             label1 = new Label();
             btnSaveAut = new Button();
@@ -62,7 +64,7 @@ namespace BiblioApp
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(472, 52);
+            panel1.Size = new Size(378, 42);
             panel1.TabIndex = 0;
             // 
             // btnExit
@@ -72,10 +74,10 @@ namespace BiblioApp
             btnExit.FlatAppearance.BorderSize = 0;
             btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnExit.ForeColor = Color.Red;
-            btnExit.Location = new Point(410, 6);
+            btnExit.Location = new Point(328, 5);
             btnExit.Margin = new Padding(2);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(46, 41);
+            btnExit.Size = new Size(37, 33);
             btnExit.TabIndex = 1;
             btnExit.Text = "X";
             btnExit.UseVisualStyleBackColor = true;
@@ -84,10 +86,10 @@ namespace BiblioApp
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.FromArgb(224, 224, 224);
-            pictureBox1.Location = new Point(12, 8);
+            pictureBox1.Location = new Point(10, 6);
             pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(45, 32);
+            pictureBox1.Size = new Size(36, 26);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
@@ -98,10 +100,10 @@ namespace BiblioApp
             txtTitleForm.BackColor = Color.Maroon;
             txtTitleForm.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             txtTitleForm.ForeColor = SystemColors.ButtonHighlight;
-            txtTitleForm.Location = new Point(64, 9);
+            txtTitleForm.Location = new Point(51, 7);
             txtTitleForm.Margin = new Padding(2, 0, 2, 0);
             txtTitleForm.Name = "txtTitleForm";
-            txtTitleForm.Size = new Size(186, 28);
+            txtTitleForm.Size = new Size(157, 23);
             txtTitleForm.TabIndex = 2;
             txtTitleForm.Text = "Ajout Adherent";
             // 
@@ -113,10 +115,10 @@ namespace BiblioApp
             // 
             txtGenderF.AutoSize = true;
             txtGenderF.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtGenderF.Location = new Point(212, 336);
+            txtGenderF.Location = new Point(170, 316);
             txtGenderF.Margin = new Padding(2);
             txtGenderF.Name = "txtGenderF";
-            txtGenderF.Size = new Size(46, 29);
+            txtGenderF.Size = new Size(38, 24);
             txtGenderF.TabIndex = 6;
             txtGenderF.TabStop = true;
             txtGenderF.Text = "F";
@@ -126,10 +128,10 @@ namespace BiblioApp
             // 
             txtGenderM.AutoSize = true;
             txtGenderM.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtGenderM.Location = new Point(138, 336);
+            txtGenderM.Location = new Point(110, 316);
             txtGenderM.Margin = new Padding(2);
             txtGenderM.Name = "txtGenderM";
-            txtGenderM.Size = new Size(54, 29);
+            txtGenderM.Size = new Size(44, 24);
             txtGenderM.TabIndex = 5;
             txtGenderM.TabStop = true;
             txtGenderM.Text = "M";
@@ -140,10 +142,10 @@ namespace BiblioApp
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Brown;
-            label4.Location = new Point(22, 334);
+            label4.Location = new Point(18, 314);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(102, 30);
+            label4.Size = new Size(88, 25);
             label4.TabIndex = 4;
             label4.Text = "Gender : ";
             // 
@@ -152,10 +154,10 @@ namespace BiblioApp
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Brown;
-            label3.Location = new Point(22, 130);
+            label3.Location = new Point(18, 104);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(106, 30);
+            label3.Size = new Size(92, 25);
             label3.TabIndex = 2;
             label3.Text = "Prenom : ";
             // 
@@ -163,10 +165,10 @@ namespace BiblioApp
             // 
             txtName.BackColor = Color.White;
             txtName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            txtName.Location = new Point(22, 84);
+            txtName.Location = new Point(18, 67);
             txtName.Margin = new Padding(2);
             txtName.Name = "txtName";
-            txtName.Size = new Size(356, 39);
+            txtName.Size = new Size(286, 34);
             txtName.TabIndex = 1;
             txtName.Validating += txtName_Validating;
             // 
@@ -175,15 +177,17 @@ namespace BiblioApp
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.Brown;
-            label2.Location = new Point(21, 36);
+            label2.Location = new Point(17, 29);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(72, 30);
+            label2.Size = new Size(62, 25);
             label2.TabIndex = 0;
             label2.Text = "Nom :";
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(txtPass);
+            groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(btnSaveAut);
@@ -194,22 +198,45 @@ namespace BiblioApp
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(txtName);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(12, 74);
+            groupBox1.Location = new Point(10, 59);
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(438, 491);
+            groupBox1.Size = new Size(350, 393);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
+            // 
+            // txtPass
+            // 
+            txtPass.BackColor = Color.White;
+            txtPass.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            txtPass.Location = new Point(21, 277);
+            txtPass.Margin = new Padding(2);
+            txtPass.Name = "txtPass";
+            txtPass.Size = new Size(290, 34);
+            txtPass.TabIndex = 12;
+            txtPass.Validating += txtPass_Validating;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.ForeColor = Color.Brown;
+            label5.Location = new Point(22, 249);
+            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(133, 25);
+            label5.TabIndex = 11;
+            label5.Text = "Mot de passe :";
             // 
             // txtEmail
             // 
             txtEmail.BackColor = Color.White;
             txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            txtEmail.Location = new Point(25, 257);
+            txtEmail.Location = new Point(20, 206);
             txtEmail.Margin = new Padding(2);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(362, 39);
+            txtEmail.Size = new Size(290, 34);
             txtEmail.TabIndex = 10;
             txtEmail.Validating += txtEmail_Validating;
             // 
@@ -218,10 +245,10 @@ namespace BiblioApp
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.Brown;
-            label1.Location = new Point(26, 222);
+            label1.Location = new Point(21, 178);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(75, 30);
+            label1.Size = new Size(67, 25);
             label1.TabIndex = 9;
             label1.Text = "Email :";
             // 
@@ -233,10 +260,10 @@ namespace BiblioApp
             btnSaveAut.FlatStyle = FlatStyle.Flat;
             btnSaveAut.Font = new Font("Agency FB", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnSaveAut.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSaveAut.Location = new Point(260, 430);
+            btnSaveAut.Location = new Point(208, 352);
             btnSaveAut.Margin = new Padding(2);
             btnSaveAut.Name = "btnSaveAut";
-            btnSaveAut.Size = new Size(150, 39);
+            btnSaveAut.Size = new Size(120, 31);
             btnSaveAut.TabIndex = 8;
             btnSaveAut.Text = "Enregistrer";
             btnSaveAut.TextAlign = ContentAlignment.MiddleRight;
@@ -247,19 +274,19 @@ namespace BiblioApp
             // 
             txtPrenom.BackColor = Color.White;
             txtPrenom.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            txtPrenom.Location = new Point(23, 165);
+            txtPrenom.Location = new Point(18, 132);
             txtPrenom.Margin = new Padding(2);
             txtPrenom.Name = "txtPrenom";
-            txtPrenom.Size = new Size(362, 39);
+            txtPrenom.Size = new Size(290, 34);
             txtPrenom.TabIndex = 3;
             txtPrenom.Validating += txtPrenom_Validating;
             // 
             // AddNewAdherent
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(472, 584);
+            ClientSize = new Size(378, 467);
             Controls.Add(groupBox1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -295,5 +322,7 @@ namespace BiblioApp
         private Button btnSaveAut;
         private TextBox txtEmail;
         private Label label1;
+        private TextBox txtPass;
+        private Label label5;
     }
 }

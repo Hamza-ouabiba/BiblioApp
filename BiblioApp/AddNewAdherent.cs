@@ -10,7 +10,7 @@ namespace BiblioApp
     {
         private readonly int idAdherent;
         private readonly AdherentForm adherentForm;
-        private bool vNom, vPrenom, vEmail = false;
+        private bool vNom, vPrenom, vEmail, vPassword = false;
         public AddNewAdherent()
         {
             InitializeComponent();
@@ -30,6 +30,7 @@ namespace BiblioApp
                 txtName_Validating(sender, e as CancelEventArgs);
                 txtEmail_Validating(sender, e as CancelEventArgs);
                 txtPrenom_Validating(sender, e as CancelEventArgs);
+                txtPass_Validating(sender,e as CancelEventArgs);
 
                 if (vNom && vPrenom && vEmail && (txtGenderF.Checked || txtGenderM.Checked))
                 {
@@ -43,6 +44,7 @@ namespace BiblioApp
                                 PrenomAdherent = txtPrenom.Text,
                                 Email = txtPrenom.Text,
                                 Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text,
+                                Password = txtPass.Text
                             };
                             uow.Adherent.Add(auteur);
                         }
@@ -52,6 +54,7 @@ namespace BiblioApp
                             adherent.NomAdherent = txtName.Text;
                             adherent.PrenomAdherent = txtPrenom.Text;
                             adherent.Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text;
+                            adherent.Password = txtPass.Text;
                         }
                         int res = uow.Complete();
 
@@ -65,7 +68,8 @@ namespace BiblioApp
                     }
                 }
                 else MessageBox.Show("Remplir les fields");
-            } catch(Exception exc)
+            }
+            catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
             }
@@ -97,7 +101,8 @@ namespace BiblioApp
                         txtTitleForm.Text = "Update Adherent";
                     }
                 }
-            } catch(Exception excpetion)
+            }
+            catch (Exception excpetion)
             {
                 MessageBox.Show(excpetion.Message);
             }
@@ -116,6 +121,11 @@ namespace BiblioApp
         private void txtEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             vEmail = SharedData.ValidateData(ErrProvider, txtEmail, "Email error", btnSaveAut, false);
+        }
+
+        private void txtPass_Validating(object sender, CancelEventArgs e)
+        {
+            vPassword = SharedData.ValidateData(ErrProvider, txtPass, "Password error", btnSaveAut, false);
         }
     }
 }

@@ -60,6 +60,7 @@ namespace BiblioApp.Forms
             {
                 if (!uow.Adherent.isExistAdherentByEmail(adherent.Email))
                 {
+                    adherent.Password = "123456";
                     uow.Adherent.Add(adherent);
                     uow.Complete();
                 }
