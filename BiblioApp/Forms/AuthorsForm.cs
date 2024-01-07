@@ -92,7 +92,7 @@ namespace BiblioApp.Forms
             if (e.ColumnIndex != -1)
             {
                 string colName = dgvAuthors.Columns[e.ColumnIndex].Name;
-                if (colName != "delete" && colName != "print" && colName != "edit")
+                if (colName != "delete"  && colName != "edit")
                 {
                     dgvAuthors.Cursor = Cursors.Default;
                 }
