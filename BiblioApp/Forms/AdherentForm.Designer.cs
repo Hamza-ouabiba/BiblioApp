@@ -58,10 +58,10 @@ namespace BiblioApp.Forms
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(24, 32);
+            pictureBox2.Location = new Point(19, 26);
             pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(45, 32);
+            pictureBox2.Size = new Size(36, 26);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 4;
             pictureBox2.TabStop = false;
@@ -70,10 +70,10 @@ namespace BiblioApp.Forms
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(74, 38);
+            label5.Location = new Point(59, 30);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(185, 28);
+            label5.Size = new Size(155, 23);
             label5.TabIndex = 3;
             label5.Text = "Liste adhérents";
             // 
@@ -106,7 +106,7 @@ namespace BiblioApp.Forms
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvAdherent.DefaultCellStyle = dataGridViewCellStyle3;
             dgvAdherent.EnableHeadersVisualStyles = false;
-            dgvAdherent.Location = new Point(22, 155);
+            dgvAdherent.Location = new Point(18, 124);
             dgvAdherent.Margin = new Padding(2);
             dgvAdherent.Name = "dgvAdherent";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -119,7 +119,7 @@ namespace BiblioApp.Forms
             dgvAdherent.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvAdherent.RowHeadersWidth = 62;
             dgvAdherent.RowTemplate.Height = 40;
-            dgvAdherent.Size = new Size(1734, 429);
+            dgvAdherent.Size = new Size(1387, 343);
             dgvAdherent.TabIndex = 5;
             dgvAdherent.CellContentClick += dgvAdherent_CellContentClick;
             // 
@@ -128,10 +128,10 @@ namespace BiblioApp.Forms
             txtNbAdh.AutoSize = true;
             txtNbAdh.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             txtNbAdh.ForeColor = Color.Maroon;
-            txtNbAdh.Location = new Point(272, 38);
+            txtNbAdh.Location = new Point(218, 30);
             txtNbAdh.Margin = new Padding(2, 0, 2, 0);
             txtNbAdh.Name = "txtNbAdh";
-            txtNbAdh.Size = new Size(24, 28);
+            txtNbAdh.Size = new Size(20, 23);
             txtNbAdh.TabIndex = 6;
             txtNbAdh.Text = "_";
             // 
@@ -139,10 +139,10 @@ namespace BiblioApp.Forms
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.Maroon;
-            label1.Location = new Point(61, 0);
+            label1.Location = new Point(49, 0);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(85, 25);
+            label1.Size = new Size(70, 20);
             label1.TabIndex = 9;
             label1.Text = "Adherent";
             // 
@@ -150,11 +150,11 @@ namespace BiblioApp.Forms
             // 
             txtAdherentCriteria.BackColor = Color.White;
             txtAdherentCriteria.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtAdherentCriteria.Location = new Point(61, 31);
+            txtAdherentCriteria.Location = new Point(49, 25);
             txtAdherentCriteria.Margin = new Padding(2);
             txtAdherentCriteria.Name = "txtAdherentCriteria";
             txtAdherentCriteria.PlaceholderText = "Chercher sur un adherent";
-            txtAdherentCriteria.Size = new Size(515, 32);
+            txtAdherentCriteria.Size = new Size(413, 28);
             txtAdherentCriteria.TabIndex = 10;
             // 
             // groupBox1
@@ -162,11 +162,11 @@ namespace BiblioApp.Forms
             groupBox1.Controls.Add(btnSearch);
             groupBox1.Controls.Add(txtAdherentCriteria);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(310, 31);
+            groupBox1.Location = new Point(248, 25);
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(690, 86);
+            groupBox1.Size = new Size(552, 69);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             // 
@@ -179,10 +179,10 @@ namespace BiblioApp.Forms
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnSearch.Image = (Image)resources.GetObject("btnSearch.Image");
-            btnSearch.Location = new Point(609, 30);
+            btnSearch.Location = new Point(487, 24);
             btnSearch.Margin = new Padding(2);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(48, 35);
+            btnSearch.Size = new Size(38, 28);
             btnSearch.TabIndex = 16;
             btnSearch.TextAlign = ContentAlignment.MiddleRight;
             btnSearch.UseVisualStyleBackColor = false;
@@ -192,10 +192,10 @@ namespace BiblioApp.Forms
             // 
             txtCurrentPage.AutoSize = true;
             txtCurrentPage.ForeColor = Color.Maroon;
-            txtCurrentPage.Location = new Point(208, 82);
+            txtCurrentPage.Location = new Point(166, 66);
             txtCurrentPage.Margin = new Padding(2, 0, 2, 0);
             txtCurrentPage.Name = "txtCurrentPage";
-            txtCurrentPage.Size = new Size(19, 25);
+            txtCurrentPage.Size = new Size(15, 20);
             txtCurrentPage.TabIndex = 21;
             txtCurrentPage.Text = "_";
             // 
@@ -207,11 +207,12 @@ namespace BiblioApp.Forms
             btnCharger.FlatAppearance.BorderSize = 0;
             btnCharger.FlatStyle = FlatStyle.Flat;
             btnCharger.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCharger.Image = (Image)resources.GetObject("btnCharger.Image");
             btnCharger.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCharger.Location = new Point(1456, 59);
+            btnCharger.Location = new Point(1160, 49);
             btnCharger.Margin = new Padding(2);
             btnCharger.Name = "btnCharger";
-            btnCharger.Size = new Size(116, 36);
+            btnCharger.Size = new Size(117, 29);
             btnCharger.TabIndex = 22;
             btnCharger.Text = "Charger";
             btnCharger.TextAlign = ContentAlignment.MiddleRight;
@@ -226,10 +227,10 @@ namespace BiblioApp.Forms
             btnLast.FlatStyle = FlatStyle.Flat;
             btnLast.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnLast.Image = (Image)resources.GetObject("btnLast.Image");
-            btnLast.Location = new Point(144, 82);
+            btnLast.Location = new Point(115, 66);
             btnLast.Margin = new Padding(2);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(48, 35);
+            btnLast.Size = new Size(38, 28);
             btnLast.TabIndex = 39;
             btnLast.TextAlign = ContentAlignment.MiddleRight;
             btnLast.UseVisualStyleBackColor = false;
@@ -243,10 +244,10 @@ namespace BiblioApp.Forms
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnNext.Image = (Image)resources.GetObject("btnNext.Image");
-            btnNext.Location = new Point(94, 82);
+            btnNext.Location = new Point(75, 66);
             btnNext.Margin = new Padding(2);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(52, 35);
+            btnNext.Size = new Size(42, 28);
             btnNext.TabIndex = 38;
             btnNext.TextAlign = ContentAlignment.MiddleRight;
             btnNext.UseVisualStyleBackColor = false;
@@ -260,10 +261,10 @@ namespace BiblioApp.Forms
             btnPrevious.FlatStyle = FlatStyle.Flat;
             btnPrevious.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
-            btnPrevious.Location = new Point(64, 86);
+            btnPrevious.Location = new Point(51, 69);
             btnPrevious.Margin = new Padding(2);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(32, 28);
+            btnPrevious.Size = new Size(26, 22);
             btnPrevious.TabIndex = 37;
             btnPrevious.TextAlign = ContentAlignment.MiddleRight;
             btnPrevious.UseVisualStyleBackColor = false;
@@ -277,10 +278,10 @@ namespace BiblioApp.Forms
             btnFirst.FlatStyle = FlatStyle.Flat;
             btnFirst.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
-            btnFirst.Location = new Point(11, 82);
+            btnFirst.Location = new Point(9, 66);
             btnFirst.Margin = new Padding(2);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(48, 35);
+            btnFirst.Size = new Size(38, 28);
             btnFirst.TabIndex = 36;
             btnFirst.TextAlign = ContentAlignment.MiddleRight;
             btnFirst.UseVisualStyleBackColor = false;
@@ -296,10 +297,10 @@ namespace BiblioApp.Forms
             btnNewAdh.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnNewAdh.Image = (Image)resources.GetObject("btnNewAdh.Image");
             btnNewAdh.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNewAdh.Location = new Point(1171, 54);
+            btnNewAdh.Location = new Point(937, 43);
             btnNewAdh.Margin = new Padding(2);
             btnNewAdh.Name = "btnNewAdh";
-            btnNewAdh.Size = new Size(259, 44);
+            btnNewAdh.Size = new Size(207, 35);
             btnNewAdh.TabIndex = 40;
             btnNewAdh.Text = "Nouveau adhérent";
             btnNewAdh.TextAlign = ContentAlignment.MiddleRight;
@@ -314,11 +315,12 @@ namespace BiblioApp.Forms
             btnExport.FlatAppearance.BorderSize = 0;
             btnExport.FlatStyle = FlatStyle.Flat;
             btnExport.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnExport.Image = (Image)resources.GetObject("btnExport.Image");
             btnExport.ImageAlign = ContentAlignment.MiddleLeft;
-            btnExport.Location = new Point(1601, 61);
+            btnExport.Location = new Point(1295, 50);
             btnExport.Margin = new Padding(2);
             btnExport.Name = "btnExport";
-            btnExport.Size = new Size(116, 36);
+            btnExport.Size = new Size(110, 29);
             btnExport.TabIndex = 41;
             btnExport.Text = "Exporter";
             btnExport.TextAlign = ContentAlignment.MiddleRight;
@@ -327,7 +329,7 @@ namespace BiblioApp.Forms
             // 
             // AdherentForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(btnExport);
             Controls.Add(btnNewAdh);
@@ -344,7 +346,7 @@ namespace BiblioApp.Forms
             Controls.Add(groupBox1);
             Margin = new Padding(2);
             Name = "AdherentForm";
-            Size = new Size(1770, 639);
+            Size = new Size(1416, 511);
             Load += AdherentForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvAdherent).EndInit();

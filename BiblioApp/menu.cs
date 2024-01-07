@@ -74,5 +74,10 @@ namespace BiblioApp.Forms
             panelContent.Controls.Clear();
             panelContent.Controls.Add(frmAdherent);
         }
+
+        private void DeconBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

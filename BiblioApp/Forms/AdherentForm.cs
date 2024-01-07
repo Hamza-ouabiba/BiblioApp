@@ -75,7 +75,6 @@ namespace BiblioApp.Forms
 
                 DataTable dataTable = new DataTable();
 
-                // Assuming the first row contains column headers
                 for (int col = 1; col <= worksheet.Dimension.Columns; col++)
                 {
                     dataTable.Columns.Add(worksheet.Cells[1, col].Text);
@@ -146,19 +145,36 @@ namespace BiblioApp.Forms
                             }
                         }
 
-                        string formattedDateTime = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                        string cheminFichier = $"C:/Documents/AdherentData{formattedDateTime}.xlsx";
-                        package.SaveAs(new FileInfo(cheminFichier));
-                        SharedData.MessageUser($"Data exportée avec succés dans le chemin suivant {cheminFichier}");
+                        SaveFileDialog saveFileDialog = new SaveFileDialog
+                        {
+                            Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*",
+                            Title = "Save Excel File",
+                            FileName = $"AdherentData_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.xlsx"
+                        };
+
+                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            string cheminFichier = saveFileDialog.FileName;
+                            package.SaveAs(new FileInfo(cheminFichier));
+                            SharedData.MessageUser($"Data exported successfully to the following path: {cheminFichier}");
+                        }
+                        else
+                        {
+                            SharedData.MessageUser("Export canceled by the user");
+                        }
                     }
                 }
-                else SharedData.MessageUser("Impossible de faire exportation sans donnée");
+                else
+                {
+                    SharedData.MessageUser("Unable to export without data");
+                }
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
         }
+
         private void LoadCsvData(string filePath)
         {
             try

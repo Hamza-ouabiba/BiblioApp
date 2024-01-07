@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panelLeft = new Panel();
+            btnAdherent = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
             utilisateurEn = new Label();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
@@ -42,7 +43,6 @@
             btnExit = new Button();
             DeconBtn = new FontAwesome.Sharp.IconButton();
             panelContent = new Panel();
-            btnAdherent = new FontAwesome.Sharp.IconButton();
             panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             panelTop.SuspendLayout();
@@ -67,6 +67,26 @@
             panelLeft.Name = "panelLeft";
             panelLeft.Size = new Size(221, 882);
             panelLeft.TabIndex = 1;
+            // 
+            // btnAdherent
+            // 
+            btnAdherent.Cursor = Cursors.Hand;
+            btnAdherent.FlatStyle = FlatStyle.Flat;
+            btnAdherent.ForeColor = Color.Silver;
+            btnAdherent.IconChar = FontAwesome.Sharp.IconChar.UserGroup;
+            btnAdherent.IconColor = Color.Silver;
+            btnAdherent.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAdherent.IconSize = 30;
+            btnAdherent.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAdherent.Location = new Point(-4, 561);
+            btnAdherent.Margin = new Padding(6, 3, 3, 3);
+            btnAdherent.Name = "btnAdherent";
+            btnAdherent.Padding = new Padding(9, 5, 5, 5);
+            btnAdherent.Size = new Size(230, 95);
+            btnAdherent.TabIndex = 12;
+            btnAdherent.Text = "Adhérents";
+            btnAdherent.UseVisualStyleBackColor = true;
+            btnAdherent.Click += btnAdherent_Click;
             // 
             // label1
             // 
@@ -248,6 +268,7 @@
             DeconBtn.Text = "Se Deconnecter";
             DeconBtn.TextAlign = ContentAlignment.MiddleLeft;
             DeconBtn.UseVisualStyleBackColor = false;
+            DeconBtn.Click += DeconBtn_Click;
             // 
             // panelContent
             // 
@@ -259,26 +280,6 @@
             panelContent.Padding = new Padding(7, 0, 0, 0);
             panelContent.Size = new Size(1252, 829);
             panelContent.TabIndex = 3;
-            // 
-            // btnAdherent
-            // 
-            btnAdherent.Cursor = Cursors.Hand;
-            btnAdherent.FlatStyle = FlatStyle.Flat;
-            btnAdherent.ForeColor = Color.Silver;
-            btnAdherent.IconChar = FontAwesome.Sharp.IconChar.UserGroup;
-            btnAdherent.IconColor = Color.Silver;
-            btnAdherent.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnAdherent.IconSize = 30;
-            btnAdherent.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdherent.Location = new Point(-4, 561);
-            btnAdherent.Margin = new Padding(6, 3, 3, 3);
-            btnAdherent.Name = "btnAdherent";
-            btnAdherent.Padding = new Padding(9, 5, 5, 5);
-            btnAdherent.Size = new Size(230, 95);
-            btnAdherent.TabIndex = 12;
-            btnAdherent.Text = "Adhérents";
-            btnAdherent.UseVisualStyleBackColor = true;
-            btnAdherent.Click += btnAdherent_Click;
             // 
             // menu
             // 
