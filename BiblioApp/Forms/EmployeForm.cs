@@ -86,7 +86,6 @@ namespace BiblioApp.Forms
                     dgvEmployes.Columns["E_mail_employe"].Width = 300;
                     dgvEmployes.Columns["Etat"].Width = 300;
                     dgvEmployes.Columns["Sexe_Employe"].Width = 300;
-                    SharedData.AddColumnIcon(dgvEmployes, "print", "print");
                     SharedData.AddColumnIcon(dgvEmployes, "delete", "delete");
                     SharedData.AddColumnIcon(dgvEmployes, "edit", "edit");
                 }
@@ -123,7 +122,8 @@ namespace BiblioApp.Forms
                     }
                     if (colName == "edit")
                     {
-
+                        AjouEmploye ajouEmploye = new AjouEmploye(this, idEmploye);
+                        ajouEmploye.ShowDialog();
                     }
                 }
             } catch(Exception exception)
@@ -139,7 +139,7 @@ namespace BiblioApp.Forms
                 if (e.ColumnIndex != -1)
                 {
                     string colName = dgvEmployes.Columns[e.ColumnIndex].Name;
-                    if (colName != "delete" && colName != "print")
+                    if (colName != "delete" && colName != "edit")
                     {
                         dgvEmployes.Cursor = Cursors.Default;
                     }
@@ -156,7 +156,7 @@ namespace BiblioApp.Forms
 
         private void btnNewEmp_Click(object sender, EventArgs e)
         {
-            AjouEmploye ajouEmploye = new AjouEmploye(this);
+            AjouEmploye ajouEmploye = new AjouEmploye(this,-1);
             ajouEmploye.ShowDialog();
         }
 
