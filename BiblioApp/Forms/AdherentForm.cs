@@ -129,28 +129,30 @@ namespace BiblioApp.Forms
 
                         worksheet.Cells[1, 1].Value = "IdAdherent";
                         worksheet.Cells[1, 2].Value = "PrenomAdherent";
-                        worksheet.Cells[1, 3].Value = "DateInscription";
-                        worksheet.Cells[1, 4].Value = "Email";
+                        worksheet.Cells[1, 3].Value = "NomAdherent";
+                        worksheet.Cells[1, 4].Value = "DateInscription";
+                        worksheet.Cells[1, 5].Value = "Email";
 
                         using (UnitOfWork uow = new(new BibliothequeDbContext()))
                         {
                             int rows = 2;
                             foreach (Adherent adherent in uow.Adherent.GetAll())
                             {
-                                worksheet.Cells[rows, 1].Value = adherent.NomAdherent;
+                                worksheet.Cells[rows, 1].Value = adherent.IdAdherent;
                                 worksheet.Cells[rows, 2].Value = adherent.PrenomAdherent;
-                                worksheet.Cells[rows, 3].Value = adherent.DateInscription;
-                                worksheet.Cells[rows, 4].Value = adherent.Email;
+                                worksheet.Cells[rows, 3].Value = adherent.NomAdherent;
+                                worksheet.Cells[rows, 4].Value = adherent.DateInscription;
+                                worksheet.Cells[rows, 5].Value = adherent.Email;
 
                                 rows++;
                             }
                         }
-
+                        string uniqueIdentifier = Guid.NewGuid().ToString();
                         SaveFileDialog saveFileDialog = new SaveFileDialog
                         {
                             Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*",
                             Title = "Save Excel File",
-                            FileName = $"AdherentData_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.xlsx"
+                            FileName = $"AdherentData_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}_{uniqueIdentifier}.xlsx"
                         };
 
                         if (saveFileDialog.ShowDialog() == DialogResult.OK)

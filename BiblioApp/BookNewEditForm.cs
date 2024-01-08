@@ -56,6 +56,7 @@ namespace BiblioApp
                         txtDescrip.Text = livre.Description;
                         comboCategory.SelectedItem = livre.Categorie;
                         comboAuteur.SelectedItem = livre.Auteur;
+                        comboEtat.SelectedItem = livre.Etat;
                         txtPublishedDate.Value = livre.DatePublication;
                         txtNbPages.Text = livre.NbPages.ToString();
                         txtPrice.Text = livre.Prix.ToString();

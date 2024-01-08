@@ -215,6 +215,7 @@ namespace BiblioApp
             txtPass.Name = "txtPass";
             txtPass.Size = new Size(290, 34);
             txtPass.TabIndex = 12;
+            txtPass.UseSystemPasswordChar = true;
             txtPass.Validating += txtPass_Validating;
             // 
             // label5

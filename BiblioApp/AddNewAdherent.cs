@@ -32,7 +32,7 @@ namespace BiblioApp
                 txtPrenom_Validating(sender, e as CancelEventArgs);
                 txtPass_Validating(sender,e as CancelEventArgs);
 
-                if (vNom && vPrenom && vEmail && (txtGenderF.Checked || txtGenderM.Checked))
+                if (vNom && vPrenom && vEmail && vPassword && (txtGenderF.Checked || txtGenderM.Checked))
                 {
                     using (UnitOfWork uow = new UnitOfWork(new BibliothequeDbContext()))
                     {
@@ -42,7 +42,7 @@ namespace BiblioApp
                             {
                                 NomAdherent = txtName.Text,
                                 PrenomAdherent = txtPrenom.Text,
-                                Email = txtPrenom.Text,
+                                Email = txtEmail.Text,
                                 Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text,
                                 Password = txtPass.Text
                             };
@@ -53,6 +53,7 @@ namespace BiblioApp
                             Adherent adherent = uow.Adherent.Get(idAdherent);
                             adherent.NomAdherent = txtName.Text;
                             adherent.PrenomAdherent = txtPrenom.Text;
+                            adherent.Email = txtEmail.Text; 
                             adherent.Genre = txtGenderM.Checked ? txtGenderM.Text : txtGenderF.Text;
                             adherent.Password = txtPass.Text;
                         }
@@ -93,6 +94,7 @@ namespace BiblioApp
                         txtEmail.Text = adherent.Email;
                         txtName.Text = adherent.NomAdherent;
                         txtPrenom.Text = adherent.PrenomAdherent;
+                        txtPass.Text = adherent.Password;
                         if (adherent.Genre == "M")
                             txtGenderM.Checked = true;
                         else if (adherent.Genre == "F")
