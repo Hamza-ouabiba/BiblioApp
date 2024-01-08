@@ -23,7 +23,7 @@ namespace BiblioApp.Forms
             this.WindowState = FormWindowState.Maximized;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             btnAuteur_Click(sender, e);
-            date.Text = DateTime.Now.ToString();
+            date.Text = "Date aujourd'hui : " + DateTime.Now.ToString("dd/MM/yyyy");
             utilisateurEn.Text = emp.Nom;
             if (emp.IsAdmin == false)
             {
