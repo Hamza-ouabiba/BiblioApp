@@ -9,6 +9,8 @@ namespace BiblioApp.Forms
     {
         private int TotalPages;
         private Pagination pagination;
+        private bool trie = false;
+        private bool trieAscendant = true;
         public AuthorsForm()
         {
             InitializeComponent();
@@ -49,16 +51,22 @@ namespace BiblioApp.Forms
 
                 using (UnitOfWork uow = new(new BibliothequeDbContext()))
                 {
-                    dgvAuthors.DataSource = uow.Auteur.Find(predicate, "Livres", pagination).Select(p => new
+                    var query = uow.Auteur.Find(predicate, "Livres", pagination).Select(p => new
                     {
                         p.IdAuteur,
                         p.NomAuteur,
                         p.Email,
                         p.Genre,
                         nbBooks = p.Livres.Count()
-                    }).ToList();
+                    });
+
+                    query = trie ? (trieAscendant ? query.OrderBy(p => p.nbBooks) :
+                        query.OrderByDescending(p => p.nbBooks)) : query;
+
+                    dgvAuthors.DataSource = query.ToList();
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -81,7 +89,8 @@ namespace BiblioApp.Forms
                     SharedData.AddColumnIcon(dgvAuthors, "edit", "edit");
                     txtNbAuthors.Text = dgvAuthors.RowCount.ToString();
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -92,7 +101,7 @@ namespace BiblioApp.Forms
             if (e.ColumnIndex != -1)
             {
                 string colName = dgvAuthors.Columns[e.ColumnIndex].Name;
-                if (colName != "delete"  && colName != "edit")
+                if (colName != "delete" && colName != "edit")
                 {
                     dgvAuthors.Cursor = Cursors.Default;
                 }
@@ -105,7 +114,7 @@ namespace BiblioApp.Forms
 
         private void dgvAuthors_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           try
+            try
             {
                 if (e.ColumnIndex != -1)
                 {
@@ -135,7 +144,8 @@ namespace BiblioApp.Forms
                         addAu.ShowDialog();
                     }
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -181,6 +191,13 @@ namespace BiblioApp.Forms
         private void btnSearch_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void btnTrieLivre_Click(object sender, EventArgs e)
+        {
+            this.trie = true;
+            trieAscendant = !trieAscendant;
+            LoadData() ;
         }
     }
 }

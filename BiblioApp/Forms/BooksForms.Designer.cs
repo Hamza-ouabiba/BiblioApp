@@ -30,10 +30,10 @@ namespace BiblioApp.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BooksForms));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             pictureBox2 = new PictureBox();
             label5 = new Label();
             dgvBooks = new DataGridView();
@@ -52,6 +52,7 @@ namespace BiblioApp.Forms
             btnNext = new Button();
             btnLast = new Button();
             txtCurrentPage = new Label();
+            btnTriePrix = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvBooks).BeginInit();
             groupBox1.SuspendLayout();
@@ -81,47 +82,47 @@ namespace BiblioApp.Forms
             // 
             // dgvBooks
             // 
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(0, 0, 192);
-            dgvBooks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(0, 0, 192);
+            dgvBooks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             dgvBooks.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvBooks.BackgroundColor = SystemColors.ButtonFace;
             dgvBooks.BorderStyle = BorderStyle.None;
             dgvBooks.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvBooks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.Maroon;
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = Color.Maroon;
+            dataGridViewCellStyle6.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvBooks.ColumnHeadersHeight = 33;
             dgvBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvBooks.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Window;
+            dataGridViewCellStyle7.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dgvBooks.DefaultCellStyle = dataGridViewCellStyle7;
             dgvBooks.EnableHeadersVisualStyles = false;
             dgvBooks.Location = new Point(16, 84);
             dgvBooks.Margin = new Padding(2);
             dgvBooks.Name = "dgvBooks";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.Maroon;
-            dataGridViewCellStyle4.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvBooks.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.Maroon;
+            dataGridViewCellStyle8.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dgvBooks.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dgvBooks.RowHeadersWidth = 62;
             dgvBooks.RowTemplate.Height = 40;
-            dgvBooks.Size = new Size(1287, 343);
+            dgvBooks.Size = new Size(1354, 343);
             dgvBooks.TabIndex = 5;
             dgvBooks.CellContentClick += dgvBooks_CellContentClick;
             dgvBooks.CellMouseEnter += dgvBooks_CellMouseEnter;
@@ -148,10 +149,10 @@ namespace BiblioApp.Forms
             btnNewBook.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnNewBook.Image = (Image)resources.GetObject("btnNewBook.Image");
             btnNewBook.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNewBook.Location = new Point(1025, 25);
+            btnNewBook.Location = new Point(1216, 28);
             btnNewBook.Margin = new Padding(2);
             btnNewBook.Name = "btnNewBook";
-            btnNewBook.Size = new Size(166, 29);
+            btnNewBook.Size = new Size(154, 29);
             btnNewBook.TabIndex = 8;
             btnNewBook.Text = "Nouveau livre";
             btnNewBook.TextAlign = ContentAlignment.MiddleRight;
@@ -334,10 +335,30 @@ namespace BiblioApp.Forms
             txtCurrentPage.TabIndex = 21;
             txtCurrentPage.Text = "_";
             // 
+            // btnTriePrix
+            // 
+            btnTriePrix.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnTriePrix.BackColor = Color.Cyan;
+            btnTriePrix.Cursor = Cursors.Hand;
+            btnTriePrix.FlatAppearance.BorderSize = 0;
+            btnTriePrix.FlatStyle = FlatStyle.Flat;
+            btnTriePrix.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTriePrix.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTriePrix.Location = new Point(1071, 28);
+            btnTriePrix.Margin = new Padding(2);
+            btnTriePrix.Name = "btnTriePrix";
+            btnTriePrix.Size = new Size(125, 28);
+            btnTriePrix.TabIndex = 22;
+            btnTriePrix.Text = "Trie par prix";
+            btnTriePrix.TextAlign = ContentAlignment.MiddleRight;
+            btnTriePrix.UseVisualStyleBackColor = false;
+            btnTriePrix.Click += btnTriePrix_Click;
+            // 
             // BooksForms
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnTriePrix);
             Controls.Add(txtCurrentPage);
             Controls.Add(btnLast);
             Controls.Add(btnNext);
@@ -352,7 +373,7 @@ namespace BiblioApp.Forms
             Controls.Add(groupBox1);
             Margin = new Padding(2);
             Name = "BooksForms";
-            Size = new Size(1316, 511);
+            Size = new Size(1383, 511);
             Load += BooksForms_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvBooks).EndInit();
@@ -381,5 +402,6 @@ namespace BiblioApp.Forms
         private System.Windows.Forms.Button btnLast;
         private System.Windows.Forms.Label txtCurrentPage;
         private ComboBox txtCategoryCriteria;
+        private Button btnTriePrix;
     }
 }

@@ -9,6 +9,8 @@ namespace BiblioApp.Forms
     {
         private int TotalPages;
         private Pagination pagination;
+        private bool triePrix = false;
+        private bool trieAscendantPrix = false;
         public BooksForms()
         {
             InitializeComponent();
@@ -71,7 +73,7 @@ namespace BiblioApp.Forms
 
                 using (UnitOfWork uow = new(new BibliothequeDbContext()))
                 {
-                    dgvBooks.DataSource = uow.Livre.Find(predicate, "Auteur,Categorie,Etat", pagination).Select(l => new
+                    var query = uow.Livre.Find(predicate, "Auteur,Categorie,Etat", pagination).Select(l => new
                     {
                         IdLivre = l.IdLivre,
                         Titre = l.Title,
@@ -82,17 +84,23 @@ namespace BiblioApp.Forms
                         Etat = l.Etat.Nom,
                         Auteur = l.Auteur.NomAuteur,
                         nbPage = l.NbPages,
-                    }).ToList();
+                    });
+
+                    query = triePrix ? (trieAscendantPrix ? query.OrderBy(l => l.Prix) :
+                        query.OrderByDescending(p => p.Prix)) : query;
+
+                    dgvBooks.DataSource = query.ToList();
                     txtNbBooks.Text = dgvBooks.RowCount.ToString();
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
         }
         private void BooksForms_Load(object sender, EventArgs e)
         {
-           try
+            try
             {
                 LoadData();
                 txtCategoryCriteria.Items.Add(new Categorie()
@@ -133,7 +141,8 @@ namespace BiblioApp.Forms
                 dgvBooks.Columns["nbPage"].Width = 100;
                 SharedData.AddColumnIcon(dgvBooks, "delete", "delete");
                 SharedData.AddColumnIcon(dgvBooks, "edit", "edit");
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -177,7 +186,8 @@ namespace BiblioApp.Forms
                         }
                     }
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -230,6 +240,13 @@ namespace BiblioApp.Forms
                     dgvBooks.Cursor = Cursors.Hand;
                 }
             }
+        }
+
+        private void btnTriePrix_Click(object sender, EventArgs e)
+        {
+            this.triePrix = true;
+            this.trieAscendantPrix = !this.trieAscendantPrix;
+            LoadData();
         }
     }
 }
