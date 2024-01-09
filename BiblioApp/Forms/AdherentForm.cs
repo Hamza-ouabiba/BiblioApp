@@ -141,9 +141,8 @@ namespace BiblioApp.Forms
                                 worksheet.Cells[rows, 1].Value = adherent.IdAdherent;
                                 worksheet.Cells[rows, 2].Value = adherent.PrenomAdherent;
                                 worksheet.Cells[rows, 3].Value = adherent.NomAdherent;
-                                worksheet.Cells[rows, 4].Value = adherent.DateInscription;
+                                worksheet.Cells[rows, 4].Value = ((DateTime)adherent.DateInscription).ToString("dd/MM/yyyy");
                                 worksheet.Cells[rows, 5].Value = adherent.Email;
-
                                 rows++;
                             }
                         }
@@ -251,6 +250,7 @@ namespace BiblioApp.Forms
                         NomAdherent = a.NomAdherent,
                         PrenomAdherent = a.PrenomAdherent,
                         EmailAdherent = a.Email,
+                        DateInscription = a.DateInscription,
                         Gender = a.Genre
                     }).ToList();
                     txtNbAdh.Text = uow.Adherent.GetAll().Count().ToString();
@@ -271,6 +271,7 @@ namespace BiblioApp.Forms
                 dgvAdherent.Columns["PrenomAdherent"].Width = 300;
                 dgvAdherent.Columns["EmailAdherent"].Width = 300;
                 dgvAdherent.Columns["Gender"].Width = 300;
+                dgvAdherent.Columns["DateInscription"].Width = 300;
                 SharedData.AddColumnIcon(dgvAdherent, "delete", "delete");
                 SharedData.AddColumnIcon(dgvAdherent, "edit", "edit");
                 dgvAdherent.RowHeadersVisible = false;
