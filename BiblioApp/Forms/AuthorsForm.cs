@@ -11,6 +11,8 @@ namespace BiblioApp.Forms
         private Pagination pagination;
         private bool trie = false;
         private bool trieAscendant = true;
+        private bool trieNom = false;
+        private bool trieAscendantNom = false;
         public AuthorsForm()
         {
             InitializeComponent();
@@ -60,8 +62,7 @@ namespace BiblioApp.Forms
                         nbBooks = p.Livres.Count()
                     });
 
-                    query = trie ? (trieAscendant ? query.OrderBy(p => p.nbBooks) :
-                        query.OrderByDescending(p => p.nbBooks)) : query;
+                    query = trie ? (trieAscendant ? query.OrderBy(p => p.nbBooks) : query.OrderByDescending(p => p.nbBooks)) : query;
 
                     dgvAuthors.DataSource = query.ToList();
                 }
@@ -197,7 +198,7 @@ namespace BiblioApp.Forms
         {
             this.trie = true;
             trieAscendant = !trieAscendant;
-            LoadData() ;
+            LoadData();
         }
     }
 }

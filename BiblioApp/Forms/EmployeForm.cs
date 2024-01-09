@@ -11,6 +11,7 @@ namespace BiblioApp.Forms
         private readonly int idEmp;
         private Pagination pagination;
         private int TotalPages;
+        private bool trie = false;
         public EmployeForm()
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace BiblioApp.Forms
         }
         public void LoadData()
         {
-           try
+            try
             {
                 //initializing a predicate delegate : 
                 var predicate = PredicateBuilder.New<Employe>(true);
@@ -57,17 +58,22 @@ namespace BiblioApp.Forms
 
                 using (UnitOfWork uow = new(new BibliothequeDbContext()))
                 {
-                    dgvEmployes.DataSource = uow.Employe.Find(predicate, "", pagination).Select(e => new
+                    var query = uow.Employe.Find(predicate, "", pagination).Select(e => new
                     {
                         IdEmploye = e.IdEmploye,
                         Nom_Employe = e.Nom,
                         E_mail_employe = e.Email,
                         Etat = e.IsAdmin == true ? "Administrateur" : "Utilisateur normal",
                         Sexe_Employe = e.Genre,
-                    }).ToList();
+                    });
+
+                    query = trie ? query.OrderBy(e => e.Nom_Employe) : query;
+
+                    dgvEmployes.DataSource = query.ToList();
                     txtNbEmploye.Text = dgvEmployes.RowCount.ToString();
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -89,7 +95,8 @@ namespace BiblioApp.Forms
                     SharedData.AddColumnIcon(dgvEmployes, "delete", "delete");
                     SharedData.AddColumnIcon(dgvEmployes, "edit", "edit");
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -126,7 +133,8 @@ namespace BiblioApp.Forms
                         ajouEmploye.ShowDialog();
                     }
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -134,7 +142,7 @@ namespace BiblioApp.Forms
 
         private void dgvEmployes_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-           try
+            try
             {
                 if (e.ColumnIndex != -1)
                 {
@@ -148,7 +156,8 @@ namespace BiblioApp.Forms
                         dgvEmployes.Cursor = Cursors.Hand;
                     }
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -156,7 +165,7 @@ namespace BiblioApp.Forms
 
         private void btnNewEmp_Click(object sender, EventArgs e)
         {
-            AjouEmploye ajouEmploye = new AjouEmploye(this,-1);
+            AjouEmploye ajouEmploye = new AjouEmploye(this, -1);
             ajouEmploye.ShowDialog();
         }
 
@@ -192,6 +201,12 @@ namespace BiblioApp.Forms
         private void btnFirst_Click(object sender, EventArgs e)
         {
             pagination.PageIndex = 1;
+        }
+
+        private void btnFiltrageNom_Click(object sender, EventArgs e)
+        {
+            this.trie = true;
+            LoadData();
         }
     }
 }

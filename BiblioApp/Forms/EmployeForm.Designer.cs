@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeForm));
             dgvEmployes = new DataGridView();
             txtNbEmploye = new Label();
@@ -46,6 +46,7 @@
             btnNext = new Button();
             btnPrevious = new Button();
             btnFirst = new Button();
+            btnFiltrageNom = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEmployes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             groupBox1.SuspendLayout();
@@ -53,47 +54,47 @@
             // 
             // dgvEmployes
             // 
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(0, 0, 192);
-            dgvEmployes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(0, 0, 192);
+            dgvEmployes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             dgvEmployes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvEmployes.BackgroundColor = SystemColors.ButtonFace;
             dgvEmployes.BorderStyle = BorderStyle.None;
             dgvEmployes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvEmployes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.Maroon;
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvEmployes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = Color.Maroon;
+            dataGridViewCellStyle6.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvEmployes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvEmployes.ColumnHeadersHeight = 33;
             dgvEmployes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvEmployes.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Window;
+            dataGridViewCellStyle7.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dgvEmployes.DefaultCellStyle = dataGridViewCellStyle7;
             dgvEmployes.EnableHeadersVisualStyles = false;
             dgvEmployes.Location = new Point(38, 108);
             dgvEmployes.Margin = new Padding(2);
             dgvEmployes.Name = "dgvEmployes";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.Maroon;
-            dataGridViewCellStyle4.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvEmployes.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.Maroon;
+            dataGridViewCellStyle8.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dgvEmployes.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dgvEmployes.RowHeadersWidth = 62;
             dgvEmployes.RowTemplate.Height = 40;
-            dgvEmployes.Size = new Size(1245, 320);
+            dgvEmployes.Size = new Size(1005, 320);
             dgvEmployes.TabIndex = 6;
             dgvEmployes.CellContentClick += dgvEmployes_CellContentClick;
             dgvEmployes.CellMouseEnter += dgvEmployes_CellMouseEnter;
@@ -142,7 +143,7 @@
             btnNewEmp.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnNewEmp.Image = (Image)resources.GetObject("btnNewEmp.Image");
             btnNewEmp.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNewEmp.Location = new Point(960, 24);
+            btnNewEmp.Location = new Point(1082, 22);
             btnNewEmp.Margin = new Padding(2);
             btnNewEmp.Name = "btnNewEmp";
             btnNewEmp.Size = new Size(201, 29);
@@ -272,10 +273,30 @@
             btnFirst.UseVisualStyleBackColor = false;
             btnFirst.Click += btnFirst_Click;
             // 
+            // btnFiltrageNom
+            // 
+            btnFiltrageNom.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnFiltrageNom.BackColor = Color.FromArgb(255, 128, 0);
+            btnFiltrageNom.Cursor = Cursors.Hand;
+            btnFiltrageNom.FlatAppearance.BorderSize = 0;
+            btnFiltrageNom.FlatStyle = FlatStyle.Flat;
+            btnFiltrageNom.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnFiltrageNom.ImageAlign = ContentAlignment.MiddleLeft;
+            btnFiltrageNom.Location = new Point(922, 22);
+            btnFiltrageNom.Margin = new Padding(2);
+            btnFiltrageNom.Name = "btnFiltrageNom";
+            btnFiltrageNom.Size = new Size(130, 29);
+            btnFiltrageNom.TabIndex = 31;
+            btnFiltrageNom.Text = "trie par nom";
+            btnFiltrageNom.TextAlign = ContentAlignment.MiddleRight;
+            btnFiltrageNom.UseVisualStyleBackColor = false;
+            btnFiltrageNom.Click += btnFiltrageNom_Click;
+            // 
             // EmployeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnFiltrageNom);
             Controls.Add(txtCurrentPage);
             Controls.Add(btnLast);
             Controls.Add(btnNext);
@@ -313,5 +334,6 @@
         private Button btnNext;
         private Button btnPrevious;
         private Button btnFirst;
+        private Button btnFiltrageNom;
     }
 }
